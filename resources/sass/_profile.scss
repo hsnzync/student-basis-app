@@ -1,0 +1,91 @@
+.main {
+    .c-profile-container {
+        padding: 45px;
+  
+        ul {
+            list-style: none;
+            padding: 0;
+  
+            .c-profile-header {
+                display: inline-block;
+                color: #fff;
+  
+                .c-profile-header-avatar {
+    
+                    .c-avatar {
+                        height: 150px;
+                        width: 150px;
+                        border: 5px solid #fff;
+                        object-fit: cover;
+                    }  
+                }
+  
+                .c-profile-header-details {
+    
+                    li {
+    
+                        &:first-of-type {
+                            font-size: 25px;
+                            font-family: $font-bold;
+                        }
+                    }
+                }
+            }
+
+            .c-link-user {
+
+                position: relative;
+                top: 30px;
+
+                a {
+                    background: #fff;
+                    color: rgba(248,80,50,1);
+                    padding: 20px 50px;
+                    border-radius: 30px;
+                    -webkit-box-shadow: 0px 6px 17px -7px rgba(248,89,50, .5);
+                    -moz-box-shadow: 0px 6px 17px -7px rgba(248,89,50, .5);
+                    box-shadow: 0px 6px 17px -7px rgba(248,89,50, .5);
+                }
+            }
+        }
+    }
+
+    .c-profile-activity {
+        padding: 70px 50px;
+        background-color: #fff;
+
+        .c-profile-activity-container {
+            width: 60%;
+            margin: 0 auto;
+
+            .card {
+                margin-top: -120px;
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+    
+                    li {
+                        margin-bottom: 20px;
+                    }
+                }
+    
+                .btn-enter {
+                    color: #fff;
+                    background-color: rgba(248,80,50,1);
+                    padding: 10px 30px;
+                    border-radius: 30px;
+                    border: none;
+                    cursor: pointer;
+                    transition: .3s ease-out;
+    
+                    &:hover {
+                        background-color: rgba(265,90,60,1);
+    
+                    }
+                }
+            }
+
+        }
+    }
+}

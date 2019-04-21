@@ -1,0 +1,111 @@
+$toggle-switch-button-label-background-color: #eeeeee !default;
+$toggle-switch-button-label-border-color: #ccc !default;
+$toggle-switch-button-label-font-size: inherit !default;
+$toggle-switch-button-unchecked-background-color: #ccc !default;
+$toggle-switch-button-checked-background-color: #337ab7 !default;
+$toggle-switch-button-label-border-radius: 4px !default;
+
+.switch-group {
+  position: relative;
+  display: table;
+
+  .switch-icon {
+    display: table-cell;
+    border: 1px solid $toggle-switch-button-label-border-color;
+    background-color: $toggle-switch-button-label-background-color;
+    font-size: $toggle-switch-button-label-font-size;
+    padding: 6px 12px;
+    vertical-align: middle;
+
+    &.end {
+      -webkit-border-top-right-radius: $toggle-switch-button-label-border-radius;
+      -moz-border-radius-topright: $toggle-switch-button-label-border-radius;
+      border-top-right-radius: $toggle-switch-button-label-border-radius;
+      -webkit-border-bottom-right-radius: $toggle-switch-button-label-border-radius;
+      -moz-border-radius-bottomright: $toggle-switch-button-label-border-radius;
+      border-bottom-right-radius: $toggle-switch-button-label-border-radius;
+    }
+
+    &.start {
+      -webkit-border-top-left-radius: $toggle-switch-button-label-border-radius;
+      -moz-border-radius-topleft: $toggle-switch-button-label-border-radius;
+      border-top-left-radius: $toggle-switch-button-label-border-radius;
+      -webkit-border-bottom-left-radius: $toggle-switch-button-label-border-radius;
+      -moz-border-radius-bottomleft: $toggle-switch-button-label-border-radius;
+      border-bottom-left-radius: $toggle-switch-button-label-border-radius;
+
+      + .end {
+        border-left: none;
+      }
+    }
+  }
+
+  .switch-label {
+    @extend .switch-icon;
+  }
+
+  .switch-container {
+    display: table-cell;
+    vertical-align: middle;
+
+    &.space-left {
+      padding-left: 10px;
+    }
+
+    .switch-block {
+      height: 26px;
+
+      .switch {
+        display: none;
+
+        + .switch-btn {
+          margin: 0;
+          outline: 0;
+          width: 50px;
+          height: 26px;
+          position: relative;
+          cursor: pointer;
+          user-select: none;
+          background: $toggle-switch-button-unchecked-background-color;
+          border-radius: 2em;
+          padding: 2px;
+          -webkit-transition: 0.4s ease;
+          -o-transition: 0.4s ease;
+          transition: 0.4s ease;
+
+          &:after, &:before {
+            position: relative;
+            display: block;
+            content: "";
+            width: 50%;
+            height: 100%;
+          }
+
+          &:after {
+            left: 0;
+            border-radius: 50%;
+            background: #fff;
+            -webkit-transition: 0.2s ease;
+            -o-transition: 0.2s ease;
+            transition: 0.2s ease;
+          }
+
+          &:before {
+            display: none;
+          }
+        }
+
+        &:checked {
+
+          + .switch-btn {
+            background: $toggle-switch-button-checked-background-color;
+
+            &:after {
+              left: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

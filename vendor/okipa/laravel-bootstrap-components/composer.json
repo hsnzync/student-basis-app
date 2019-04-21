@@ -1,0 +1,67 @@
+{
+    "name": "okipa/laravel-bootstrap-components",
+    "description": "Laravel bootstrap components generator.",
+    "keywords": [
+        "okipa",
+        "package",
+        "laravel",
+        "bootstrap",
+        "php",
+        "components",
+        "generate",
+        "generator",
+        "generation",
+        "html"
+    ],
+    "homepage": "https://github.com/Okipa/laravel-bootstrap-components",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arthur LORENT",
+            "email": "arthur.lorent@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "php": ">=7.1",
+        "illuminate/support": "~5.0",
+        "okipa/laravel-html-helper": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.6",
+        "squizlabs/php_codesniffer": "^3.3",
+        "mockery/mockery": "^1.2",
+        "phpmd/phpmd": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Okipa\\LaravelBootstrapComponents\\": "src/"
+        },
+        "files": [
+            "app/Helpers/componentsHelper.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Okipa\\LaravelBootstrapComponents\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpcbf",
+            "vendor/bin/phpcs",
+            "vendor/bin/phpmd app,config,src text phpmd.xml",
+            "vendor/bin/phpstan analyse",
+            "phpunit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Okipa\\LaravelBootstrapComponents\\ComponentServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}

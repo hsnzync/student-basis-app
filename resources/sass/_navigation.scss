@@ -1,0 +1,89 @@
+.navbar-laravel {
+    z-index: 10;
+    padding: 0 !important;
+
+    @media screen and (max-width: $break-small) {
+        .container {
+            padding-right: 15px !important;
+            padding-left: 15px !important;
+        }
+    }
+
+    .container {
+        max-width: 1350px;
+        padding: 40px;
+        
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .navbar-collapse {
+            max-width: 280px;
+        }
+    
+        .navbar-nav {
+
+            .nav-item {
+                margin: 0 10px;
+                
+                .nav-link {
+                    color: #fff;
+                    transition: .2s ease-out;
+                    line-height: 30px;
+
+                    &:focus {
+                        color: #000;
+                    }
+            
+                    .c-navbar-avatar {
+                        height: 35px;
+                        width: 35px;
+                        object-fit: cover;
+                    }
+
+                    &:hover {
+                        color: #3FA9F5;
+                    }
+                }
+            }
+    
+            .alt {
+                background-color: #3FA9F5;
+                border-radius: 40px;
+                padding: 0 15px;
+                transition: .3s ease-out;
+                -webkit-box-shadow: 0px 12px 40px 0px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: 0px 12px 40px 0px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 12px 40px 0px rgba(0, 0, 0, 0.1);
+          
+                a {
+                    color: #fff !important;
+                    font-weight: 300;
+                    font-family: $font-medium;
+    
+                }
+    
+                &:hover {
+                    transform: translate(0, -2px);
+                }
+            }
+        }
+
+        .dropdown-item.active, 
+        .dropdown-item:active {
+            background: #fff;
+        }
+    }
+
+      
+        .nav-dropdown {
+            a {
+                color: #000 !important;
+            }
+        }
+}
+
+.page-nav {
+    background-color: #333;
+}

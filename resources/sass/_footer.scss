@@ -1,0 +1,26 @@
+.c-page-footer {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    padding: 50px;
+    
+    .c-footer-social {
+        position: absolute;
+        right: 40px;
+
+        a {
+            color: #484848;
+        }
+    }
+
+    .c-footer-copyright {
+        p {
+            margin: 0;
+            color: #484848;
+
+            .c-footer-logo {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+    }
+}
