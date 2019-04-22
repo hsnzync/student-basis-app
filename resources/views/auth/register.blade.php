@@ -56,15 +56,13 @@
                     {{-- <label for="password-confirm">Wachtwoord:</label> --}}
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Bevestig wachtwoord">
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-6" id="js-school_select">
                     {{-- <label for="school_id">School:</label> --}}
                     {!! Form::select('school_id',
                         $schools, null, [
-                            'placeholder'          => trans('--- Kies een school ---', ['attribute' => lcfirst( trans('db.global.type') )] ), 'class' => 'form-control col-6'
+                            'placeholder' => trans('--- Kies een school ---', ['attribute' => lcfirst( trans('db.global.type') )] ), 'class' => 'form-control col-6', 'v-model' => 'schools'
                         ])
                     !!}
-
-                    {{-- <example-component v-bind:schools="'{{ $schools }}'"></example-component> --}}
                 </div>
 
                 <div class="form-group col-6">
@@ -82,7 +80,7 @@
 </div>
 @endsection
 
-{{-- @section('js-libraries')
+@section('js-libraries')
     @parent
-    <script src="{{ url('assets/js/checkout/shopping-cart.js') }}"></script>
-@stop --}}
+    <script src="{{ url('assets/js/registration/school-selection.js') }}"></script>
+@stop

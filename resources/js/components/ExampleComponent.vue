@@ -2,7 +2,7 @@
 
     <select name="school_id" class="form-control col-6">
         <option selected="selected" value=""> Kies een school </option>
-        <option v-for="schools in name" v-bind:key="schools" value="1">{{ schools }}</option>
+        <option>{{ schoolData }}</option>
     </select>
 
 </template>
@@ -10,9 +10,9 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            console.log(this.schoolData);
         },
 
-        props: ['schools', 'name'],
+        props: ['schoolData'],
     }
 </script>
