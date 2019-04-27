@@ -56,18 +56,10 @@
                     {{-- <label for="password-confirm">Wachtwoord:</label> --}}
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Bevestig wachtwoord">
                 </div>
-                <div class="form-group col-6" id="js-school_select">
-                    {{-- <label for="school_id">School:</label> --}}
-                    {!! Form::select('school_id',
-                        $schools, null, [
-                            'placeholder' => trans('--- Kies een school ---', ['attribute' => lcfirst( trans('db.global.type') )] ), 'class' => 'form-control col-6', 'v-model' => 'schools'
-                        ])
-                    !!}
-                </div>
 
                 <div class="form-group col-6">
                     <button type="submit" class="btn btn-primary">
-                        {{ __('Registreer') }}
+                        {{ __('Volgende') }}
                     </button>
 
                     <a class="btn btn-link" href="{{ route('login') }}">

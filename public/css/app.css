@@ -373,6 +373,24 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
   padding: 15px;
 }
 
+.main .main-container .education-block .btn-group {
+  width: 100%;
+}
+
+.main .main-container .education-block .btn-group .toggle-options {
+  padding: 0;
+}
+
+.main .main-container .education-block .toggle-options.focus {
+  box-shadow: none;
+  padding: 0;
+  transition: 0.3s;
+}
+
+.main .main-container .education-block .toggle-options.focus .card {
+  background-color: #eee;
+}
+
 .main .c-home-container {
   margin: 0 auto;
 }

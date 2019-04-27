@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Programme;
+use App\Models\Subject;
+use App\Models\User;
 
 class SubjectController extends Controller
 {
-    public function index(Request $request, $programme_slug)
+    public function index(Request $request)
     {
-        $programmes = Programme::with('subjects', 'subjects.courses')->whereSlug($programme_slug)->get();
+        $user = User::where('id', auth()->user()->id)->firstOrFail();
 
-        return view('subject.index', compact('programmes'));
+        $subjects = Subject::where('programme_id', $user->programme_id)->with('courses')->get();
+        return view('subject.index', compact('subjects'));
     }
 }

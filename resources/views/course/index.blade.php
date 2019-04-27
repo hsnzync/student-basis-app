@@ -10,7 +10,7 @@
         @foreach($subjects as $subject)
             @foreach($subject->courses as $course)
                 <div class="col-md-4 education-block">
-                    <a href="{{ $course->is_unlocked == false ? $subject->slug.'/'.$course->slug : ''}}" class="{{$course->is_unlocked == true ? 'browse-item' : 'browse-item isDisabled'}}">
+                    <a href="{{ $course->is_unlocked == true ? $subject->slug . '/' . $course->slug : '' }}" class="{{ $course->is_unlocked == true ? 'browse-item' : 'browse-item isDisabled'}}">
                         <div class="card">
                             @if($course->image_url)
                                 <div class="card-body" style="background-image: url('/uploads/courses/{{ $course->image_url }}')">

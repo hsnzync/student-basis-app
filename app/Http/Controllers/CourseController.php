@@ -7,7 +7,7 @@ use App\Models\Subject;
 
 class CourseController extends Controller
 {
-    public function index(Request $request, $programme_slug, $subject_slug)
+    public function index(Request $request, $subject_slug)
     {
         $subjects = Subject::with('courses')->whereSlug($subject_slug)->get();
 

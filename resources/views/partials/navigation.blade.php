@@ -20,7 +20,7 @@
 
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="/browse">Bladeren</a>
+                    <a class="nav-link" href="{{ route('browse.index') }}">Bladeren</a>
                 </li>
                 @endauth
 

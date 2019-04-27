@@ -11,7 +11,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($programme_slug, $subject_slug, $course_slug)
+    public function index($subject_slug, $course_slug)
     {
         // dd('This course is: ' . $course_slug);
         dd('VueJS here');

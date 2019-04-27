@@ -13,7 +13,9 @@
                     </div>
                     <div class="c-profile-header-details">
                         <li>{{ $user->username }}</li>
-                        <li>{{ $user->school->title }}</li>
+                        @if($user->school)
+                            <li>{{ $user->school->title }}</li>
+                        @endif
                         {{-- <div class="c-profile-header-details-personal">
                             <li>{{ $user->first_name }}</li>
                             <li>{{ $user->last_name }}</li>

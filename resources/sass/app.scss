@@ -63,6 +63,26 @@
 
     .education-block {
       padding: 15px;
+
+      .btn-group {
+
+        width: 100%;
+
+        .toggle-options {
+          padding: 0;
+        }
+      }
+
+
+      .toggle-options.focus {
+        box-shadow: none;
+        padding: 0;
+        transition: .3s;
+
+        .card {
+          background-color: #eee;
+        }
+      }
     }
   }
 

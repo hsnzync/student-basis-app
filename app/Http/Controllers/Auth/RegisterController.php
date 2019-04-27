@@ -17,7 +17,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/browse';
+    protected $redirectTo = '/select-school';
 
     /**
      * Create a new controller instance.
@@ -58,7 +58,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'student_number' => $data['student_number'],
-            'school_id' => $data['school_id']
         ]);
     }
 }

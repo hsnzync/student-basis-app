@@ -16,16 +16,22 @@ Auth::routes();
 Route::group(['middleware' => ['guest']], function () {
     Route::get('',                                          'HomeController@index')->name('index');
     Route::post('',                                         'HomeController@create');
+
     Route::get('catalog',                                   'HomeController@catalog')->name('landing.catalog');
     Route::get('catalog/{slug}',                            'HomeController@show')->name('landing.show');
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    // Route::get('browse',                                 'SchoolController@index')->name('school.index');
-    Route::get('browse',                                    'ProgrammeController@index')->name('programme.index');
-    Route::get('browse/{programme}',                        'SubjectController@index')->name('subject.index');
-    Route::get('browse/{programme}/{subject}',              'CourseController@index')->name('course.index');
-    Route::get('browse/{programme}/{subject}/{course}',     'QuestionController@index')->name('question.index');
+    // Route::get('browse',                                    'ProgrammeController@index')->name('programme.index');
+    Route::get('browse',                                    'SubjectController@index')->name('browse.index');
+    Route::get('browse/{subject}',                          'CourseController@index')->name('course.index');
+    Route::get('browse/{subject}/{course}',                 'QuestionController@index')->name('question.index');
+
+    Route::get('select-school',                             'AccountController@registerSchool')->name('account.school');
+    Route::post('select-school',                            'AccountController@postSchool');
+
+    Route::get('select-programme',                          'AccountController@registerProgramme')->name('account.programme');
+    Route::post('select-programme',                         'AccountController@postProgramme');
 
     Route::get('profile',                                   'AccountController@index')->name('account.index');
     Route::get('profile/{user}/edit',                       'AccountController@edit')->name('account.edit');

@@ -1,6 +1,6 @@
 new Vue({
     name: 'school_select',
-    el: '#js-school_select',
+    el: '#js-school-select',
     data: {
         schools: [],
     },
