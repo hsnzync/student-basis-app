@@ -11,9 +11,11 @@
                     </div>
                     <div class="c-profile-header-details">
                         <li>{{ $user->username }}</li>
-                        @if($user->role == 1)
-                        <li>Level {{ $user->level }}</li>
-                        @endif
+                        @foreach($user->roles as $role)
+                            @if($role->id == 1)
+                                <li>Level {{ $user->level }}</li>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </ul>

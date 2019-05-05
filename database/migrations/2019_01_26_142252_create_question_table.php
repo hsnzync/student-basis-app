@@ -17,10 +17,9 @@ class CreateQuestionTable extends Migration
             $table->increments('id');
             $table->integer('subject_id')->nullable()->unsigned();
             
-            $table->text('slug', 128)->nullable();;
             $table->string('title', 128)->nullable();
             $table->text('description', 500)->nullable();;
-            $table->text('hint', 250)->nullable();
+            $table->text('slug', 128)->nullable();;
             
             $table->timestamps();
 

@@ -19,17 +19,15 @@ class CreateUserTable extends Migration
             $table->integer('programme_id')->nullable()->unsigned();
 
             $table->string('username', 128)->unique()->nullable();
-            // $table->string('first_name', 128)->nullable();
-            // $table->string('last_name', 128)->nullable();
             $table->string('student_number', 50)->unique()->nullable();
-
             $table->string('email', 128)->unique()->nullable();
+            $table->string('password');
+
             $table->string('avatar', 128)->default('default.png');
             $table->integer('level')->nullable()->default(1);
-            $table->integer('role')->default(1);
+            $table->integer('experience_points')->nullable();
             
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 

@@ -13,22 +13,28 @@ class CourseTableSeeder extends Seeder
     {
         DB::table('course')->insert([
             [
-                'subject_id' => 9,
-                'is_active' => true,
-                'is_completed' => false,
+                'subject_id' => 1,
                 'is_unlocked' => true,
-                'slug' => 'course-1',
-                'title' => 'My First Course',
+                'slug' => 'introductie',
+                'title' => 'Introductie',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+                'points' => 30
             ],
             [
-                'subject_id' => 9,
-                'is_active' => true,
-                'is_completed' => false,
+                'subject_id' => 1,
                 'is_unlocked' => false,
-                'slug' => 'course-2',
-                'title' => 'My Second Course',
+                'slug' => 'theorie',
+                'title' => 'Theorie',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+                'points' => 70
+            ],
+            [
+                'subject_id' => 2,
+                'is_unlocked' => false,
+                'slug' => 'introductie',
+                'title' => 'Introductie',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+                'points' => 20
             ],
         ]);
     }

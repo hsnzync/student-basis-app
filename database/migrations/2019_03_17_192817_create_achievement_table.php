@@ -19,6 +19,7 @@ class CreateAchievementTable extends Migration
 
             $table->string('title', 128)->nullable();
             $table->string('description', 128)->nullable();
+            $table->integer('unlocked_at')->nullable();
 
             $table->timestamps();
         });

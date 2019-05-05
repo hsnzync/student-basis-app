@@ -16,15 +16,12 @@
                         @if($user->school)
                             <li>{{ $user->school->title }}</li>
                         @endif
-                        {{-- <div class="c-profile-header-details-personal">
-                            <li>{{ $user->first_name }}</li>
-                            <li>{{ $user->last_name }}</li>
-                        </div>
-                        <li>{{ $user->student_number }}</li> --}}
 
-                        @if($user->role == 1)
-                        <li>Level {{ $user->level }}</li>
-                        @endif
+                        @foreach($user->roles as $role)
+                            @if($role->id == 1)
+                                <li>Level {{ $user->level }}</li>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             @endforeach

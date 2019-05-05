@@ -16,12 +16,11 @@ class CreateSubjectTable extends Migration
         Schema::create('subject', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('programme_id')->nullable()->unsigned();
-            
             $table->boolean('is_active')->nullable()->default(true);
             
-            $table->string('slug', 128)->nullable();
             $table->string('title', 128)->nullable();
             $table->text('description', 500)->nullable();
+            $table->string('slug', 128)->nullable();
             $table->string('image_url')->nullable();
 
             $table->timestamps();

@@ -15,12 +15,9 @@ class UserTableSeeder extends Seeder
         DB::table('user')->insert([
             [
                 'username' => 'superadmin',
-                'student_number' => null,
                 'email' => 'admin@hotmail.com',
-                'level' => 0,
-                'role' => 0,
                 'password' => bcrypt('0000'),
-            ]
+            ],
         ]);
     }
 }

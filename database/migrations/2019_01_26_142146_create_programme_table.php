@@ -19,9 +19,7 @@ class CreateProgrammeTable extends Migration
             $table->boolean('is_active')->nullable()->default(false);
 
             $table->string('title', 128)->nullable();
-            $table->string('description', 128)->nullable();
             $table->string('slug', 128)->nullable();
-            $table->string('image_url')->nullable();
 
             $table->timestamps();
 

@@ -7,21 +7,7 @@
             {!! Form::open(['class' => 'c-form-edit', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'url' => 'school/' . $school->slug]) !!}
             @csrf
             @method('PATCH')
-
-            <div class="form-group">
-                {!! Form::label('image_url', 'Afbeelding:') !!}
-                <br>
-                {!! Form::file('image_url', ['accept' => 'image/*']) !!}
-            </div>
-
-            <div class="form-group">
-                @if($school->image_url)
-                    <img src="/uploads/schools/{{ $school->image_url }}" alt="school" class="c-admin-image" height="200" width="200">
-                @else
-                    <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="school" class="c-admin-image" height="200" width="200">
-                @endif
-            </div>
-
+            
             <div class="form-group">
                 {!! Form::label('title', 'Naam:') !!}
                 {!! Form::text('title', $school->title, ['class' => 'form-control', 'id' => 'title' ]) !!}

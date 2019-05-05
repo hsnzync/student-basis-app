@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -16,9 +15,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role == 0) {
-            return $next($request);
+        $user_role = auth()->user()->roles;
+
+        foreach($user_role as $role) {
+            if (auth()->user() &&  $role->id == 2) {
+                return $next($request);
+            }
         }
+
         return redirect('/dashboard');
     }
 }

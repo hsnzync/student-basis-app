@@ -12,22 +12,9 @@
         @endif
         <div class="card-body">
             {!! Form::open(['class' => 'c-form-edit', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'url' => 'programme' ]) !!}
+            
             @csrf
-
-            <div class="form-group">
-                {!! Form::label('form-file', 'Image:') !!}
-                <br>
-                {!! Form::file('image_url', ['accept' => 'image/*', 'class' => 'form-control-file', 'id' => 'form-file']) !!}
-            </div>
-
-            <div class="form-group">
-                @if($programme->image_url)
-                    <img src="/uploads/programmes/{{ $programme->image_url }}" alt="programme" class="c-admin-image" height="200" width="200">
-                @else
-                    <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="programme" class="c-admin-image" height="200" width="200">
-                @endif
-            </div>
-
+            
             <div class="form-group">
                 {!! Form::label('title', 'Name:') !!}
                 {!! Form::text('title', $programme->title, ['class' => 'form-control', 'id' => 'title' ]) !!}

@@ -28,10 +28,14 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        if(auth()->user()->role == 0) {
-            return '/dashboard/';
-        } else {
-            return '/browse/';
+        $user_role = auth()->user()->roles;
+
+        foreach($user_role as $role) {
+            if($role->id == 2) {
+                return '/dashboard/';
+            } else {
+                return '/browse/';
+            }
         }
     }
 

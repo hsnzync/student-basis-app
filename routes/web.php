@@ -22,7 +22,6 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    // Route::get('browse',                                    'ProgrammeController@index')->name('programme.index');
     Route::get('browse',                                    'SubjectController@index')->name('browse.index');
     Route::get('browse/{subject}',                          'CourseController@index')->name('course.index');
     Route::get('browse/{subject}/{course}',                 'QuestionController@index')->name('question.index');

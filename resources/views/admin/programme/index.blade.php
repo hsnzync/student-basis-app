@@ -16,7 +16,6 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Afbeelding</th>
                 <th scope="col">Onderdeel van</th>
                 <th scope="col">Naam</th>
                 <th scope="col">Status</th>
@@ -29,12 +28,6 @@
             @foreach($programmes as $programme)
                 <tr>
                 <th scope="row">{{ $programme->id }}</th>
-                <td>@if($programme->image_url)
-                        <img src="/uploads/programmes/{{ $programme->image_url }}" alt="programme" class="c-admin-image" height="50" width="50">
-                    @else
-                        <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="programme" class="c-admin-image" height="50" width="50">
-                    @endif
-                </td>
                 <td>{{ $programme->school->title }}</td>
                 <td>{{ $programme->title }}</td>
                 <td><span class="badge badge-primary">{{ $programme->is_active == 1 ? 'Actief' : 'Inactief' }}</span></td>

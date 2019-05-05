@@ -15,6 +15,7 @@ class AccountController extends Controller
     public function index()
     {
         $users = User::with('school')->where('id', Auth::user()->id)->get();
+
         return view('account.index', compact('users'));
     }
 

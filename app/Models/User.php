@@ -31,4 +31,8 @@ class User extends Authenticatable
         return $this->belongsTo(School::class, 'school_id');
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role')->withPivot('user_id');
+    }
 }

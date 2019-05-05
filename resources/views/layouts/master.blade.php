@@ -25,26 +25,31 @@
     <div id="app">
 
         @auth
-            @if(Auth::user()->role == 0)
-                @include('partials.sidebar')
-                <main class="main admin">
-            @else
-                @include('partials.navigation')
-                <main class="main">
-            @endif
+            @foreach(Auth::user()->roles as $role)
+
+                @if($role->id == 2)
+                    @include('partials.sidebar')
+                    <main class="main admin">
+                @else
+                    @include('partials.navigation')
+                    <main class="main">
+                @endif
+
+            @endforeach
         @else
             @include('partials.navigation')
             <main class="main">
         @endauth
 
-
             @yield('content')
         </main>
 
         @auth
-            @if(Auth::user()->role == 1)
-                @include('partials.footer')
-            @endif
+            @foreach(Auth::user()->roles as $role)
+                @if($role->id == 1)
+                    @include('partials.footer')
+                @endif
+            @endforeach
         @else
             @include('partials.footer')
         @endauth
