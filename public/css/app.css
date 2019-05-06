@@ -117,6 +117,7 @@
   background-color: #fff;
   border-top: 1px solid #eee;
   padding: 50px;
+  text-align: center;
 }
 
 .c-page-footer .c-footer-social {
@@ -252,6 +253,121 @@
   font-size: 25px;
 }
 
+.header {
+  color: #fff;
+  border-radius: 0;
+  padding: 230px 20px 0 20px;
+  background: #6d47c2;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #6d47c2 0%, #4f98dd 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#6d47c2", endColorstr="#4f98dd",GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  position: relative;
+  margin: 0;
+  height: 900px;
+}
+
+.header .row {
+  margin: 150px auto 0 auto;
+  max-width: 1350px;
+}
+
+.header .row .top-header {
+  padding: 0 20px;
+  text-align: center;
+  margin: 0 auto 50px auto;
+}
+
+.header .row .top-header:last-of-type {
+  position: relative;
+  top: 50px;
+}
+
+.header .row .top-header .header-component h1 {
+  font-family: "GothamRounded-Medium", sans-serif;
+  font-size: 55px;
+}
+
+.header .row .top-header .header-component p {
+  margin: 20px 0 40px 0;
+}
+
+.header .row .top-header .header-component .header-links .header-btn {
+  color: #fff;
+  padding: 10px 20px;
+  background-color: #3B3A47;
+  border-radius: 35px;
+  font-size: 15px;
+  font-family: "GothamRounded-Medium", sans-serif;
+  margin: 0 8px;
+}
+
+.header .row .top-header .header-component .header-links .header-btn:first-of-type {
+  background-color: #3FA9F5;
+}
+
+.header .row .top-header img {
+  width: 60%;
+  border: 15px solid #000;
+  border-radius: 20px;
+}
+
+.home-container {
+  margin: 300px 0 150px 0;
+}
+
+.home-container .home-section {
+  text-align: center;
+}
+
+.home-container .home-section .home-section-title h1 {
+  font-size: 40px;
+  font-family: "GothamRounded-Bold", sans-serif;
+}
+
+.home-container .home-section .home-features-wrapper {
+  padding: 20px;
+}
+
+.home-container .home-section .home-features-wrapper .home-features-section {
+  background-color: #EBEBEB;
+  border: 1px solid #818181;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.home-container .home-section .home-features-wrapper .home-features-section img {
+  width: 50%;
+}
+
+.home-container .home-section .home-features-wrapper .home-features-section h4 {
+  font-size: 25px;
+  font-family: "GothamRounded-Bold", sans-serif;
+}
+
+.home-container .home-section .home-features-wrapper .home-features-section p {
+  font-size: 17px;
+  font-family: "GothamRounded-Book", sans-serif;
+}
+
+.home-container .home-section .home-features-section-btn {
+  position: relative;
+  top: 30px;
+}
+
+.home-container .home-section .home-features-section-btn .features-btn {
+  color: #fff;
+  padding: 10px 20px;
+  background-color: #3B3A47;
+  border-radius: 35px;
+  font-size: 15px;
+  font-family: "GothamRounded-Medium", sans-serif;
+  margin: 0 8px;
+}
+
 .main.admin {
   margin-left: 240px;
   transition: 0.3s;
@@ -330,17 +446,6 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
   }
 }
 
-.main-header {
-  background: #f85032;
-  background: -webkit-gradient(left bottom, right top, color-stop(0%, #f85032), color-stop(29%, #f6290c), color-stop(100%, #eda7a1));
-  background: linear-gradient(45deg, #f85032 0%, #f6290c 29%, #eda7a1 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f85032", endColorstr="#eda7a1", GradientType=1 );
-  width: 100%;
-  height: 350px;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .main {
   font-family: "GothamRounded-Book", sans-serif;
   background-color: #fff;
@@ -391,100 +496,6 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
   background-color: #eee;
 }
 
-.main .c-home-container {
-  margin: 0 auto;
-}
-
-.main .c-home-container .c-home-features {
-  background-color: #fff;
-  padding: 100px 0;
-}
-
-.main .c-home-container .c-home-features .home-features-icon {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.main .c-home-container .c-home-features .home-features-icon h4 {
-  font-family: "GothamRounded-Medium", sans-serif;
-}
-
-.main .c-home-container .c-home-features .home-features-icon img {
-  width: 200px;
-}
-
-.main .c-home-container .c-home-features .home-features-button {
-  margin: 40px 0 0 0;
-  text-align: center;
-}
-
-.main .c-home-container .c-home-features .home-features-button a {
-  color: #fff;
-  padding: 15px 20px;
-  background-color: #000;
-  border-radius: 5px;
-}
-
-.main .c-home-container .c-home-features .container {
-  max-width: 1350px;
-}
-
-@media screen and (min-width: 1000px) {
-  .main .c-home-container .c-home-features .c-home-features-shape {
-    margin-top: -150px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .main .c-home-container .c-home-features .c-home-features-shape {
-    margin-top: -180px;
-  }
-}
-
-.main .c-home-container .c-home-features .c-home-feature {
-  margin: 50px 0;
-  display: block;
-  text-align: center;
-}
-
-.main .c-home-container .c-home-features .c-home-feature h1 {
-  font-family: "GothamRounded-Medium", sans-serif;
-}
-
-.main .c-home-container .newsletter {
-  background: #6d47c2;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #6d47c2 0%, #4f98dd 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#6d47c2", endColorstr="#4f98dd",GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */
-  padding: 100px 0;
-}
-
-.main .c-home-container .newsletter .newsletter-section {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.main .c-home-container .newsletter .newsletter-section h1 {
-  margin-bottom: 30px;
-  font-family: "GothamRounded-Medium", sans-serif;
-  color: #fff;
-}
-
-.main .c-home-container .newsletter .newsletter-section .form-group .form-control {
-  padding: 25px;
-}
-
-.main .c-home-container .newsletter .newsletter-section .btn {
-  color: #fff;
-  padding: 15px 20px;
-  background-color: #000;
-  border-radius: 5px;
-}
-
 .main .c-subjects-section {
   border-top: 2px solid #eee;
   padding: 50px 0;
@@ -532,57 +543,6 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
 
 .main a:hover {
   text-decoration: none;
-}
-
-.main .header {
-  color: #fff;
-  border-radius: 0;
-  padding: 230px 20px 0 20px;
-  background: #6d47c2;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #6d47c2 0%, #4f98dd 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#6d47c2", endColorstr="#4f98dd",GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */
-  position: relative;
-  margin: 0;
-}
-
-.main .header .row {
-  margin: 0 auto;
-  max-width: 1350px;
-}
-
-.main .header .row .c-header {
-  padding: 0 20px;
-}
-
-.main .header .row .c-header:last-of-type {
-  position: relative;
-  top: 50px;
-}
-
-.main .header .row .c-header img {
-  width: 152%;
-  box-shadow: -12px 11px 23px -20px rgba(0, 0, 0, 0.9);
-}
-
-.main .header .row .c-header .header-component h1 {
-  font-family: "GothamRounded-Medium", sans-serif;
-  font-size: 55px;
-}
-
-.main .header .row .c-header .header-component p {
-  margin: 20px 0 60px 0;
-}
-
-.main .header .row .c-header .header-component .header-links a {
-  color: #fff;
-  padding: 15px 20px;
-  background-color: #000;
-  border-radius: 5px;
 }
 
 .main .browse-item .card {
