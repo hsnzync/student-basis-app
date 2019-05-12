@@ -21,7 +21,14 @@ class AdminController extends Controller
         $programme_count = Programme::count();
         $subject_count = Subject::count();
         $course_count = Course::count();
-        
-        return view('admin.home.index', compact('user_count', 'school_count', 'programme_count', 'subject_count', 'course_count'));
+
+        foreach(Auth::user()->roles as $role) {
+            if($role->id == 2) {
+                return view('admin.home.index', compact('user_count', 'school_count', 'programme_count', 'subject_count', 'course_count'));
+            }
+            else {
+                return back();
+            }
+        }
     }
 }

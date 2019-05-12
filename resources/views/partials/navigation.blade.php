@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-dark navbar-laravel {{ request()->route()->getName() == 'index' ? '' : 'navbar-main' }}">
     <div class="container">
         @auth
             <a class="navbar-brand" href="/browse">
@@ -17,7 +17,6 @@
 
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav row">
-
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('browse.index') }}">Bladeren</a>
@@ -36,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Inloggen</a>
                         </li>
-                        <li class="nav-item alt">
+                        <li class="nav-item main-btn">
                             <a class="nav-link" href="{{ route('register') }}">Registeren</a>
                         </li>
                     @endif

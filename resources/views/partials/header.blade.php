@@ -18,8 +18,11 @@
             </div>
         </div>
 
+        <img class="header-shape" src="{{ asset('img/header-shape.png') }}">
+
+
         <div class="col-md-12 top-header">
-            <img class="" src="{{ asset('img/header-feature.png') }}">
+            <img src="{{ asset('img/header-feature.png') }}">
         </div>
     </div>
 </div>

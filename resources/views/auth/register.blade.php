@@ -1,15 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-@include('partials/header-section', ['title' => 'Registreren', 'subtitle' => null])
-<div class="main-container">
-    <div class="c-form-section">
+
+<div class="main-container auth">
+    <div class="form-section col-lg-4">
         <div class="container">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
-                <div class="form-group col-6">
-                    {{-- <label for="email">Gebruikersnaam:</label> --}}
+                <div class="col-11 auth-title text-center">
+                    <h1>Registreren</h1>
+                </div>
+
+                <div class="form-group col-11">
+                    <label for="username">Gebruikersnaam</label>
                     <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="Gebruikersnaam">
 
                     @if ($errors->has('username'))
@@ -19,8 +23,8 @@
                     @endif
                 </div>
 
-                <div class="form-group col-6">
-                    {{-- <label for="email">Email:</label> --}}
+                <div class="form-group col-11">
+                    <label for="email">Email</label>
                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email adres">
 
                     @if ($errors->has('email'))
@@ -30,8 +34,8 @@
                     @endif
                 </div>
 
-                <div class="form-group col-6">
-                    {{-- <label for="password-confirm">Studentnummer:</label> --}}
+                <div class="form-group col-11">
+                    <label for="student_number">Studentnummer</label>
                     <input id="student_number" type="text" class="form-control{{ $errors->has('student_number') ? ' is-invalid' : '' }}" name="student_number" required placeholder="Studentnummer">
 
                     @if ($errors->has('student_number'))
@@ -41,8 +45,8 @@
                     @endif
                 </div>
 
-                <div class="form-group col-6">
-                    {{-- <label for="password">Wachtwoord:</label> --}}
+                <div class="form-group col-11">
+                    <label for="password">Wachtwoord</label>
                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Wachtwoord">
 
                     @if ($errors->has('password'))
@@ -52,19 +56,19 @@
                     @endif
                 </div>
 
-                <div class="form-group col-6">
-                    {{-- <label for="password-confirm">Wachtwoord:</label> --}}
+                <div class="form-group col-11">
+                    <label for="password-confirm">Wachtwoord bevestigen</label>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Bevestig wachtwoord">
                 </div>
 
-                <div class="form-group col-6">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Volgende') }}
+                <div class="form-group col-11 text-center form-submit-btn">
+                    <button type="submit" class="main-btn">
+                        {{ __('Registreren') }}
                     </button>
 
-                    <a class="btn btn-link" href="{{ route('login') }}">
+                    {{-- <a class="btn btn-link" href="{{ route('login') }}">
                         Al een account? klik hier
-                    </a>
+                    </a> --}}
                 </div>
             </form>
         </div>

@@ -37,7 +37,9 @@
 
             @endforeach
         @else
-            @include('partials.navigation')
+            @if(!request()->segment(1) == 'login' || !request()->segment(1) == 'register')
+                @include('partials.navigation')
+            @endif
             <main class="main">
         @endauth
 
@@ -51,7 +53,9 @@
                 @endif
             @endforeach
         @else
-            @include('partials.footer')
+            @if(!request()->segment(1) == 'login' || !request()->segment(1) == 'register')
+                @include('partials.footer')
+            @endif
         @endauth
 
     </div>

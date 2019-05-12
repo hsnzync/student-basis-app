@@ -1,35 +1,37 @@
 @extends('layouts.master')
 
 @section('content')
-@foreach($subjects as $subject)
-    @include('partials/header-section', ['title' => 'Vakken', 'subtitle' => null])
-@endforeach
 <div class="main-container">
+    @include('partials/header-section', ['title' => 'Beschikbare vakken'])
     @include('partials.search')
-    <div class="col-sm-12 row">
-        @foreach($subjects as $subject)
-            @if($subject->courses->count())
-                @foreach($subject->courses as $course)
-                <div class="col-md-4 education-block">
-                    <a href="browse/{{$subject->slug}}" class="browse-item">
-                        <div class="card">
-                            @if($subject->image_url)
-                                <div class="card-body" style="background-image: url('/uploads/subjects/{{ $subject->image_url }}')">
-                            @else
-                                <div class="card-body" style="background-image: url('/uploads/fallback/fallback.jpg')">
-                            @endif
-                                <div class="card-content">
-                                    <h5 class="card-title">{{ $subject->title }}</h5>
-                                    <p>{{ $subject->description }}</p>
-                                    <p><span class="badge badge-primary">{{ $subject->courses->count() > 1 ? $subject->courses->count() .' ' . 'cursussen' : $subject->courses->count() . ' ' . 'cursus' }} beschikbaar</p>
+    @include('partials/filter')
+    
+    <div class="main-section main-block">
+        <div class="col-12 row">
+            @foreach($subjects as $subject)
+                @if($subject->courses->count())
+                    <div class="main-features-wrapper main-block-wrapper col-lg-4">
+                        <a href="browse/{{$subject->slug}}" class="browse-item">
+                            <div class="col-12 main-block-section">
+                                <div class="main-block-image-section">
+                                    @if($subject->image_url)
+                                        <img src="/uploads/subjects/{{ $subject->image_url }}" alt="{{ $subject->slug }}">
+                                    @else
+                                        <img src="/uploads/fallback/fallback.jpg" alt="{{ $subject->slug }}">
+                                    @endif
+                                </div>
+                                <div class="main-block-text">
+                                    <h4>{{ $subject->title }}</h4>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
-            @endif
-        @endforeach
+                        </a>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        <div class="col-12 main-features-section-btn">
+            <a class="features-btn" href="#">Learn more</a>
+        </div>
     </div>
 </div>
 @endsection

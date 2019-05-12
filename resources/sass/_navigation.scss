@@ -19,7 +19,7 @@
         }
 
         .navbar-collapse {
-            max-width: 280px;
+            max-width: 230px;
         }
     
         .navbar-nav {
@@ -48,7 +48,7 @@
                 }
             }
     
-            .alt {
+            .main-btn {
                 background-color: #3FA9F5;
                 border-radius: 40px;
                 padding: 0 15px;
@@ -80,6 +80,14 @@
         .nav-dropdown {
             a {
                 color: #000 !important;
+            }
+        }
+
+        &.navbar-main {
+            background-color: #3B3A47;
+
+            .container {
+                padding: 30px 40px;
             }
         }
 }
