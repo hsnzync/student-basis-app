@@ -20,7 +20,7 @@
                 <th scope="col">Onderdeel van</th>
                 <th scope="col">Naam</th>
                 <th scope="col">Cursussen</th>
-                <th scope="col">Status</th>
+                {{-- <th scope="col">Status</th> --}}
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -39,7 +39,7 @@
                 <td>{{ $subject->programme->title }}</td>
                 <td>{{ $subject->title }}</td>
                 <td><a href="course/{{$subject->id}}/"><i class="fas fa-list"></i></a></td>
-                <td><span class="badge badge-primary">{{ $subject->is_active == 1 ? 'Actief' : 'Inactief' }}</span></td>
+                {{-- <td><span class="badge badge-primary">{{ $subject->is_active == 1 ? 'Actief' : 'Inactief' }}</span></td> --}}
                 <td><a href="subject/{{$subject->id}}/edit" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                 <td>
                     {!! Form::open(['method' => 'POST', 'url' => 'subject/' . $subject->id]) !!}

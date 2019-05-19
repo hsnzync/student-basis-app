@@ -1,33 +1,47 @@
 @extends('layouts.master')
 
 @section('content')
-@foreach($subjects as $subject)
-    @include('partials/header-section', ['title' => 'Cursussen', 'subtitle' => $subject->title])
-@endforeach
 <div class="main-container">
+    @foreach($subjects as $subject)
+        @include('partials/header-section', ['title' => 'Cursussen', 'subtitle' => $subject->title])
+    @endforeach
     @include('partials.search')
-    <div class="col-sm-12 row">
-        @foreach($subjects as $subject)
-            @foreach($subject->courses as $course)
-                <div class="col-md-4 education-block">
-                    <a href="{{ $course->is_unlocked == true ? $subject->slug . '/' . $course->slug : '' }}" class="{{ $course->is_unlocked == true ? 'browse-item' : 'browse-item isDisabled'}}">
-                        <div class="card">
-                            @if($course->image_url)
-                                <div class="card-body" style="background-image: url('/uploads/courses/{{ $course->image_url }}')">
-                            @else
-                                <div class="card-body" style="background-color: #000">
-                            @endif
-                                <div class="card-content">
-                                    <i class="{{ $course->is_unlocked == false ? 'fas fa-lock' : 'fas fa-unlock' }}"></i>
-                                    <h5 class="card-title">{{ $course->title }}</h5>
-                                    <p>{{ $course->description }}</p>
+    <div class="main-section main-block">
+
+        <div class="col-12 row">
+
+            {{-- @include('partials.sections.card', ['entities' => $subjects]) --}}
+
+            @foreach($subjects as $subject)
+                @foreach($subject->courses as $course)
+
+                    <div class="main-features-wrapper main-block-wrapper col-lg-4">
+                    @if($course->is_unlocked)
+                        <a href="{{ $subject->slug . '/' . $course->slug }}" class="browse-item">
+                    @endif
+                        <div class="col-12 main-block-section {{ $course->is_unlocked ? '' : 'locked' }}">
+                                <div class="main-block-image-section">
+                                    @if($course->image_url)
+                                        <img src="/uploads/images/{{ $course->image_url }}" alt="{{ $course->slug }}">
+                                    @else
+                                        <img src="/uploads/images/fallback/fallback.jpg" alt="{{ $course->slug }}">
+                                    @endif
                                 </div>
-                           </div>
-                        </div>
-                    </a>
-                </div>
+                                <div class="main-block-text">
+                                    <h4>{{ $course->title }}</h4>
+                                </div>
+                                <div class="progress col-9">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                    @if($course->is_unlocked)                        
+                        </a>
+                    @endif
+                    </div>
+
+                @endforeach
             @endforeach
-        @endforeach
+        </div>
     </div>
 </div>
 @endsection

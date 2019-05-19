@@ -12,7 +12,7 @@ class SubjectController extends Controller
     {
         $user = User::where('id', auth()->user()->id)->firstOrFail();
 
-        $subjects = Subject::where('programme_id', $user->programme_id)->with('courses')->get();
+        $subjects = Subject::where('programme_id', $user->programme_id)->get();
         return view('subject.index', compact('subjects'));
     }
 }

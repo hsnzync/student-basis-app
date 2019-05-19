@@ -41,6 +41,7 @@
             <div class="form-group">
                 {!! Form::label('slug', 'Url:') !!}
                 {!! Form::text('slug', $subject->slug, ['class' => 'form-control' ]) !!}
+                <p class="form-url-text">Kleine letters, spaties vervangen met een '-'</p>
             </div>
 
             <div class="form-group">

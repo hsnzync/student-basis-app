@@ -12,3 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::group(['namespace'=>'Api', 'as' => 'api.'], function() {
+    Route::post('load-subjects', 'SubjectController@getSubjects');
+});

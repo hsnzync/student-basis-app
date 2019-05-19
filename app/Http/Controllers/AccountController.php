@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\School;
 use App\Models\Programme;
+use App\Models\Achievement;
 use Image;
 
 class AccountController extends Controller
@@ -15,6 +16,7 @@ class AccountController extends Controller
     public function index()
     {
         $users = User::with('school')->where('id', Auth::user()->id)->get();
+        // $achievements = Achievement::
 
         return view('account.index', compact('users'));
     }

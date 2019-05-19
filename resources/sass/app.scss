@@ -3,18 +3,19 @@
 //@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import '_variables';
+@import 'variables';
 @import 'fonts';
 
-@import '_helpers';
-@import '_navigation';
-@import '_footer';
-@import '_profile';
-@import '_header';
-@import '_section';
+@import 'helpers';
+@import 'navigation';
+@import 'footer';
+@import 'profile';
+@import 'header';
+@import 'card';
+@import 'filter';
 
-@import '_admin';
-@import '_auth';
+@import 'admin';
+@import 'auth';
 
 // // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
@@ -47,3 +48,6 @@
   }
 }
 
+.hide {
+  display: none;
+}

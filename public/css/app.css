@@ -160,89 +160,12 @@
   font-weight: 600;
 }
 
-.main .c-profile-container {
-  padding: 45px;
-}
-
-.main .c-profile-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-.main .c-profile-container ul .c-profile-header {
-  display: inline-block;
-  color: #fff;
-}
-
-.main .c-profile-container ul .c-profile-header .c-profile-header-avatar .c-avatar {
-  height: 150px;
-  width: 150px;
-  border: 5px solid #fff;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.main .c-profile-container ul .c-profile-header .c-profile-header-details li:first-of-type {
-  font-size: 25px;
-  font-family: "GothamRounded-Bold", sans-serif;
-}
-
-.main .c-profile-container ul .c-link-user {
-  position: relative;
-  top: 30px;
-}
-
-.main .c-profile-container ul .c-link-user a {
-  background: #fff;
-  color: #f85032;
-  padding: 20px 50px;
-  border-radius: 30px;
-  box-shadow: 0px 6px 17px -7px rgba(248, 89, 50, 0.5);
-}
-
-.main .c-profile-activity {
-  padding: 70px 50px;
-  background-color: #fff;
-}
-
-.main .c-profile-activity .c-profile-activity-container {
-  width: 60%;
-  margin: 0 auto;
-}
-
-.main .c-profile-activity .c-profile-activity-container .card {
-  margin-top: -120px;
-}
-
-.main .c-profile-activity .c-profile-activity-container .card ul {
-  list-style: none;
-  padding: 0;
-}
-
-.main .c-profile-activity .c-profile-activity-container .card ul li {
-  margin-bottom: 20px;
-}
-
-.main .c-profile-activity .c-profile-activity-container .card .btn-enter {
-  color: #fff;
-  background-color: #f85032;
-  padding: 10px 30px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-out;
-}
-
-.main .c-profile-activity .c-profile-activity-container .card .btn-enter:hover {
-  background-color: #ff5a3c;
-}
-
 .header-section .header-section-title {
   margin: 0 auto;
+  text-align: center;
 }
 
 .header-section .header-section-title h1 {
-  text-align: center;
   color: #000;
   font-family: "GothamRounded-Bold", sans-serif;
   font-size: 50px;
@@ -351,6 +274,23 @@
   padding: 40px;
 }
 
+.main-section .main-features-wrapper.main-block-wrapper .locked:after {
+  content: "Niet vrijgespeeld";
+  line-height: 400px;
+  color: #fff;
+  font-family: "GothamRounded-Medium", sans-serif;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+}
+
 .main-section .main-features-wrapper .main-features-section {
   background-color: #EBEBEB;
   border: 1px solid #c5c5c5;
@@ -378,7 +318,7 @@
 }
 
 .main-section .main-features-wrapper .main-block-section {
-  background-color: #EBEBEB;
+  background-color: #fff;
   border: 1px solid #c5c5c5;
   border-radius: 20px;
   padding: 0;
@@ -391,11 +331,14 @@
 
 .main-section .main-features-wrapper .main-block-section .main-block-image-section img {
   width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 18px 18px 0 0;
 }
 
 .main-section .main-features-wrapper .main-block-section .main-block-text {
-  margin: 40px 0;
+  margin: 30px 0;
 }
 
 .main-section .main-features-wrapper .main-block-section .main-block-text h4 {
@@ -403,6 +346,17 @@
   font-family: "GothamRounded-Bold", sans-serif;
   color: #000;
   margin: 0;
+}
+
+.main-section .main-features-wrapper .main-block-section .progress {
+  height: 10px;
+  margin-bottom: 20px;
+  padding: 0;
+  margin: 0 auto 30px;
+}
+
+.main-section .main-features-wrapper .main-block-section .progress .progress-bar {
+  background-color: #0EDB94;
 }
 
 .main-section .main-features-section-btn {
@@ -418,6 +372,23 @@
   font-size: 15px;
   font-family: "GothamRounded-Medium", sans-serif;
   margin: 0 8px;
+}
+
+.filter-section ul {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.filter-section ul li {
+  padding: 0 20px;
+  list-style: none;
+  display: inline-block;
+}
+
+.filter-section ul li a {
+  color: #000;
+  font-family: "GothamRounded-Book", sans-serif;
+  font-size: 20px;
 }
 
 .main.admin {
@@ -584,5 +555,9 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
 
 .main .main-container .search-bar {
   margin: 20px 20px 50px 20px;
+}
+
+.hide {
+  display: none;
 }
 
