@@ -17,11 +17,13 @@ class CreateUserTable extends Migration
             $table->increments('id');
             $table->integer('school_id')->nullable()->unsigned();
             $table->integer('programme_id')->nullable()->unsigned();
+            $table->boolean('is_active')->nullable()->default(true);
+            $table->boolean('is_has_permission')->nullable()->default(false);
 
             $table->string('username', 128)->unique()->nullable();
-            $table->string('student_number', 50)->unique()->nullable();
+            $table->integer('student_number')->unique()->nullable();
             $table->string('email', 128)->unique()->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
 
             $table->string('avatar', 128)->default('default.png');
             $table->integer('level')->nullable()->default(1);

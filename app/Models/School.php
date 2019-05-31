@@ -12,23 +12,10 @@ class School extends Model
         'is_active',
         'title',
         'location',
-        'slug',
-        'image_url',
     ];
 
     public function programmes()
     {
         return $this->hasMany(Programme::class);
-    }
-
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    
-    public function getRouteKeyName()
-    {
-        return 'slug';
     }
 }

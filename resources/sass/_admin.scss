@@ -1,91 +1,61 @@
 .main {
   &.admin {
-    margin-left: 240px;
+    max-width: 1200px;
+    margin: 0 0 0 25%;
     transition: .3s;
+
+    .header-section {
+      width: 300px;
+      position: relative;
+      top: 57px;
+
+      .header-section-title {
+        text-align: left;
+        margin: 0;
+        max-width: 100%;
+
+        h1 {
+          font-size: 30px;
+          font-family: $font-medium;
+        }
+      }
+
+    }
 
     .main-container {
 
       width: calc(100% - 50px);
+      margin: 0;
+      position: relative;
+      top: 50px;
 
-      .admin-section {
-  
-          height: 100px;
-          
-          h1 {
-              float: left;
-          }
+      .admin-overview {
+        margin-top: 100px;
       }
-  
-      .c-admin-image {
-          
+
+      .button-section {
+        margin: 20px 0;
+        text-align: right;
       }
-  
+
+      .fa-list {
+        color: #000;
+        position: relative;
+        left: 30px;
+      }
+
       .card-body {
-        .form-url-text {
-          font-size: 11px;
+        .form-group-image {
+          height: 200px;
+          width: 200px;
+          object-fit: cover;
+        }
+
+        .form-group-helper {
+          font-size: 12px;
+          margin-top: 10px;
         }
       }
-    }
-  }
-}
-
-body {
-  overflow-x: hidden;
-
-  .sidebar-nav {
-    min-height: 100vh;
-    margin-left: -15rem;
-    float: left;
-    position: fixed;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
-  
-    margin-top: 135px;
-
-    .sidebar-heading {
-      padding: 0.875rem 1.25rem;
-      font-size: 1.2rem;
-      color: #fff;
-      background-color: #485058;
-    }
-
-    .list-group {
-      width: 15rem;
-      
-      .list-group-item {
-        color: #fff;
-      }
-    }
-
-    #page-content-wrapper {
-      min-width: 100vw;
-    }
-    
-    #wrapper.toggled #sidebar-wrapper {
-      margin-left: 0;
-    }
-  }
-  
-  @media (min-width: 1500px) {
-    #sidebar-wrapper {
-      margin-left: 0;
-    }
-  
-    #page-content-wrapper {
-      min-width: 0;
-      width: 100%;
-    }
-  
-    #wrapper.toggled #sidebar-wrapper {
-      margin-left: -15rem;
-    }
-  }
-
-  @media (max-width: 1500px) {
-    .admin {
-      margin-left: 0 !important;
     }
   }
 }

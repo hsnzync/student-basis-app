@@ -40,8 +40,9 @@ Route::group(['middleware' => ['auth']], function() {
 Route::group(['middleware' => ['admin'], 'namespace' => 'Admin'], function() {
     Route::get('dashboard',                                 'AdminController@index')->name('home.index');
 
-    Route::resource('school',                               'SchoolController')->except(['destroy']);
+    Route::resource('school',                               'SchoolController');
     Route::resource('programme',                            'ProgrammeController');
     Route::resource('subject',                              'SubjectController');
     Route::resource('course',                               'CourseController');
+    Route::resource('user',                                 'UserController');
 });

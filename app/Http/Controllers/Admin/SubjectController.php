@@ -32,24 +32,26 @@ class SubjectController extends Controller
 
             $image = $request->file('image_url');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/subjects/'. $filename));
+            Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $subject->image_url = $filename;
         }
-
+        
         $subject->title = $request->get('title');
         $subject->description = $request->get('description');
         $subject->slug = $request->get('slug');
         $subject->programme_id = $request->get('programme_id');
+        $subject->is_active = $request->get('is_active');
 
-        $subject->update();
+        $subject->save();
         
-        return redirect()->route('subject.index')->with('status', 'Subject has been updated');
+        return redirect()->route('subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is bijgewerkt!');
     }
 
-    public function create(Subject $subject)
+    public function create()
     {
+        $subject = new Subject();
         $programmes = Programme::pluck('title', 'id');
-        return view('admin.subject.create', compact('subject', 'programmes'));
+        return view('admin.subject.edit', compact('subject', 'programmes'));
     }
 
     public function store(SubjectRequest $request) : RedirectResponse
@@ -70,7 +72,7 @@ class SubjectController extends Controller
         
         $subject->save();
         
-        return redirect()->route('subject.index')->with('status', 'Subject has been added');
+        return redirect()->route('subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is toegevoegd!');
     }
 
     public function destroy($id) : RedirectResponse
@@ -78,6 +80,6 @@ class SubjectController extends Controller
         $subject = Subject::find($id);
         $subject->delete();
 
-        return redirect()->route('subject.index')->with('status', 'Subject has been deleted');
+        return redirect()->route('subject.index')->with('status', '"' . $subject->title . '" is verwijderd!');
     }
 }

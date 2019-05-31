@@ -29,7 +29,7 @@
             @foreach(Auth::user()->roles as $role)
 
                 @if($role->id == 2)
-                    @include('partials.sidebar')
+                    @include('partials.menu')
                     <main class="main admin">
                 @else
                     @include('partials.navigation')
@@ -62,12 +62,12 @@
     </div>
 
     <script>
-        @section('js')
-        
         $(function(){
-            @show
-        })
+            @section('js')
         
-    </script>
+                @show
+            
+        })
+        </script>
 </body>
 </html>

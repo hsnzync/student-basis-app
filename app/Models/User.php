@@ -19,11 +19,22 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-        'username', 'email', 'phone_number', 'student_number', 'school_id' ,'image_url', 'password', 'level',
+        'username',
+        'email',
+        'phone_number',
+        'student_number',
+        'image_url',
+        'password',
+        'level',
+        'experience_points',
+        
+        'programme_id',
+        'school_id',
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 
+        'remember_token',
     ];
 
     public function school()

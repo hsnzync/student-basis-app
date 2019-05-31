@@ -28,10 +28,9 @@ class CourseController extends Controller
     public function update(CourseRequest $request, Course $course): RedirectResponse
     {
         if($request->hasFile('image_url')) {
-
             $image = $request->file('image_url');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/courses/'. $filename));
+            Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $course->image_url = $filename;
         }
 
@@ -42,7 +41,7 @@ class CourseController extends Controller
 
         $course->update();
 
-        return redirect()->route('course.index')->with('status', 'Course has been updated');
+        return redirect()->route('course.edit', $course->id)->with('status', '"' . $course->title . '" is bijgewerkt!');
     }
 
     public function show($subject_id)
@@ -51,10 +50,11 @@ class CourseController extends Controller
         return view('admin.course.index', compact('courses'));
     }
 
-    public function create(Course $course)
+    public function create()
     {
+        $course = new Course();
         $subjects = Subject::pluck('title', 'id');
-        return view('admin.course.create', compact('course', 'subjects'));
+        return view('admin.course.edit', compact('course', 'subjects'));
     }
 
     public function store(CourseRequest $request) : RedirectResponse
@@ -69,20 +69,20 @@ class CourseController extends Controller
 
             $image = $request->file('image_url');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/courses/'. $filename));
+            Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $course->image_url = $filename;
         }
         
         $course->save();
         
-        return redirect()->route('course.index')->with('status', 'Course has been added');
+        return redirect()->route('course.edit', $course->id)->with('status', '"' . $course->title . '" is toegevoegd!');
     }
 
-    public function destroy($slug) : RedirectResponse
+    public function destroy($id) : RedirectResponse
     {
-        $course = Course::whereSlug($slug);
+        $course = Course::find($id);
         $course->delete();
 
-        return redirect()->route('course.index')->with('status', 'Course has been deleted');
+        return redirect()->route('course.index', $course->id)->with('status', '"' . $course->title . '" is verwijderd!');
     }
 }

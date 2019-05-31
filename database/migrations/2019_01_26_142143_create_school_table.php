@@ -19,7 +19,6 @@ class CreateSchoolTable extends Migration
 
             $table->string('title', 128)->nullable();
             $table->string('location', 128)->nullable();
-            $table->string('slug', 128)->nullable();
 
             $table->timestamps();
         });

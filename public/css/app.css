@@ -392,81 +392,60 @@
 }
 
 .main.admin {
-  margin-left: 240px;
+  max-width: 1200px;
+  margin: 0 0 0 25%;
   transition: 0.3s;
+}
+
+.main.admin .header-section {
+  width: 300px;
+  position: relative;
+  top: 57px;
+}
+
+.main.admin .header-section .header-section-title {
+  text-align: left;
+  margin: 0;
+  max-width: 100%;
+}
+
+.main.admin .header-section .header-section-title h1 {
+  font-size: 30px;
+  font-family: "GothamRounded-Medium", sans-serif;
 }
 
 .main.admin .main-container {
   width: calc(100% - 50px);
+  margin: 0;
+  position: relative;
+  top: 50px;
 }
 
-.main.admin .main-container .admin-section {
-  height: 100px;
+.main.admin .main-container .admin-overview {
+  margin-top: 100px;
 }
 
-.main.admin .main-container .admin-section h1 {
-  float: left;
+.main.admin .main-container .button-section {
+  margin: 20px 0;
+  text-align: right;
 }
 
-.main.admin .main-container .card-body .form-url-text {
-  font-size: 11px;
+.main.admin .main-container .fa-list {
+  color: #000;
+  position: relative;
+  left: 30px;
 }
 
-body {
-  overflow-x: hidden;
+.main.admin .main-container .card-body .form-group-image {
+  height: 200px;
+  width: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-body .sidebar-nav {
-  min-height: 100vh;
-  margin-left: -15rem;
-  float: left;
-  position: fixed;
-  transition: margin 0.25s ease-out;
-  margin-top: 135px;
-}
-
-body .sidebar-nav .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
-  color: #fff;
-  background-color: #485058;
-}
-
-body .sidebar-nav .list-group {
-  width: 15rem;
-}
-
-body .sidebar-nav .list-group .list-group-item {
-  color: #fff;
-}
-
-body .sidebar-nav #page-content-wrapper {
-  min-width: 100vw;
-}
-
-body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
-}
-
-@media (min-width: 1500px) {
-  body #sidebar-wrapper {
-    margin-left: 0;
-  }
-
-  body #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
-
-  body #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
-}
-
-@media (max-width: 1500px) {
-  body .admin {
-    margin-left: 0 !important;
-  }
+.main.admin .main-container .card-body .form-group-helper {
+  font-size: 12px;
+  margin-top: 10px;
 }
 
 .auth {
@@ -529,10 +508,107 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
   cursor: pointer;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+body .sidebar-nav {
+  min-height: 100vh;
+  margin-left: -15rem;
+  float: left;
+  position: fixed;
+  transition: margin 0.25s ease-out;
+}
+
+body .sidebar-nav .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #000;
+}
+
+body .sidebar-nav .list-group {
+  width: 15rem;
+}
+
+body .sidebar-nav .list-group ul {
+  padding: 0;
+  list-style: none;
+}
+
+body .sidebar-nav .list-group ul .list-group-head {
+  text-transform: uppercase;
+  padding: 5px 20px;
+  background-color: #1d2124;
+  font-weight: 500;
+  color: #a5a5a5;
+  font-size: 15px;
+}
+
+body .sidebar-nav .list-group ul .list-group-item {
+  color: #fff;
+}
+
+body .sidebar-nav .list-group ul .list-group-item.alt-btn {
+  position: absolute;
+  bottom: 0;
+}
+
+body .sidebar-nav #page-content-wrapper {
+  min-width: 100vw;
+}
+
+body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 950px) {
+  body #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  body #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  body #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+@media (max-width: 950px) {
+  body .admin {
+    margin-left: 0 !important;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.is-active {
+  background-color: #1d2124 !important;
+}
+
+.errors,
+.success {
+  margin-left: 15px;
+}
+
+.errors p,
+.success p {
+  margin: 10px;
+}
+
 .main {
   font-family: "GothamRounded-Book", sans-serif;
   background-color: #fff;
   margin-top: -135px;
+}
+
+.main a:hover {
+  text-decoration: none;
 }
 
 .main .main-container {
@@ -540,7 +616,7 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
   max-width: 1310px;
 }
 
-.main .main-container .badge-primary {
+.main .main-container .badge {
   padding: 10px;
   font-family: "GothamRounded-Medium", sans-serif;
 }
@@ -555,9 +631,5 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
 
 .main .main-container .search-bar {
   margin: 20px 20px 50px 20px;
-}
-
-.hide {
-  display: none;
 }
 

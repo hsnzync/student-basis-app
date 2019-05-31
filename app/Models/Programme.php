@@ -11,9 +11,8 @@ class Programme extends Model
     protected $fillable = [
         'is_active',
         'title',
-        'description' ,
         'slug',
-        'image_url',
+        'school_id',
     ];
 
     public function school() {
@@ -23,16 +22,5 @@ class Programme extends Model
     public function subjects()
     {
         return $this->hasMany(Subject::class);
-    }
-
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    
-    public function getRouteKeyName()
-    {
-        return 'slug';
     }
 }

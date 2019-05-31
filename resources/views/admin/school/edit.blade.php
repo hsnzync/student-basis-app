@@ -1,12 +1,32 @@
 @extends('layouts.master')
 
 @section('content')
-@include('partials/header-section', ['title' => 'Admin', 'subtitle' => $school->title])
     <div class="main-container">
+        @include('partials/header-section', ['title' => !$school->id ? 'Toevoegen' : $school->title, 'subtitle' => false])
+        <div class="button-section">
+            <a href="{{ route('school.index') }}" class="btn btn-primary">Overzicht</a>
+        </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger errors">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+
+        @if (session('status'))
+            <div class="alert alert-success success">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <div class="card-body">
-            {!! Form::open(['class' => 'c-form-edit', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'url' => 'school/' . $school->slug]) !!}
-            @csrf
-            @method('PATCH')
+            @if( !$school->id )
+                {!! Form::model( $school, [ 'route' => 'school.store', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
+            @else
+                {!! Form::model( $school, [ 'route' => [ 'school.update', $school->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
+            @endif
             
             <div class="form-group">
                 {!! Form::label('title', 'Naam:') !!}
@@ -19,12 +39,13 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('slug', 'Url:') !!}
-                {!! Form::text('slug', $school->slug, ['class' => 'form-control' ]) !!}
-                <p class="form-url-text">Kleine letters, spaties vervangen met een '-'</p>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" id="is_active" name="is_active" class="custom-control-input" value="{{ $school->is_active }}" {{ $school->is_active ? 'checked=checked' : '' }}>
+                    <label class="custom-control-label" for="is_active">Activeer</label>
+                </div>
             </div>
 
-                <button type="submit" class="btn-enter btn btn-primary">Save</button>
+            <button type="submit" class="btn-enter btn btn-primary">Save</button>
             {!! Form::close() !!}
         </div>
     </div>

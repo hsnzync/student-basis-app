@@ -16,6 +16,10 @@
 
 @import 'admin';
 @import 'auth';
+@import 'sidebar';
+
+@import 'utilities/helpers';
+
 
 // // Bootstrap
 // @import '~bootstrap/scss/bootstrap';
@@ -25,11 +29,17 @@
   background-color: #fff;
   margin-top: -135px;
 
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   .main-container {
     margin: 250px auto 150px auto;
     max-width: 1310px;
 
-    .badge-primary {
+    .badge {
       padding: 10px;
       font-family: $font-medium;
     }
@@ -46,8 +56,4 @@
       margin: 20px 20px 50px 20px;
     }
   }
-}
-
-.hide {
-  display: none;
 }

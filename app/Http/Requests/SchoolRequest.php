@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseRequest extends FormRequest
+class SchoolRequest extends FormRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -16,9 +15,7 @@ class CourseRequest extends FormRequest
     {
         return [
             'title'         => 'required|min:5|max:50',
-            'description'   => 'required|min:5|max:200',
-            'slug'          => 'required|min:1',
-            'subject_id'    => 'required'
+            'location'      => 'required|min:5]',
         ];
     }
 }

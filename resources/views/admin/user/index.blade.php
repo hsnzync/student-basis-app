@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="main-container">
-    @include('partials/header-section', ['title' => 'Opleidingen', 'subtitle' => false])
+    @include('partials/header-section', ['title' => 'Gebruikers', 'subtitle' => false])
     <div class="button-section">
-        <a href="{{ route('programme.create') }}" class="btn btn-primary">Toevoegen</a>
+        <a href="{{route('user.create')}}" class="btn btn-primary">Toevoegen</a>
     </div>
 
     @if (session('status'))
-        <div class="alert alert-danger">
+        <div class="alert alert-success">
             {{ session('status') }}
         </div>
     @endif
@@ -16,8 +16,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Titel</th>
-                <th scope="col">School</th>
+                <th scope="col">Gebruikersnaam</th>
+                <th scope="col">Email</th>
                 <th scope="col">Status</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -25,15 +25,16 @@
         </thead>
         <tbody>
             
-            @foreach($programmes as $programme)
+            @foreach($users as $user)
                 <tr>
-                <th scope="row">{{ $programme->id }}</th>
-                <td>{{ $programme->title }}</td>
-                <td>{{ $programme->school->title }}</td>
-                <td>{!! $programme->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
-                <td><a href="{{ route('programme.edit', $programme->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                <th scope="row">{{ $user->id }}</th>
+                </td>
+                <td>{{ $user->username }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{!! $user->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
+                <td><a href="{{ route('user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                 <td>
-                    {!! Form::open(['method' => 'POST', 'route' => ['programme.destroy', $programme->id] ]) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['user.destroy', $user->id] ]) !!}
                         @csrf
                         @method('DELETE')
     

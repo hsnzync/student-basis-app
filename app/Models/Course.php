@@ -9,7 +9,13 @@ class Course extends Model
     public $table = 'course';
 
     protected $fillable = [
-        'slug', 'title', 'description', 'image_url', 'subject_id',
+        'slug', 
+        'title', 
+        'description', 
+        'image_url', 
+        'subject_id',
+        'is_unlocked',
+        'is_completed'
     ];
 
     public function subject()

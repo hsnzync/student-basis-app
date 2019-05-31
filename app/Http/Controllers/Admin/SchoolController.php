@@ -5,48 +5,63 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\SchoolRequest;
 use Illuminate\Http\Request;
 use App\Models\School;
-use Image;
 
 class SchoolController extends Controller
 {
     public function index()
     {
-        $schools = School::orderBy('id', 'asc')->get();
-        return view('admin.school.index', compact('schools'));
+        if(auth()->user()->is_has_permission) {
+            $schools = School::orderBy('id', 'asc')->get();
+            return view('admin.school.index', compact('schools'));
+        } else {
+            abort(403, 'Unauthorized.');
+        }
     }
 
     public function edit(School $school)
     {
-        return view('admin.school.edit', compact('school'));
+        if(auth()->user()->is_has_permission) {
+            return view('admin.school.edit', compact('school'));
+        } else {
+            abort(403, 'Unauthorized.');
+        }
+    }
+
+    public function update(SchoolRequest $request, School $school): RedirectResponse
+    {
+        $school->update($request->all());
+        return redirect()->route('school.edit', $school->id)->with('status', '"' . $school->title . '" is bijgewerkt!');
     }
 
     public function create()
     {
-
-    }
-
-    public function update(Request $request, School $school): RedirectResponse
-    {
-        if($request->hasFile('image_url')) {
-
-            $image = $request->file('image_url');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/schools/'. $filename));
-            $school->image_url = $filename;
+        if(auth()->user()->is_has_permission) {
+            $school = new School();
+            return view('admin.school.edit', compact('school'));
+        } else {
+            abort(403, 'Unauthorized.');
         }
-
-        $school->title = $request->get('title');
-        $school->location = $request->get('location');
-        $school->slug = $request->get('slug');
-        $school->update();
-        
-        return redirect()->route('school.index')->with('status', 'Information has been updated');
     }
 
-    public function destroy()
+    public function store(SchoolRequest $request) : RedirectResponse
     {
-        
+        $school = School::create($request->all());
+        return redirect()->route('school.edit', $school->id)->with('status', '"' . $school->title . '" is toegevoegd!');
+    }
+
+
+    public function destroy($id) : RedirectResponse
+    {
+        if(auth()->user()->is_has_permission) {
+            $school = School::find($id);
+            $school->delete();
+
+            return redirect()->route('school.index')->with('status', '"' . $school->title . '" is verwijderd!');
+        } else {
+            abort(403, 'Unauthorized.');
+        }
     }
 }

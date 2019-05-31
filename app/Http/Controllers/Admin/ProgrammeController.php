@@ -15,67 +15,64 @@ class ProgrammeController extends Controller
 {
     public function index()
     {
-        $programmes = Programme::with('school')->orderBy('id', 'asc')->get();
-        return view('admin.programme.index', compact('programmes'));
+        if(auth()->user()->is_has_permission) {
+            $programmes = Programme::with('school')->orderBy('id', 'asc')->get();
+            return view('admin.programme.index', compact('programmes'));
+        } else {
+            abort(403, 'Unauthorized.');
+        }
     }
 
     public function edit(Programme $programme)
     {
-        $schools = School::pluck('title', 'id');
-        return view('admin.programme.edit', compact('programme', 'schools'));
-    }
-
-    public function update(Request $request, Programme $programme): RedirectResponse
-    {
-        if($request->hasFile('image_url')) {
-
-            $image = $request->file('image_url');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/programmes/'. $filename));
-            $programme->image_url = $filename;
+        if(auth()->user()->is_has_permission) {
+            $schools = School::pluck('title', 'id');
+            return view('admin.programme.edit', compact('programme', 'schools'));
+        } else {
+            abort(403, 'Unauthorized.');
         }
-
-        $programme->title = $request->get('title');
-        $programme->description = $request->get('description');
-        $programme->slug = $request->get('slug');
-
-        $programme->update();
-        
-        return redirect()->route('programme.index')->with('status', 'Programme has been updated');
     }
 
-    public function create(Programme $programme)
+    public function update(ProgrammeRequest $request, Programme $programme): RedirectResponse
     {
-        $schools = School::pluck('title', 'id');
-        return view('admin.programme.create', compact('programme', 'schools'));
+        if(auth()->user()->is_has_permission) {
+            $programme->update($request->all());
+            return redirect()->route('programme.index')->with('status', $programme->title . ' has been updated');
+        } else {
+            abort(403, 'Unauthorized.');
+        }
+    }
+
+    public function create()
+    {
+        if(auth()->user()->is_has_permission) {
+            $programme = new Programme();
+            $schools = School::pluck('title', 'id');
+            return view('admin.programme.edit', compact('programme', 'schools'));
+        } else {
+            abort(403, 'Unauthorized.');
+        }
     }
 
     public function store(ProgrammeRequest $request) : RedirectResponse
     {
-        $programme = new Programme();
-        $programme->title = $request->get('title');
-        $programme->description = $request->get('description');
-        $programme->slug = $request->get('slug');
-        $programme->school_id = $request->get('school_id');
-
-        if($request->hasFile('image_url')) {
-
-            $image = $request->file('image_url');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/programmes/'. $filename));
-            $programme->image_url = $filename;
+        if(auth()->user()->is_has_permission) {
+            $programme = Programme::create($request->all());
+            return redirect()->route('programme.edit', $programme->id)->with('status', '"' . $programme->title . '" is toegevoegd!');
+        } else {
+            abort(403, 'Unauthorized.');
         }
-        
-        $programme->save();
-        
-        return redirect()->route('programme.index')->with('status', 'Programme has been added');
     }
 
-    public function destroy($slug) : RedirectResponse
+    public function destroy($id) : RedirectResponse
     {
-        $programme = Programme::whereSlug($slug);
-        $programme->delete();
+        if(auth()->user()->is_has_permission) {
+            $programme = Programme::find($id);
+            $programme->delete();
 
-        return redirect()->route('programme.index')->with('status', 'Programme has been deleted');
+            return redirect()->route('programme.index')->with('status', '"' . $programme->title . '" is verwijderd!');
+        } else {
+            abort(403, 'Unauthorized.');
+        }
     }
 }
