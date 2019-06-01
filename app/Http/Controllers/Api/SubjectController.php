@@ -27,10 +27,10 @@ class SubjectController extends Controller
         $subjects = Subject::query();
         
         $loading_count = 6;
-        $count_subjects = $subjects->count();
+        $count_subjects = $subjects->active()->count();
 
         if($request->has('load_more')) {
-            $loading->count += $request->get('load_more');
+            $loading_count += $request->get('load_more');
         }
 
         $subjects = $subjects
@@ -41,7 +41,8 @@ class SubjectController extends Controller
 
         return response()->json([
             'html'              => view('partials.sections.subjects', compact('subjects'))->render(),
-            'load_more_btn'     => ($count_subjects > $offset + $limit ? true : false)
+            'load_more_btn'     => ($count_subjects > $offset + $limit ? true : false),
+            'loading_count'     => $count_subjects
         ]);
 
     }

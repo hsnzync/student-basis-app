@@ -23,11 +23,14 @@ window.cards = function()
             url: 'api/load-subjects?limit='+ limit +'&offset=' + offset,
         }).done(function(json) {
             $overview.append(json.html);
-            console.log(json.load_more_btn);
 
             if(json.load_more_btn) {
                 $load_btn.removeClass('hide');
             } else {
+                $load_btn.addClass('hide');
+            }
+
+            if(json.loading_count <= 6) {
                 $load_btn.addClass('hide');
             }
 
