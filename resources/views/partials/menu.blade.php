@@ -3,10 +3,10 @@
     <div class="sidebar-heading">Admin overzicht</div>
     <div class="list-group list-group-flush">
         <ul>
-            <li class="list-group-head">Onderdelen</li>
             <li>
                 <a href="{{ route('home.index') }}" class="list-group-item list-group-item-action bg-dark{{ request()->is('admin/home*') ? 'is-active' : '' }}">Overzicht</a>
             </li>
+            <li class="list-group-head">Onderdelen</li>
             @if(Auth::user()->is_has_permission)
                 <li>
                     <a href="{{ route('school.index') }}" class="list-group-item list-group-item-action bg-dark{{ request()->is('admin/school*') ? 'is-active' : '' }}">Scholen</a>

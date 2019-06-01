@@ -36,6 +36,7 @@ class SubjectController extends Controller
         $subjects = $subjects
             ->offset( $offset )
             ->limit( $limit )
+            ->active()
             ->get();
 
         return response()->json([

@@ -27,6 +27,7 @@ class User extends Authenticatable
         'password',
         'level',
         'experience_points',
+        'is_active',
         
         'programme_id',
         'school_id',
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role')->withPivot('user_id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
     }
 }

@@ -37,7 +37,7 @@ class ProgrammeController extends Controller
     {
         if(auth()->user()->is_has_permission) {
             $programme->update($request->all());
-            return redirect()->route('programme.index')->with('status', $programme->title . ' has been updated');
+            return redirect()->route('programme.edit', $programme->id)->with('status', $programme->title . ' has been updated');
         } else {
             abort(403, 'Unauthorized.');
         }

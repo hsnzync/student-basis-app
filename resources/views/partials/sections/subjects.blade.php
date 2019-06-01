@@ -1,5 +1,5 @@
 @foreach($subjects as $subject)
-    @if($subject->courses->count())
+    {{-- @if($subject->courses->count()) --}}
         <div class="main-features-wrapper main-block-wrapper col-lg-4" data-section="subjects-results">
             <a href="browse/{{$subject->slug}}" class="browse-item">
                 <div class="col-12 main-block-section">
@@ -16,5 +16,5 @@
                 </div>
             </a>
         </div>
-    @endif
+    {{-- @endif --}}
 @endforeach

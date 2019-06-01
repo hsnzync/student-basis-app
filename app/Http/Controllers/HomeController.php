@@ -19,16 +19,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::orderBy('id', 'asc')->take(3)->get();
+        $subjects = Subject::orderBy('id', 'asc')->active()->take(3)->get();
 
         return view('index', compact('subjects'));
-    }
-
-    public function catalog()
-    {
-        $schools = School::orderBy('id', 'asc')->get();
-
-        return view('landing.catalog', compact('schools'));
     }
 
     public function create(NewsletterRequest $request) : RedirectResponse
@@ -37,11 +30,5 @@ class HomeController extends Controller
         $newsletter->create(['email' => $request->email]);
 
         return back();
-    }
-
-    public function show($slug)
-    {
-        $schools = School::whereSlug($slug)->orderBy('id', 'asc')->get();
-        return view('landing.show', compact('schools'));
     }
 }

@@ -64,7 +64,8 @@
 
             <div class="form-group">
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" id="is_active" name="is_active" class="custom-control-input" value="{{ $user->is_active }}" {{ $user->is_active ? 'checked=checked' : '' }}>
+                    <input type="hidden" name="is_active" value="0">
+                    <input type="checkbox" id="is_active" name="is_active" class="custom-control-input" value="1" {{ $user->is_active ? 'checked=checked' : '' }}>
                     <label class="custom-control-label" for="is_active">Activeer</label>
                 </div>
             </div>

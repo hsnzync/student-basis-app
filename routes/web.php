@@ -16,9 +16,6 @@ Auth::routes();
 Route::group(['middleware' => ['guest']], function () {
     Route::get('',                                          'HomeController@index')->name('index');
     Route::post('',                                         'HomeController@create');
-
-    Route::get('catalog',                                   'HomeController@catalog')->name('landing.catalog');
-    Route::get('catalog/{slug}',                            'HomeController@show')->name('landing.show');
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -29,8 +26,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('select-school',                             'AccountController@registerSchool')->name('account.school');
     Route::post('select-school',                            'AccountController@postSchool');
 
-    Route::get('select-programme',                          'AccountController@registerProgramme')->name('account.programme');
-    Route::post('select-programme',                         'AccountController@postProgramme');
+    // Route::get('select-programme',                          'AccountController@registerProgramme')->name('account.programme');
+    // Route::post('select-programme',                         'AccountController@postProgramme');
 
     Route::get('profile',                                   'AccountController@index')->name('account.index');
     Route::get('profile/{user}/edit',                       'AccountController@edit')->name('account.edit');
