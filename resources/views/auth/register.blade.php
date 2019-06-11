@@ -61,6 +61,16 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Bevestig wachtwoord">
                 </div>
 
+                <div class="form-group col-11">
+                    <label for="school">School</label>
+                    {!! Form::select('school_id', $schools, null, ['class' => 'form-control js-schools $errors->has("school_id") ? " is-invalid" : "" ', 'placeholder'=>'Selecteer school']) !!}
+                </div>
+
+                <div class="form-group col-11 js-programmes-form hide">
+                    <label for="programme">Opleiding</label>
+                    <select class="form-control js-programmes-overview" name="programme_id"></select>
+                </div>
+
                 <div class="form-group col-11 text-center form-submit-btn">
                     <button type="submit" class="main-btn">
                         {{ __('Registreren') }}
@@ -76,7 +86,10 @@
 </div>
 @endsection
 
-@section('js-libraries')
+@section('js')
     @parent
-    <script src="{{ url('assets/js/registration/school-selection.js') }}"></script>
+    
+        var registration_func = new registration();
+        registration_func.init();
+
 @stop

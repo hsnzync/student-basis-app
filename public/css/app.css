@@ -430,10 +430,9 @@
   text-align: right;
 }
 
-.main.admin .main-container .fa-list {
-  color: #000;
+.main.admin .main-container .table-list-btn {
+  left: 25%;
   position: relative;
-  left: 30px;
 }
 
 .main.admin .main-container .card-body .form-group-image {

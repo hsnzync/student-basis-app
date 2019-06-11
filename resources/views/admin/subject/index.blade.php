@@ -20,6 +20,7 @@
                 <th scope="col">Titel</th>
                 <th scope="col">Opleiding</th>
                 <th scope="col">Cursussen</th>
+                <th scope="col">Aantal</th>
                 <th scope="col">Status</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -32,7 +33,14 @@
                     <th scope="row">{{ $subject->id }}</th>
                     <td>{{ $subject->title }}</td>
                     <td>{{ $subject->programme->title }}</td>
-                    <td><a href="course/{{$subject->id}}"><i class="fas fa-list"></i></a></td>
+                    <td>
+                        <a href="course/{{$subject->id}}" class="table-list-btn">
+                            <span class="badge badge-secondary">
+                                <i class="fas fa-list"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td>{{ $subject->courses ? $subject->courses->count() : '' }}</td>
                     <td>{!! $subject->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
                     <td><a href="{{ route('subject.edit', $subject->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                     <td>

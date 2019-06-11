@@ -18,7 +18,7 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $schools = School::pluck('title', 'id');
+        $schools = School::active()->orderBy('title', 'asc')->pluck('title', 'id');
         return view('auth.register', compact('schools'));
     }
 

@@ -65,7 +65,8 @@
 
             <div class="form-group">
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" id="is_unlocked" name="is_unlocked" class="custom-control-input" value="{{ $course->is_unlocked }}" {{ $course->is_unlocked ? 'checked=checked' : '' }}>
+                    <input type="hidden" name="is_unlocked" value="0">
+                    <input type="checkbox" id="is_unlocked" name="is_unlocked" class="custom-control-input" value="1" {{ $course->is_unlocked ? 'checked=checked' : '' }}>
                     <label class="custom-control-label" for="is_unlocked">Beschikbaar</label>
                 </div>
             </div>

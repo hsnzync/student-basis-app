@@ -34,12 +34,14 @@ class CourseController extends Controller
             $course->image_url = $filename;
         }
 
-        $course->title = $request->get('title');
-        $course->description = $request->get('description');
-        $course->slug = $request->get('slug');
-        $course->subject_id = $request->get('subject_id');
+        $course->title          = $request->title;
+        $course->description    = $request->description;
+        $course->slug           = $request->slug;
+        $course->subject_id     = $request->subject_id;
+        $course->is_active      = $request->is_active;
+        $course->is_unlocked    = $request->is_unlocked;
 
-        $course->update();
+        $course->save();
 
         return redirect()->route('course.edit', $course->id)->with('status', '"' . $course->title . '" is bijgewerkt!');
     }
@@ -60,11 +62,13 @@ class CourseController extends Controller
     public function store(CourseRequest $request) : RedirectResponse
     {
         $course = new Course();
-        $course->title = $request->get('title');
-        $course->description = $request->get('description');
-        $course->slug = $request->get('slug');
-        $course->subject_id = $request->get('subject_id');
-
+        $course->title          = $request->title;
+        $course->description    = $request->description;
+        $course->slug           = $request->slug;
+        $course->subject_id     = $request->subject_id;
+        $course->is_active      = $request->is_active;
+        $course->is_unlocked    = $request->is_unlocked;
+        
         if($request->hasFile('image_url')) {
 
             $image = $request->file('image_url');

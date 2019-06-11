@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -17,7 +18,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/select-school';
+    protected $redirectTo = '/browse';
 
     /**
      * Create a new controller instance.
@@ -38,10 +39,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255', 'unique:user'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:user'],
-            'student_number' => ['required', 'string', 'max:12', 'unique:user'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'username'          => ['required', 'string', 'max:255', 'unique:user'],
+            'email'             => ['required', 'string', 'email', 'max:255', 'unique:user'],
+            'student_number'    => ['required', 'string', 'max:12', 'unique:user'],
+            'password'          => ['required', 'string', 'min:4', 'confirmed'],
+            'school_id'         => ['required'],
+            'programme_id'      => ['required_with:school_id,']
         ]);
     }
 
@@ -57,10 +60,12 @@ class RegisterController extends Controller
         $user->roles->attach(1);
 
         return User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'student_number' => $data['student_number'],
+            'username'          => $data['username'],
+            'email'             => $data['email'],
+            'password'          => Hash::make($data['password']),
+            'student_number'    => $data['student_number'],
+            'school_id'         => $data['school_id'],
+            'programme_id'      => $data['programme_id']
         ]);
     }
 }

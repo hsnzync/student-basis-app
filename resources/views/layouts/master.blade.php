@@ -64,9 +64,7 @@
     <script>
         $(function(){
             @section('js')
-        
-                @show
-            
+            @show
         })
         </script>
 </body>

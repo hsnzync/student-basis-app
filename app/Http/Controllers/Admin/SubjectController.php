@@ -36,11 +36,11 @@ class SubjectController extends Controller
             $subject->image_url = $filename;
         }
         
-        $subject->title = $request->get('title');
-        $subject->description = $request->get('description');
-        $subject->slug = $request->get('slug');
-        $subject->programme_id = $request->get('programme_id');
-        $subject->is_active = $request->get('is_active');
+        $subject->title         = $request->title;
+        $subject->description   = $request->description;
+        $subject->slug          = $request->slug;
+        $subject->programme_id  = $request->programme_id;
+        $subject->is_active     = $request->is_active;
 
         $subject->save();
         
@@ -56,11 +56,12 @@ class SubjectController extends Controller
 
     public function store(SubjectRequest $request) : RedirectResponse
     {
-        $subject = new Subject();
-        $subject->title = $request->get('title');
-        $subject->description = $request->get('description');
-        $subject->slug = $request->get('slug');
-        $subject->programme_id = $request->get('programme_id');
+        $subject                = new Subject();
+        $subject->title         = $request->title;
+        $subject->description   = $request->description;
+        $subject->slug          = $request->slug;
+        $subject->programme_id  = $request->programme_id;
+        $subject->is_active     = $request->is_active;
 
         if($request->hasFile('image_url')) {
 
