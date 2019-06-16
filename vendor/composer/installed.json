@@ -2181,7 +2181,7 @@
             "switch",
             "toggle"
         ],
-        "abandoned": "https://github.com/Okipa/laravel-table"
+        "abandoned": "https://github.com/Okipa/laravel-bootstrap-components"
     },
     {
         "name": "opis/closure",

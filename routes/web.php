@@ -23,12 +23,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('browse/{subject}',                          'CourseController@index')->name('course.index');
     Route::get('browse/{subject}/{course}',                 'QuestionController@index')->name('question.index');
 
-    Route::get('select-school',                             'AccountController@registerSchool')->name('account.school');
-    Route::post('select-school',                            'AccountController@postSchool');
-
-    // Route::get('select-programme',                          'AccountController@registerProgramme')->name('account.programme');
-    // Route::post('select-programme',                         'AccountController@postProgramme');
-
     Route::get('profile',                                   'AccountController@index')->name('account.index');
     Route::get('profile/{user}/edit',                       'AccountController@edit')->name('account.edit');
     Route::patch('profile/{user}',                          'AccountController@update');

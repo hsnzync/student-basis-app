@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4460a555a117eec7b2ca34c404e858d",
+    "content-hash": "1903d70799002b20af9632968f26c60e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1666,7 +1666,7 @@
                 "switch",
                 "toggle"
             ],
-            "abandoned": "https://github.com/Okipa/laravel-table",
+            "abandoned": "https://github.com/Okipa/laravel-bootstrap-components",
             "time": "2018-06-11T14:52:52+00:00"
         },
         {

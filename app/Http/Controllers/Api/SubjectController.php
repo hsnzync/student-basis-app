@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use Auth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subject;
@@ -33,11 +35,17 @@ class SubjectController extends Controller
             $loading_count += $request->get('load_more');
         }
 
+        dd(Auth::user());
+
+        $user = User::find( Auth::user()->id );
+
         $subjects = $subjects
             ->offset( $offset )
             ->limit( $limit )
+            ->where('programme_id', $user->programme_id)
             ->active()
             ->get();
+        dd($subjects);
 
         return response()->json([
             'html'              => view('partials.sections.subjects', compact('subjects'))->render(),

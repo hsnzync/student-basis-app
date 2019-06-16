@@ -28,12 +28,12 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        $user_role = auth()->user()->roles;
+        $roles = auth()->user()->roles;
 
-        foreach($user_role as $role) {
+        foreach($roles as $role) {
             if($role->id == 2) {
                 return '/dashboard/';
-            } else {
+            } else {        
                 return '/browse/';
             }
         }

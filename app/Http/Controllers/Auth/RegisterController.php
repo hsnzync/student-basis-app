@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
+
 use App\Models\User;
+use App\Mail\SendRegistrationMail;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -56,10 +60,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = Auth::user();
-        $user->roles->attach(1);
-
-        return User::create([
+        $user = User::create([
             'username'          => $data['username'],
             'email'             => $data['email'],
             'password'          => Hash::make($data['password']),
@@ -67,5 +68,12 @@ class RegisterController extends Controller
             'school_id'         => $data['school_id'],
             'programme_id'      => $data['programme_id']
         ]);
+
+        $user->roles()->attach(1);
+
+        // Send user email after registration
+        Mail::to( $user->email )->send( new SendRegistrationMail( $user ));
+
+        return $user;
     }
 }

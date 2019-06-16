@@ -10,9 +10,10 @@ class SubjectController extends Controller
 {
     public function index(Request $request)
     {
-        $user = User::where('id', auth()->user()->id)->active()->firstOrFail();
+        // $user = User::where('id', auth()->user()->id)->active()->firstOrFail();
 
-        $subjects = Subject::where('programme_id', $user->programme_id)->get();
-        return view('subject.index', compact('subjects'));
+        // $subjects = Subject::where('programme_id', $user->programme_id)->get();
+        // dd($subjects);
+        return view('subject.index');
     }
 }

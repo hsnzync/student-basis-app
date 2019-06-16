@@ -1,13 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark navbar-laravel {{ request()->route()->getName() == 'index' ? '' : 'navbar-main' }}">
     <div class="container">
         @auth
-            <a class="navbar-brand" href="/browse">
-                {{ config('app.name') }}
-            </a>
+            <a class="navbar-brand" href="/browse">Studentbase.</a>
         @else
-            <a class="navbar-brand" href="/">
-                {{ config('app.name') }}
-            </a>
+            <a class="navbar-brand" href="/">Studentbase.</a>
         @endauth
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
