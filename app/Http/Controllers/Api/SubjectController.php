@@ -35,8 +35,6 @@ class SubjectController extends Controller
             $loading_count += $request->get('load_more');
         }
 
-        dd(Auth::user());
-
         $user = User::find( Auth::user()->id );
 
         $subjects = $subjects
@@ -45,7 +43,6 @@ class SubjectController extends Controller
             ->where('programme_id', $user->programme_id)
             ->active()
             ->get();
-        dd($subjects);
 
         return response()->json([
             'html'              => view('partials.sections.subjects', compact('subjects'))->render(),

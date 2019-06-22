@@ -15,12 +15,10 @@ class SchoolTableSeeder extends Seeder
             [
                 'title' => 'Hogeschool Rotterdam',
                 'location' => 'Rotterdam',
-                'slug' => 'hro'
             ],
             [
                 'title' => 'Hogeschool Inholland',
                 'location' => 'Rotterdam',
-                'slug' => 'inholland'
             ],
         ]);
     }

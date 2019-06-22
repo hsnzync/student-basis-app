@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             // ProgrammeTableSeeder::class,
             // SubjectTableSeeder::class,
             // CourseTableSeeder::class,
-            RoleTableSeeder::class
+            // RoleTableSeeder::class
         ]);
     }
 }

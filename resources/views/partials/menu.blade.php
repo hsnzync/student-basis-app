@@ -23,17 +23,7 @@
             <li>
                 <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action bg-dark{{ request()->is('admin/user*') ? 'is-active' : '' }}">Gebruikers</a>
             </li>
-        
-        {{-- <a href="{{ route('course.index') }}" class="list-group-item list-group-item-action bg-dark">Courses</a> --}}
-        {{-- id="dropdownMenuButton" data-toggle="dropdown" class="dropdown-toggle--}}
-        
-        {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-        </div> --}}
 
-        {{-- <a href="#" class="list-group-item list-group-item-action bg-dark">Instellinge</a> --}}
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action bg-dark alt-btn">Uitloggen</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
