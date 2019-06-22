@@ -1,6 +1,7 @@
 .gitignore
 node_modules
 public/uploads
+.env
 
 # Logs
 logs
