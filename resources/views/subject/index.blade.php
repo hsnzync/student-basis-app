@@ -21,6 +21,6 @@
 @parent
     
         var cards_func = new cards();
-        cards_func.init();
+        cards_func.init( {{ Auth::user()->id }} );
     
 @endsection

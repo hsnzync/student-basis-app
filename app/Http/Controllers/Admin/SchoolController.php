@@ -17,7 +17,6 @@ class SchoolController extends Controller
             $schools = School::orderBy('id', 'asc')->get();
             return view('admin.school.index', compact('schools'));
         } else {
-            
             abort(403, 'Unauthorized.');
         }
     }
