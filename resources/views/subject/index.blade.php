@@ -2,10 +2,9 @@
 
 @section('content')
 <div class="main-container">
-    @include('partials/header-section', ['title' => 'Beschikbare vakken', 'subtitle' => false])
-    @include('partials.search')
-    @include('partials/filter')
+    @include('partials/header-section', ['title' => 'Vakken', 'previous_item' => $subjects])
     
+    @include('partials/filter')
     <div class="main-section main-block">
         <div class="col-12 row js-subjects-overview">
             {{-- Loaded async via JS --}}
@@ -19,8 +18,8 @@
 
 @section('js')
 @parent
-    
-        var cards_func = new cards();
-        cards_func.init( {{ Auth::user()->id }} );
+
+    var cards_func = new cards();
+    cards_func.init( {{ Auth::user()->id }} );
     
 @endsection

@@ -7,9 +7,11 @@ window.cards = function()
     var $load_btn   = $('.js-load-subjects');
     var $overview   = $('.js-subjects-overview');
 
-    self.init = function()
+    self.init = function(id)
     {
         limit = 6;
+        user_id = id;
+        
         self.loadSubjects();
         $load_btn.on('click', self.loadMoreSubjects);
     };
@@ -17,10 +19,10 @@ window.cards = function()
     self.loadSubjects = function()
     {
         var offset = $('[data-section=subjects-results]').length;
-
+        
         $.ajax({
             type: 'POST',
-            url: 'api/load-subjects?limit='+ limit +'&offset=' + offset,
+            url: 'api/load-subjects?limit='+ limit +'&offset=' + offset + '&id=' + user_id,
         }).done(function(json) {
             $overview.append(json.html);
 

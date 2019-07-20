@@ -16,13 +16,28 @@
         .navbar-brand {
             font-size: 25px;
             font-weight: 600;
+            color: #fff;
         }
 
         .navbar-collapse {
-            max-width: 230px;
+            max-width: max-content;
+        }
+
+        @media screen and (max-width: $break-small) {
+            .navbar-collapse {
+                max-width: 100%;
+            }
+
+            .nav-link {
+                padding: 5px;
+                display: block !important;
+            }
         }
     
         .navbar-nav {
+
+            margin-left: 0 !important;
+            margin-right: 0 !important;
 
             .nav-item {
                 margin: 0 10px;
@@ -31,10 +46,7 @@
                     color: #fff;
                     transition: .2s ease-out;
                     line-height: 30px;
-
-                    &:focus {
-                        color: #000;
-                    }
+                    display: inline-block;
             
                     .c-navbar-avatar {
                         height: 35px;
@@ -46,6 +58,10 @@
                         color: #3FA9F5;
                     }
                 }
+            }
+
+            .dropdown {
+                margin-right: 0;
             }
     
             .main-btn {
@@ -87,7 +103,7 @@
             background-color: #3B3A47;
 
             .container {
-                padding: 30px 40px;
+                padding: 30px 45px;
             }
         }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark navbar-laravel {{ request()->route()->getName() == 'index' ? '' : 'navbar-main' }}">
+<nav class="navbar navbar-expand-sm navbar-laravel {{ request()->route()->getName() == 'landing.index' || request()->route()->getName() == 'register' || request()->route()->getName() == 'login' ? '' : 'navbar-main' }}">
     <div class="container">
         @auth
             <a class="navbar-brand" href="/browse">Studentbase.</a>
@@ -16,6 +16,7 @@
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('browse.index') }}">Bladeren</a>
+                    <a class="nav-link" href="#">Help</a>
                 </li>
                 @endauth
 
@@ -37,11 +38,11 @@
                     @endif
                 @else
 
-                    <li class="nav-item ml-auto dropdown">
+                    <li class="nav-item dropdown">
 
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle c-navbar-avatar">
-                            {{ Auth::user()->username }} <span class="caret"></span>
+                            <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right nav-dropdown" aria-labelledby="navbarDropdown">

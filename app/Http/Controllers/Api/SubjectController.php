@@ -19,28 +19,35 @@ class SubjectController extends Controller
 
     public function getSubjects(Request $request)
     {
-        $limit = $request->get('limit');
-        $offset = 0;
+        $subjects = Subject::query();
+        $loading_count = 6;
+        
+        if($request->has('limit')) {
+            $limit = $request->get('limit');
+        }
 
+        $offset = 0;
         if($request->has('offset')) {
             $offset = $request->get('offset');
         }
 
-        $subjects = Subject::query();
-        
-        $loading_count = 6;
+        if($request->has('id')) {
+            $user_id = $request->get('id');
+        }
+
         $count_subjects = $subjects->active()->count();
 
         if($request->has('load_more')) {
             $loading_count += $request->get('load_more');
         }
 
-        $user = User::find( Auth::user()->id );
+        $user = User::find( $user_id );
 
         $subjects = $subjects
             ->offset( $offset )
             ->limit( $limit )
             ->where('programme_id', $user->programme_id)
+            ->orderBy('id', 'asc')
             ->active()
             ->get();
 

@@ -67,7 +67,7 @@ class SubjectController extends Controller
 
             $image = $request->file('image_url');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/subjects/'. $filename));
+            Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $subject->image_url = $filename;
         }
         

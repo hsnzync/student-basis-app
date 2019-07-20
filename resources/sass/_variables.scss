@@ -9,6 +9,10 @@ $font-bold: "GothamRounded-Bold", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
+// Custom colors
+$primary-color: #3FA9F5;
+$secondary-color: #eee;
+
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -22,5 +26,6 @@ $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
 $break-small: 575px;
+$break-medium: 767px;
 $break-large: 1000px;
 $break-xlarge: 1200px;

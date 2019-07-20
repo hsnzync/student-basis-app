@@ -7,7 +7,7 @@
                 </div>
             @endif
             <div class="header-component">
-                <h1>Studeren en spelen</h1>
+                <h1>Maak studeren leuker</h1>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 

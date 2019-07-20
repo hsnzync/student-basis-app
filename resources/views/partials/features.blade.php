@@ -36,6 +36,6 @@
         
     </div>
     <div class="col-12 main-features-section-btn">
-        <a class="features-btn" href="#">Learn more</a>
+        <a class="features-btn" href="#">Lees meer</a>
     </div>
 </div>

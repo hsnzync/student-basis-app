@@ -3,19 +3,17 @@
 @section('content')
 <div class="main-container">
     @foreach($subjects as $subject)
-        @include('partials/header-section', ['title' => 'Cursussen', 'subtitle' => $subject->title])
+        @include('partials/header-section', ['title' => $subject->title, 'previous_item' => $subject->courses])
     @endforeach
-    @include('partials.search')
     <div class="main-section main-block">
-
         <div class="col-12 row">
-
+            
             {{-- @include('partials.sections.card', ['entities' => $subjects]) --}}
 
             @foreach($subjects as $subject)
                 @foreach($subject->courses as $course)
 
-                    <div class="main-features-wrapper main-block-wrapper col-lg-4">
+                    <div class="main-features-wrapper main-block-wrapper col-lg-3">
                     @if($course->is_unlocked)
                         <a href="{{ $subject->slug . '/' . $course->slug }}" class="browse-item">
                     @endif
@@ -30,7 +28,7 @@
                                 <div class="main-block-text">
                                     <h4>{{ $course->title }}</h4>
                                 </div>
-                                <div class="progress col-9">
+                                <div class="progress col-10">
                                     <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>

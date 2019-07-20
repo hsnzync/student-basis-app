@@ -1,14 +1,32 @@
-.header-section {
-    .header-section-title {
-        margin: 0 auto;
-        text-align: center;
+.top-section {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 
-        h1 {
-            color: #000;
-            font-family: $font-bold;
-            font-size: 50px;
-        }
+  .top-section-block {
+    border-radius: 10px;
+    
+    &.top-section-continue {
+      background-color: #000;
+      margin-left: 3%;
+      max-width: 30%;
     }
+
+    background-color: #538CD9;
+    padding: 50px;
+    
+    h1 {
+      color: #fff;
+    }
+
+    p {
+      color: #fff;
+    }
+  }
+
+  h1 {
+    font-family: $font-bold;
+    font-size: 50px;
+  }
 }
 
 .header {
@@ -23,60 +41,69 @@
     position: relative;
     margin: 0;
     height: 970px;
+    border-radius: 0 !important;
 
-    .row {
-      margin: 150px auto 0 auto;
-      max-width: 1350px;
+  .row {
+    margin: 150px auto 0 auto;
+    max-width: 1350px;
 
-      .top-header {
-        padding: 0 20px;
-        text-align: center;
-        margin: 0 auto 50px auto;
+    .top-header {
+      padding: 0 20px;
+      text-align: center;
+      margin: 0 auto 50px auto;
 
-        &:last-of-type {
-          position: relative;
-          top: 50px;
-        }
-
-        .header-component {
-            h1 {
-                font-family: $font-medium;
-                font-size: 55px;
-            }
-            p {
-                margin: 20px 0 40px 0;
-            }
-            .header-links {
-                .header-btn {
-                    color: #fff;
-                    padding: 10px 20px;
-                    background-color: #3B3A47;
-                    border-radius: 35px;
-                    font-size: 15px;
-                    font-family: $font-medium;
-                    margin: 0 8px;
-
-                    &:first-of-type {
-                        background-color: #3FA9F5;
-                    }
-                }
-            }
-        }
-
-        img {
-          width: 60%;
-          border: 15px solid #000;
-          border-radius: 20px;
-        
-        }
+      &:last-of-type {
+        position: relative;
+        top: 50px;
       }
 
-      .header-shape {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
+      .header-component {
+          h1 {
+              font-family: $font-medium;
+              font-size: 55px;
+          }
+          p {
+              margin: 20px 0 40px 0;
+          }
+          .header-links {
+              .header-btn {
+                  color: #fff;
+                  padding: 10px 20px;
+                  background-color: #3B3A47;
+                  border-radius: 35px;
+                  font-size: 15px;
+                  font-family: $font-medium;
+                  margin: 0 8px;
+
+                  &:first-of-type {
+                      background-color: #3FA9F5;
+                  }
+              }
+          }
+      }
+
+      img {
+        width: 60%;
+        border: 15px solid #000;
+        border-radius: 20px;
+      
       }
     }
+
+    .header-shape {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
   }
+}
+
+@media screen and (max-width: $break-medium) {
+  .top-section-continue {
+    margin-left: 0 !important;
+    max-width: initial !important;
+    margin-top: 20px;
+  }
+}
