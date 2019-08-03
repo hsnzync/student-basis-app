@@ -4,7 +4,7 @@
     <div class="main-container">
         @include('partials/header-section', ['title' => !$school->id ? 'Toevoegen' : $school->title, 'subtitle' => false])
         <div class="button-section">
-            <a href="{{ route('school.index') }}" class="btn btn-primary">Overzicht</a>
+            <a href="{{ route('admin.school.index') }}" class="btn btn-primary">Overzicht</a>
         </div>
 
         @if ($errors->any())
@@ -23,9 +23,9 @@
 
         <div class="card-body">
             @if( !$school->id )
-                {!! Form::model( $school, [ 'route' => 'school.store', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
+                {!! Form::model( $school, [ 'route' => 'admin.school.store', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
             @else
-                {!! Form::model( $school, [ 'route' => [ 'school.update', $school->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
+                {!! Form::model( $school, [ 'route' => [ 'admin.school.update', $school->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
             @endif
             
             <div class="form-group">

@@ -14,7 +14,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username'          => 'required|max:50',
+            'first_name'        => 'required',
+            'last_name'         => 'required',
             'student_number'    => 'required|unique:user,student_number,' . $this->route('user')->id,
             'email'             => 'required|email',
             'level'             => 'required|digits_between:1,50',

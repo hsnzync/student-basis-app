@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         foreach($roles as $role) {
             if($role->id == 2) {
-                return '/dashboard/';
+                return '/admin/dashboard/';
             } else {        
                 return '/browse/';
             }

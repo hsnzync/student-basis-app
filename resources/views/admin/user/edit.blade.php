@@ -4,7 +4,7 @@
     <div class="main-container">
         @include('partials/header-section', ['title' => !$user->id ? 'Toevoegen' : $user->username, 'subtitle' => false])
         <div class="button-section">
-            <a href="{{ route('user.index') }}" class="btn btn-primary">Overzicht</a>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-primary">Overzicht</a>
         </div>
 
         @if ($errors->any())
@@ -24,14 +24,19 @@
         <div class="card-body">
 
             @if( !$user->id )
-                {!! Form::model( $user, [ 'route' => 'user.store', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
+                {!! Form::model( $user, [ 'route' => 'admin.user.store', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
             @else
-                {!! Form::model( $user, [ 'route' => [ 'user.update', $user->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
+                {!! Form::model( $user, [ 'route' => [ 'admin.user.update', $user->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
             @endif
 
             <div class="form-group">
-                {!! Form::label('username', 'Gebruikersnaam:') !!}
-                {!! Form::text('username', $user->username, ['class' => 'form-control', 'id' => 'username' ]) !!}
+                {!! Form::label('first-name', 'Voornaam:') !!}
+                {!! Form::text('first_name', $user->first_name, ['class' => 'form-control', 'id' => 'first-name' ]) !!}
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('last-name', 'Achternaam:') !!}
+                {!! Form::text('last_name', $user->last_name, ['class' => 'form-control', 'id' => 'last-name' ]) !!}
             </div>
 
             <div class="form-group">

@@ -2,7 +2,6 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use App\Models\School;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
@@ -18,8 +17,7 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $schools = School::active()->orderBy('title', 'asc')->pluck('title', 'id');
-        return view('auth.register', compact('schools'));
+        return view('auth.register');
     }
 
     /**

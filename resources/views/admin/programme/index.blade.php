@@ -4,7 +4,7 @@
 <div class="main-container">
     @include('partials/header-section', ['title' => 'Opleidingen', 'subtitle' => false])
     <div class="button-section">
-        <a href="{{ route('programme.create') }}" class="btn btn-primary">Toevoegen</a>
+        <a href="{{ route('admin.programme.create') }}" class="btn btn-primary">Toevoegen</a>
     </div>
 
     @if (session('status'))
@@ -31,9 +31,9 @@
                 <td>{{ $programme->title }}</td>
                 <td>{{ $programme->school->title }}</td>
                 <td>{!! $programme->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
-                <td><a href="{{ route('programme.edit', $programme->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                <td><a href="{{ route('admin.programme.edit', $programme->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                 <td>
-                    {!! Form::open(['method' => 'POST', 'route' => ['programme.destroy', $programme->id] ]) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['admin.programme.destroy', $programme->id] ]) !!}
                         @csrf
                         @method('DELETE')
     

@@ -4,7 +4,7 @@
     <div class="main-container">
         @include('partials/header-section', ['title' => !$course->id ? 'Toevoegen' : $course->title, 'subtitle' => false])
         <div class="button-section">
-            <a href="/course/{{ $course->subject_id }}" class="btn btn-primary">Overzicht</a>
+            <a href="{{ route('admin.course.index', $subject_id, $course->id) }}" class="btn btn-primary">Overzicht</a>
         </div>
     
         @if ($errors->any())
@@ -24,9 +24,9 @@
         <div class="card-body">
             
             @if( !$course->id )
-                {!! Form::model( $course, [ 'route' => 'course.store', 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
+                {!! Form::model( $course, [ 'route' => ['admin.course.store', $subject_id, $course->id], 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
             @else
-                {!! Form::model( $course, [ 'route' => [ 'course.update', $course->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
+                {!! Form::model( $course, [ 'route' => [ 'admin.course.update', $subject_id, $course->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
             @endif
 
             <div class="form-group">
@@ -57,10 +57,6 @@
                 {!! Form::label('slug', 'Url:') !!}
                 {!! Form::text('slug', $course->slug, ['class' => 'form-control' ]) !!}
                 <p class="form-group-helper">Kleine letters, spaties vervangen met een '-'</p>
-            </div>
-
-            <div class="form-group">
-                {!! Form::select('subject_id', $subjects, $course->subject_id, ['class' => 'form-control', 'placeholder'=>'Selecteer Vak']) !!}
             </div>
 
             <div class="form-group">

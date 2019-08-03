@@ -14,7 +14,7 @@
                         <h4>{{ $subject->title }}</h4>
                         <p>9/10</p>
                         {{-- Carbon to parse date --}}
-                        <span>Toegevoegd op 25-09-2019</span>
+                        <span>Toegevoegd op {{ Carbon::parse($subject->created_at)->format('d-m-Y') }}</span>
                     </div>
                 </div>
             </a>

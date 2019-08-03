@@ -28,7 +28,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user): RedirectResponse
     {
         $user->update($request->all());
-        return redirect()->route('user.edit', $user->id)->with('status', '"' . $user->username . '" is bijgewerkt!');
+        return redirect()->route('admin.user.edit', $user->id)->with('status', '"' . $user->first_name .' ' . $user->last_name . '" is bijgewerkt!');
     }
 
     public function create()
@@ -42,7 +42,7 @@ class UserController extends Controller
     public function store(UserRequest $request) : RedirectResponse
     {
         $user = User::create($request->all());
-        return redirect()->route('user.edit', $user->id)->with('status', '"' . $user->username . '" is toegevoegd!');
+        return redirect()->route('admin.user.edit', $user->id)->with('status', '"' . $user->first_name .' ' . $user->last_name . '" is toegevoegd!');
     }
 
 

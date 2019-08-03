@@ -13,16 +13,15 @@ use Image;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function index($subject_id)
     {
-        $courses = Course::orderBy('id', 'asc')->get();
-        return view('admin.course.index', compact('courses'));
+        $courses = Course::orderBy('id', 'asc')->where('subject_id', $subject_id)->get();
+        return view('admin.course.index', compact('courses', 'subject_id'));
     }
 
-    public function edit(Course $course)
+    public function edit($subject_id, Course $course)
     {
-        $subjects = Subject::pluck('title', 'id');
-        return view('admin.course.edit', compact('course', 'subjects'));
+        return view('admin.course.edit', compact('course', 'subject_id'));
     }
 
     public function update(CourseRequest $request, Course $course): RedirectResponse
@@ -43,7 +42,7 @@ class CourseController extends Controller
 
         $course->save();
 
-        return redirect()->route('course.edit', $course->id)->with('status', '"' . $course->title . '" is bijgewerkt!');
+        return redirect()->route('admin.course.edit', $course->id)->with('status', '"' . $course->title . '" is bijgewerkt!');
     }
 
     public function show($subject_id)
@@ -52,14 +51,13 @@ class CourseController extends Controller
         return view('admin.course.index', compact('courses'));
     }
 
-    public function create()
+    public function create($subject_id)
     {
         $course = new Course();
-        $subjects = Subject::pluck('title', 'id');
-        return view('admin.course.edit', compact('course', 'subjects'));
+        return view('admin.course.edit', compact('course', 'subject_id'));
     }
 
-    public function store(CourseRequest $request) : RedirectResponse
+    public function store($subject_id, CourseRequest $request) : RedirectResponse
     {
         $course = new Course();
         $course->title          = $request->title;
@@ -68,6 +66,7 @@ class CourseController extends Controller
         $course->subject_id     = $request->subject_id;
         $course->is_active      = $request->is_active;
         $course->is_unlocked    = $request->is_unlocked;
+        $course->subject_id     = $subject_id;
         
         if($request->hasFile('image_url')) {
 
@@ -79,14 +78,14 @@ class CourseController extends Controller
         
         $course->save();
         
-        return redirect()->route('course.edit', $course->id)->with('status', '"' . $course->title . '" is toegevoegd!');
+        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is toegevoegd!');
     }
 
-    public function destroy($id) : RedirectResponse
+    public function destroy($subject_id, $course_id) : RedirectResponse
     {
-        $course = Course::find($id);
+        $course = Course::find($course_id);
         $course->delete();
 
-        return redirect()->route('course.index', $course->id)->with('status', '"' . $course->title . '" is verwijderd!');
+        return redirect()->route('admin.course.index', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is verwijderd!');
     }
 }

@@ -17,12 +17,11 @@ Usefull helpers to generate clean HTML with Laravel.
 - [API](#api)
   - [classTag](#classtag)
   - [htmlAttributes](#htmlattributes)
-- [Changelog](#changelog)
 - [Testing](#testing)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
 - [Credits](#credits)
 - [Licence](#license)
-
-------------------------------------------------------------------------------------------------------------------------
 
 ## Installation
 
@@ -48,13 +47,16 @@ Render a html class tag filled with the given class list .
 
 ```php
 // in your html
-<div {{ classTag(
-    ['imported', 'class', 'array', 'from' 'config'],
-    ['nested', ['class', 'arrays']],
-    'another-class'
+<div{{ classTag(
+    'class1',
+    ['class2', 'class3', null],
+    null,
+    [],
+    ['class4', ['class5 ', 'class6Key' => 'class6']],
+    7
 ) }}></div>
 // gives
-<div class="imported class array from config nested class arrays another-class"></div>
+<div class="class="class1 class2 class3 class4 class5 class6 7"></div>
 ```
 
 ```
@@ -72,11 +74,12 @@ public function someMethod()
 ```
 
 ### `htmlAttributes(...$attributesList) : HtmlString`
-Render html attributes from the given attributes list.
+Render html attributes from the given attributes list.  
+Note : 
 
 ```php
 // in your html
-<div {{ htmlAttributes(
+<div{{ htmlAttributes(
     'attribute1Value',
     ['attribute2Key' => 'attribute2Value'],
     ['attribute3Key' => null],
@@ -113,27 +116,24 @@ public function someMethod()
 <div attribute1Value attribute2Key="attribute2Value" attribute3Key attribute4Value attribute5Value attribute6Value attributes7Value attribute8Value attribute9Key="attribute9Value" attribute10Key attribute11Value attribute12Key></div>
 ```
 
-------------------------------------------------------------------------------------------------------------------------
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-------------------------------------------------------------------------------------------------------------------------
-
 ## Testing
 
 ```bash
 composer test
 ```
 
-------------------------------------------------------------------------------------------------------------------------
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [ACID-Solutions](https://github.com/ACID-Solutions)
-
-------------------------------------------------------------------------------------------------------------------------
+- [Arthur LORENT](https://github.com/okipa)
+- [All Contributors](../../contributors)
 
 ## License
 

@@ -10,7 +10,7 @@ class HtmlAttributes extends HtmlHelper
     /**
      * Render the generated html.
      *
-     * @param mixed $attributesList
+     * @param mixed ...$attributesList
      *
      * @return \Illuminate\Support\HtmlString
      * @throws \Exception
@@ -23,7 +23,7 @@ class HtmlAttributes extends HtmlHelper
     /**
      * Render html attributes from the given attributes list.
      *
-     * @param mixed $attributesList
+     * @param mixed ...$attributesList
      *
      * @return \Illuminate\Support\HtmlString
      * @throws \Exception
@@ -38,8 +38,6 @@ class HtmlAttributes extends HtmlHelper
 
     /**
      * Build the attributes array
-     *
-     * @param mixed $attributesList
      *
      * @return array
      * @throws \Exception
@@ -59,7 +57,7 @@ class HtmlAttributes extends HtmlHelper
                     break;
                 default:
                     throw new Exception('The given attributes arguments should be strings or arrays : '
-                                        . gettype($arg) . ' type given for « ' . $arg . ' » argument.');
+                        . gettype($arg) . ' type given for « ' . $arg . ' » argument.');
             }
         }
 
@@ -115,6 +113,6 @@ class HtmlAttributes extends HtmlHelper
             }
         }
 
-        return $html;
+        return strlen($html) ? ' ' . $html : '';
     }
 }

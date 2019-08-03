@@ -32,7 +32,7 @@ window.cards = function()
                 $load_btn.addClass('hide');
             }
 
-            if(json.loading_count <= 6) {
+            if(json.loading_count < 8) {
                 $load_btn.addClass('hide');
             }
 

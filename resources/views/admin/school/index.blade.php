@@ -4,7 +4,7 @@
 <div class="main-container">
     @include('partials/header-section', ['title' => 'Scholen', 'subtitle' => false])
     <div class="button-section">
-        <a href="{{ route('school.create') }}" class="btn btn-primary">Toevoegen</a>
+        <a href="{{ route('admin.school.create') }}" class="btn btn-primary">Toevoegen</a>
     </div>
 
     @if (session('status'))
@@ -30,9 +30,9 @@
                     <th scope="row">{{ $school->id }}</th>
                     <td>{{ $school->title }}</td>
                     <td>{!! $school->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
-                    <td><a href="{{ route('school.edit', $school->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                    <td><a href="{{ route('admin.school.edit', $school->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                     <td>
-                        {!! Form::open(['method' => 'POST', 'route' => ['school.destroy', $school->id] ]) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => ['admin.school.destroy', $school->id] ]) !!}
                             @csrf
                             @method('DELETE')
         

@@ -15,7 +15,7 @@
                                 <li><img src="uploads/avatars/{{ $user->avatar }}" alt="avatar" class="rounded-circle c-avatar"></li>
                             </div>
                             <div class="profile-header-details">
-                                <li>{{ $user->username }}</li>
+                                <li>{{ $user->first_name }} {{ $user->last_name }}</li>
                                 <li>{{ $user->school->title }}</li>
                                 <li>Level {{ $user->level }}</li>
                             </div>

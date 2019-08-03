@@ -4,7 +4,7 @@
 <div class="main-container">
     @include('partials/header-section', ['title' => 'Gebruikers', 'subtitle' => false])
     <div class="button-section">
-        <a href="{{route('user.create')}}" class="btn btn-primary">Toevoegen</a>
+        <a href="{{route('admin.user.create')}}" class="btn btn-primary">Toevoegen</a>
     </div>
 
     @if (session('status'))
@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Gebruikersnaam</th>
+                <th scope="col">Naam</th>
                 <th scope="col">Email</th>
                 <th scope="col">Status</th>
                 <th scope="col"></th>
@@ -29,12 +29,12 @@
                 <tr>
                 <th scope="row">{{ $user->id }}</th>
                 </td>
-                <td>{{ $user->username }}</td>
+                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{!! $user->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
-                <td><a href="{{ route('user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                <td><a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                 <td>
-                    {!! Form::open(['method' => 'POST', 'route' => ['user.destroy', $user->id] ]) !!}
+                    {!! Form::open(['method' => 'POST', 'route' => ['admin.user.destroy', $user->id] ]) !!}
                         @csrf
                         @method('DELETE')
     

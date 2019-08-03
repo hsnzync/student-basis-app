@@ -23,6 +23,6 @@ class AdminMiddleware
             }
         }
 
-        return redirect('/dashboard');
+        return redirect()->route('admin.home.index');
     }
 }

@@ -36508,7 +36508,7 @@ window.cards = function () {
         $load_btn.addClass('hide');
       }
 
-      if (json.loading_count <= 6) {
+      if (json.loading_count < 8) {
         $load_btn.addClass('hide');
       }
     });
@@ -36529,6 +36529,9 @@ window.cards = function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+/**
+ * Registration form interaction
+ */
 window.registration = function () {
   var self = this;
   var $schools_select = $('.js-schools');

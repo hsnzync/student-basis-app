@@ -44,7 +44,7 @@ class SubjectController extends Controller
 
         $subject->save();
         
-        return redirect()->route('subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is bijgewerkt!');
+        return redirect()->route('admin.subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is bijgewerkt!');
     }
 
     public function create()
@@ -73,7 +73,7 @@ class SubjectController extends Controller
         
         $subject->save();
         
-        return redirect()->route('subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is toegevoegd!');
+        return redirect()->route('admin.subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is toegevoegd!');
     }
 
     public function destroy($id) : RedirectResponse
@@ -81,6 +81,6 @@ class SubjectController extends Controller
         $subject = Subject::find($id);
         $subject->delete();
 
-        return redirect()->route('subject.index')->with('status', '"' . $subject->title . '" is verwijderd!');
+        return redirect()->route('admin.subject.index')->with('status', '"' . $subject->title . '" is verwijderd!');
     }
 }

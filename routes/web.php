@@ -27,13 +27,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('profile/{user}/edit',                       'AccountController@edit')->name('account.edit');
     Route::patch('profile/{user}',                          'AccountController@update');
 });
-
-Route::group(['middleware' => ['admin'], 'namespace' => 'Admin'], function() {
-    Route::get('dashboard',                                 'AdminController@index')->name('home.index');
-
-    Route::resource('school',                               'SchoolController');
-    Route::resource('programme',                            'ProgrammeController');
-    Route::resource('subject',                              'SubjectController');
-    Route::resource('course',                               'CourseController');
-    Route::resource('user',                                 'UserController');
-});

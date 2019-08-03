@@ -18,7 +18,6 @@ class CourseRequest extends FormRequest
             'title'         => 'required|min:5|max:50',
             'description'   => 'required|min:5|max:200',
             'slug'          => 'required|min:1',
-            'subject_id'    => 'required'
         ];
     }
 }

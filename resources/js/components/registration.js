@@ -1,3 +1,6 @@
+/**
+ * Registration form interaction
+ */
 window.registration = function() {
     var self                    = this;
     var $schools_select         = $('.js-schools');
