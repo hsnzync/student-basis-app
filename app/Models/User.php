@@ -55,27 +55,15 @@ class User extends Authenticatable
     }
 
     /**
-    * Saving roles to a specific user
-    *
-    * @param  Array $roles array of strings, with the role slug per string
-    */
-    public function attachRolesToUser($roles) 
-    {
-        $this->addRoles($roles);
-    }
-
-    /**
      * Scope for selecting users with a specific role
      *
      * @param  QueryBuilder $query
      * @param  String $role
      * @return QueryBuilder $query
      */
-    public function scopeHasRole($query, $role) 
+    public function scopeHasRole($query, $role)
     {
-        return $query->whereHas('roles', function($query_role) use ($role) {
-            $query_role->where('slug', $role);
-        });
+        return auth()->user()->roles->first()->slug == $role;
     }
 
      /**

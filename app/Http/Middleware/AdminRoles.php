@@ -16,12 +16,11 @@ class AdminRoles
     public function handle($request, Closure $next)
     {
         if( auth()->check() ) {
-            if( auth()->user()->roles->first()->slug == 'superadmin' ) {
+            if( auth()->user()->hasRole('superadmin') || auth()->user()->hasRole('teacher') ) {
                 return $next($request);
-            } else {
-                return back();
             }
-            return redirect()->route('admin.index');
+            return redirect()->route('platform.browse.index');
         }
+        return redirect()->route('landing.index');
     }
 }

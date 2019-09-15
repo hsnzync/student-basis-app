@@ -15,7 +15,7 @@
             <ul class="navbar-nav row">
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('browse.index') }}">Bladeren</a>
+                    <a class="nav-link" href="{{ route('platform.browse.index') }}">Bladeren</a>
                     <a class="nav-link" href="#">Help</a>
                 </li>
                 @endauth
@@ -47,7 +47,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right nav-dropdown" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="{{ route('account.index') }}">My profile</a>
+                            <a class="dropdown-item" href="{{ route('platform.account.index') }}">My profile</a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

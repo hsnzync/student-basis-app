@@ -13,8 +13,8 @@ class QuestionController extends Controller
      */
     public function index($subject_slug, $course_slug)
     {
-        // dd('This course is: ' . $course_slug);
-        dd('React.js here');
-        return view('question.index');
+        dump('This course is: ' . $course_slug);
+        dd('VueJS here');
+        return view('platform.question.index');
     } 
 }

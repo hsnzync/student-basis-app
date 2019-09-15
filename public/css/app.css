@@ -419,6 +419,10 @@
   margin: 0 8px;
 }
 
+.is-active {
+  background-color: red;
+}
+
 .main.admin {
   max-width: 1200px;
   margin: 0 0 0 25%;

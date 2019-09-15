@@ -11,9 +11,7 @@
                     </div>
                     <div class="c-profile-header-details">
                         <li>{{ $user->username }}</li>
-                        @foreach($user->hasRole('student')
-                            <li>Level {{ $user->level }}</li>
-                        @endforeach
+                        <li>Level {{ $user->level }}</li>
                     </div>
                 </div>
             </ul>

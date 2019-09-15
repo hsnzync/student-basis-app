@@ -19,6 +19,6 @@ class CourseController extends Controller
          * - laatste vak van ingelogde gebruiker tonen via pivot table (updated_at column)
          */
 
-        return view('course.index', compact('subjects'));   
+        return view('platform.course.index', compact('subjects'));   
     }
 }

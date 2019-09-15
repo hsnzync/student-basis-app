@@ -18,12 +18,12 @@ class AccountController extends Controller
         $users = User::with('school')->where('id', Auth::user()->id)->get();
         // $achievements = Achievement::
 
-        return view('account.index', compact('users'));
+        return view('platform.account.index', compact('users'));
     }
 
     public function edit(User $user)
     {
-        return view('account.edit', compact('user'));
+        return view('platform.account.edit', compact('user'));
     }
 
     public function update(Request $request, User $user) : RedirectResponse
@@ -38,32 +38,6 @@ class AccountController extends Controller
         }
         $user->update($request->all());
 
-        return redirect()->route('account.index', compact('users'))->with('status', 'Profile information has been updated');
-    }
-
-    public function postSchool(Request $request) : RedirectResponse
-    {
-        $user = User::where('id', auth()->user()->id)->firstOrFail();
-        $user->school_id = $request->school_id;
-        $user->save();
-
-        return redirect()->route('account.programme');
-    }
-
-    public function registerProgramme()
-    {
-        $programmes = Programme::orderBy('title', 'asc')->where('school_id', auth()->user()->school_id)->get();
-        return view('auth.steps.programme', compact('programmes'));
-    }
-
-    public function postProgramme(Request $request)
-    {
-        $user = User::where('id', auth()->user()->id)->firstOrFail();
-        $user->programme_id = $request->programme_id;
-        $user->save();
-
-        $programmes = Programme::with('subjects', 'subjects.courses')->where('id', $user->programme_id)->get();
-
-        // return redirect()->route('browse.index');
+        return redirect()->route('platform.account.index', compact('users'))->with('status', 'Profile information has been updated');
     }
 }
