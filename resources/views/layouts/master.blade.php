@@ -26,21 +26,20 @@
     <div id="app" class="base">
 
         @auth
-            @foreach(Auth::user()->roles as $role)
+            {{-- @foreach(Auth::user()->roles as $role) --}}
+            @if( auth()->user()->roles->first()->slug == 'superadmin' )
+                @include('partials.menu')
+                <div class="main admin">
+                    @yield('content')
+                </div>
+            @else
+            @include('partials.navigation') 
+                <div class="main">
+                    @yield('content')
+                </div>
+            @endif
 
-                @if($role->id == 2)
-                    @include('partials.menu')
-                    <div class="main admin">
-                        @yield('content')
-                    </div>
-                @else
-                @include('partials.navigation') 
-                    <div class="main">
-                        @yield('content')
-                    </div>
-                @endif
-
-            @endforeach
+            {{-- @endforeach --}}
         @else
             @include('partials.navigation')
             <div class="main-landing">

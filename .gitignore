@@ -1,7 +1,7 @@
 .gitignore
-node_modules
-public/uploads
-vendor
+/node_modules
+/public/uploads
+/vendor
 .htaccess
 .env
 

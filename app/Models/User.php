@@ -53,4 +53,40 @@ class User extends Authenticatable
     {
         return $query->where('is_active', true);
     }
+
+    /**
+    * Saving roles to a specific user
+    *
+    * @param  Array $roles array of strings, with the role slug per string
+    */
+    public function attachRolesToUser($roles) 
+    {
+        $this->addRoles($roles);
+    }
+
+    /**
+     * Scope for selecting users with a specific role
+     *
+     * @param  QueryBuilder $query
+     * @param  String $role
+     * @return QueryBuilder $query
+     */
+    public function scopeHasRole($query, $role) 
+    {
+        return $query->whereHas('roles', function($query_role) use ($role) {
+            $query_role->where('slug', $role);
+        });
+    }
+
+     /**
+     * Get the fullname attribute of a user
+     * @return string
+     */
+    public function getFullNameAttribute() : string
+    {
+        if($this->name) {
+            return $this->name;
+        }
+        return $this->first_name .' '. $this->last_name;
+    }
 }

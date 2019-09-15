@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdminMiddleware
+class UserRoles
 {
     /**
      * Handle an incoming request.
@@ -15,14 +15,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user_role = auth()->user()->roles;
-
-        foreach($user_role as $role) {
-            if (auth()->user() &&  $role->id == 2) {
+        if( auth()->check() ) {
+            if( auth()->user()->roles->first()->slug == 'student' ) {
                 return $next($request);
+            } else {
+                return back();
             }
+            return redirect()->route('browse.index');
         }
-
-        return redirect()->route('admin.home.index');
+        
     }
 }

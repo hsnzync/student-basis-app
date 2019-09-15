@@ -31,8 +31,8 @@ class LoginController extends Controller
         $roles = auth()->user()->roles;
 
         foreach($roles as $role) {
-            if($role->id == 2) {
-                return '/admin/dashboard/';
+            if($role->slug == 'superadmin') {
+                return '/admin/';
             } else {        
                 return '/browse/';
             }

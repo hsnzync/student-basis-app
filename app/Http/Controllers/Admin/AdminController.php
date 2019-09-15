@@ -16,13 +16,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        foreach(Auth::user()->roles as $role) {
-            if($role->id == 2) {
-                return view('admin.home.index');
-            }
-            else {
-                return back();
-            }
-        }
+        return view('admin.home.index');
     }
 }

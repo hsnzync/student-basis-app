@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['as' => 'admin.'], function() {
-    Route::get('dashboard',                                 'AdminController@index')->name('home.index');
+    Route::get('',                                          'AdminController@index')->name('index');
 
     Route::resource('school',                               'SchoolController');
     Route::resource('programme',                            'ProgrammeController');

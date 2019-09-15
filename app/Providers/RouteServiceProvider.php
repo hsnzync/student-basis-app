@@ -77,9 +77,9 @@ class RouteServiceProvider extends ServiceProvider
      * Todo: Add middleware
      */
     protected function adminRoutes() : void
-    {        
+    {
         Route::prefix('admin')
-             ->middleware('web', 'auth', 'admin')
+             ->middleware('web', 'admin')
              ->namespace($this->admin_namespace)
              ->group(base_path('routes/admin.php'));
     }

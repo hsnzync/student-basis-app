@@ -14,7 +14,11 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('id', 'asc')->get();
+        $users = User::orderBy('id', 'asc')
+            ->whereHas('roles', function($query) {
+                $query->where('slug', '!=', 'superadmin');
+            })
+            ->get();
         return view('admin.user.index', compact('users'));
     }
 

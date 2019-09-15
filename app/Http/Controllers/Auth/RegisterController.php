@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Mail;
 
 use App\Models\User;
+use App\Models\School;
 use App\Mail\SendRegistrationMail;
 
 use App\Http\Controllers\Controller;
@@ -53,6 +54,17 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $schools = School::active()->orderBy('title')->pluck('title', 'id');
+        return view('auth.register', compact('schools'));
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -69,7 +81,7 @@ class RegisterController extends Controller
             'programme_id'      => $data['programme_id']
         ]);
 
-        $user->roles()->attach(1);
+        $user->roles()->attach( $user->id );
 
         // Send user email after registration
         Mail::to( $user->email )->send( new SendRegistrationMail( $user ));

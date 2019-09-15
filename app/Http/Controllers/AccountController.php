@@ -41,12 +41,6 @@ class AccountController extends Controller
         return redirect()->route('account.index', compact('users'))->with('status', 'Profile information has been updated');
     }
 
-    public function registerSchool()
-    {
-        $schools = School::orderBy('title', 'asc')->get();
-        return view('auth.steps.school', compact('schools'));
-    }
-
     public function postSchool(Request $request) : RedirectResponse
     {
         $user = User::where('id', auth()->user()->id)->firstOrFail();
@@ -70,6 +64,6 @@ class AccountController extends Controller
 
         $programmes = Programme::with('subjects', 'subjects.courses')->where('id', $user->programme_id)->get();
 
-        return redirect()->route('browse.index');
+        // return redirect()->route('browse.index');
     }
 }

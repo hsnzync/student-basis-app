@@ -4,10 +4,10 @@
     <div class="list-group list-group-flush">
         <ul>
             <li>
-                <a href="{{ route('admin.home.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/dashboard*') ? 'is-active' : '' }}">Overzicht</a>
+                <a href="{{ route('admin.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/dashboard*') ? 'is-active' : '' }}">Overzicht</a>
             </li>
             <li class="list-group-head">Onderdelen</li>
-            @if(Auth::user()->is_has_permission)
+            @if(auth()->user()->hasRole('admin'))
                 <li>
                     <a href="{{ route('admin.school.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/school*') ? 'is-active' : '' }}">Scholen</a>
                 </li>

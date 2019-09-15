@@ -13,21 +13,13 @@ class SchoolController extends Controller
 {
     public function index()
     {
-        if(auth()->user()->is_has_permission) {
-            $schools = School::orderBy('id', 'asc')->get();
-            return view('admin.school.index', compact('schools'));
-        } else {
-            abort(403, 'Unauthorized.');
-        }
+        $schools = School::orderBy('id', 'asc')->get();
+        return view('admin.school.index', compact('schools'));
     }
 
     public function edit(School $school)
     {
-        if(auth()->user()->is_has_permission) {
-            return view('admin.school.edit', compact('school'));
-        } else {
-            abort(403, 'Unauthorized.');
-        }
+        return view('admin.school.edit', compact('school'));
     }
 
     public function update(SchoolRequest $request, School $school): RedirectResponse
@@ -38,12 +30,8 @@ class SchoolController extends Controller
 
     public function create()
     {
-        if(auth()->user()->is_has_permission) {
-            $school = new School();
-            return view('admin.school.edit', compact('school'));
-        } else {
-            abort(403, 'Unauthorized.');
-        }
+        $school = new School();
+        return view('admin.school.edit', compact('school'));
     }
 
     public function store(SchoolRequest $request) : RedirectResponse
@@ -55,13 +43,9 @@ class SchoolController extends Controller
 
     public function destroy($id) : RedirectResponse
     {
-        if(auth()->user()->is_has_permission) {
-            $school = School::find($id);
-            $school->delete();
+        $school = School::find($id);
+        $school->delete();
 
-            return redirect()->route('school.index')->with('status', '"' . $school->title . '" is verwijderd!');
-        } else {
-            abort(403, 'Unauthorized.');
-        }
+        return redirect()->route('school.index')->with('status', '"' . $school->title . '" is verwijderd!');
     }
 }

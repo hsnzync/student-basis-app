@@ -11,10 +11,8 @@
                     </div>
                     <div class="c-profile-header-details">
                         <li>{{ $user->username }}</li>
-                        @foreach($user->roles as $role)
-                            @if($role->id == 1)
-                                <li>Level {{ $user->level }}</li>
-                            @endif
+                        @foreach($user->hasRole('student')
+                            <li>Level {{ $user->level }}</li>
                         @endforeach
                     </div>
                 </div>

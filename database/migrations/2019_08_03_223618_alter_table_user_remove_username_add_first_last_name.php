@@ -16,7 +16,9 @@ class AlterTableUserRemoveUsernameAddFirstLastName extends Migration
         Schema::table('user', function (Blueprint $table) {
             $table->string('first_name', 128)->nullable();
             $table->string('last_name', 128)->nullable();
+            $table->string('student_number', 128)->nullable()->change();
             $table->dropColumn('username');
+            $table->dropColumn('is_has_permission');
         });
     }
 
@@ -27,8 +29,12 @@ class AlterTableUserRemoveUsernameAddFirstLastName extends Migration
      */
     public function down()
     {
-        $table->dropColumn('first_name');
-        $table->dropColumn('last_name');
-        $table->string('username', 128)->nullable();
+        Schema::table('user', function (Blueprint $table) {
+            $table->dropColumn('first_name');
+            $table->dropColumn('last_name');
+            $table->integer('student_number')->nullable()->change();
+            $table->string('username', 128)->nullable();
+            $table->boolean('is_has_permission')->default(false);
+        });
     }
 }

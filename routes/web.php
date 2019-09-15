@@ -18,7 +18,7 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('',                                         'HomeController@create');
 });
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['user']], function() {
     Route::get('browse',                                    'SubjectController@index')->name('browse.index');
     Route::get('browse/{subject}',                          'CourseController@index')->name('course.index');
     Route::get('browse/{subject}/{course}',                 'QuestionController@index')->name('question.index');

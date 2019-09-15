@@ -35,12 +35,13 @@
                     <td>{{ $subject->programme->title }}</td>
                     <td>
                         <a href="{{ route('admin.course.index', $subject->id) }}" class="table-list-btn">
-                            <span class="badge badge-secondary">
-                                <i class="fas fa-list"></i>
-                            </span>
+                            {{ $subject->courses ? $subject->courses->count() : '' }}
+
+                            {{--  @if( $subject->courses )  --}}
+                                {{ $subject->courses->count() > 1 ? 'cursussen' : 'cursus' }}
+                            {{--  @endif  --}}
                         </a>
                     </td>
-                    <td>{{ $subject->courses ? $subject->courses->count() : '' }}</td>
                     <td>{!! $subject->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
                     <td><a href="{{ route('admin.subject.edit', $subject->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                     <td>
