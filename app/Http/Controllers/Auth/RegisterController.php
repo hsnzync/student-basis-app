@@ -6,6 +6,7 @@ use Mail;
 
 use App\Models\User;
 use App\Models\School;
+use App\Models\Role;
 use App\Mail\SendRegistrationMail;
 
 use App\Http\Controllers\Controller;
@@ -72,6 +73,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $student_role_id = Role::whereSlug('student')->first()->id;
+
         $user = User::create([
             'username'          => $data['username'],
             'email'             => $data['email'],
@@ -81,7 +84,7 @@ class RegisterController extends Controller
             'programme_id'      => $data['programme_id']
         ]);
 
-        $user->roles()->attach( $user->id );
+        $user->roles()->attach( $student_role_id );
 
         // Send user email after registration
         Mail::to( $user->email )->send( new SendRegistrationMail( $user ));

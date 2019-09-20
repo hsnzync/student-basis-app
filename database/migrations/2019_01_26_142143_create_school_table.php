@@ -18,9 +18,11 @@ class CreateSchoolTable extends Migration
             $table->boolean('is_active')->nullable()->default(false);
 
             $table->string('title', 128)->nullable();
+            $table->string('slug', 128)->nullable();
             $table->string('location', 128)->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

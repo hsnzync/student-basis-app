@@ -18,10 +18,10 @@ class CreateUserTable extends Migration
             $table->integer('school_id')->nullable()->unsigned();
             $table->integer('programme_id')->nullable()->unsigned();
             $table->boolean('is_active')->nullable()->default(true);
-            $table->boolean('is_has_permission')->nullable()->default(false);
 
-            $table->string('username', 128)->unique()->nullable();
-            $table->integer('student_number')->unique()->nullable();
+            $table->string('first_name', 128)->nullable();
+            $table->string('last_name', 128)->nullable();
+            $table->string('student_number', 128)->unique()->nullable();
             $table->string('email', 128)->unique()->nullable();
             $table->string('password')->nullable();
 
@@ -31,7 +31,9 @@ class CreateUserTable extends Migration
             
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('school_id')->references('id')->on('school');
             $table->foreign('programme_id')->references('id')->on('programme');

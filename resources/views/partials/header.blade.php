@@ -1,11 +1,6 @@
 <div class="jumbotron header">
     <div class="container row">
         <div class="col-md-6 top-header">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
             <div class="header-component">
                 <h1>Maak studeren leuker</h1>
 
@@ -21,8 +16,8 @@
         <img class="header-shape" src="{{ asset('img/header-shape.png') }}">
 
 
-        <div class="col-md-12 top-header">
+        {{--  <div class="col-md-12 top-header">
             <img src="{{ asset('img/header-feature.png') }}">
-        </div>
+        </div>  --}}
     </div>
 </div>

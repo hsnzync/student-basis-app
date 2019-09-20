@@ -18,8 +18,8 @@ class CreateUserRoleTable extends Migration
             $table->integer('user_id')->nullable()->unsigned();
             $table->integer('role_id')->nullable()->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->foreign('role_id')->references('id')->on('role');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');
         });
     }
 

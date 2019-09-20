@@ -28,7 +28,7 @@ class ProgrammeController extends Controller
     public function update(ProgrammeRequest $request, Programme $programme): RedirectResponse
     {
         $programme->update($request->all());
-        return redirect()->route('programme.edit', $programme->id)->with('status', $programme->title . ' has been updated');
+        return redirect()->route('admin.programme.edit', $programme->id)->with('status', $programme->title . ' has been updated');
     }
 
     public function create()
@@ -42,7 +42,7 @@ class ProgrammeController extends Controller
     public function store(ProgrammeRequest $request) : RedirectResponse
     {
         $programme = Programme::create($request->all());
-        return redirect()->route('programme.edit', $programme->id)->with('status', '"' . $programme->title . '" is toegevoegd!');
+        return redirect()->route('admin.programme.edit', $programme->id)->with('status', '"' . $programme->title . '" is toegevoegd!');
     }
 
     public function destroy($id) : RedirectResponse
@@ -50,6 +50,6 @@ class ProgrammeController extends Controller
         $programme = Programme::find($id);
         $programme->delete();
 
-        return redirect()->route('programme.index')->with('status', '"' . $programme->title . '" is verwijderd!');
+        return redirect()->route('admin.programme.index')->with('status', '"' . $programme->title . '" is verwijderd!');
     }
 }

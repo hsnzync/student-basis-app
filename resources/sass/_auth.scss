@@ -5,52 +5,50 @@
     background: linear-gradient(135deg, #6d47c2 0%,#4f98dd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d47c2', endColorstr='#4f98dd',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-    padding: 230px 20px;
-    // position: absolute;
-    // left: 0;
-    // right: 0;
-    // top: 0;
-    // bottom: 0;
-    // margin: 0 !important;
-    // max-width: none !important;
+    padding: 200px 20px;
+    min-height: 980px;
 
     .auth-title {
         margin: 40px auto;
+        padding: 0;
 
         h1 {
             font-family: $font-bold;
             font-size: 40px;
-            color: #3B3A47;
+            color: #fff;
         }
     }
 
     .form-section {
-        top: 50%;
-        transform: translateY(-50%);
-        position: relative;
-
-        background-color: #EBEBEB;
+        // background-color: #EBEBEB;
+        max-width: 1310px;
         margin: 0 auto;
-        padding: 30px 0;
-        border-radius: 10px;
-        box-shadow: 0 10px 0px 0 rgba(0,0,0,.3);    
+        // padding: 30px 0;
+        // border-radius: 10px;  
 
         label {
             font-family: $font-medium;
+            color: #fff;
         }
 
         .form-submit-btn {
             margin-top: 30px !important;
+            padding: 0;
 
             .main-btn {
                 background-color: #3FA9F5;
-                border-radius: 40px;
+                border-radius: 10px;
                 color: #fff !important;
                 font-weight: 300;
                 font-family: $font-medium;
                 padding: 10px 20px;
                 border: none;
                 cursor: pointer;
+                transition: .8s;
+
+                &:hover {
+                    background-color: #000;
+                }
             }
         }
 

@@ -22,6 +22,11 @@ class CreateAchievementTable extends Migration
             $table->integer('unlocked_at')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->integer('created_by')->nullable()->unsigned()->index();
+            $table->integer('deleted_by')->nullable()->unsigned()->index();
+            $table->integer('updated_by')->nullable()->unsigned()->index();
         });
     }
 

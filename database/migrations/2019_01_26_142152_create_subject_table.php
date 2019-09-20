@@ -24,6 +24,12 @@ class CreateSubjectTable extends Migration
             $table->string('image_url')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->integer('created_by')->nullable()->unsigned()->index();
+            $table->integer('deleted_by')->nullable()->unsigned()->index();
+            $table->integer('updated_by')->nullable()->unsigned()->index();
+
 
             $table->foreign('programme_id')->references('id')->on('programme')->onDelete('cascade');
         });

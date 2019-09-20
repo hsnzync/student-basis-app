@@ -22,6 +22,11 @@ class CreateQuestionTable extends Migration
             $table->text('slug', 128)->nullable();;
             
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->integer('created_by')->nullable()->unsigned()->index();
+            $table->integer('deleted_by')->nullable()->unsigned()->index();
+            $table->integer('updated_by')->nullable()->unsigned()->index();
 
             $table->foreign('subject_id')->references('id')->on('subject');
         });

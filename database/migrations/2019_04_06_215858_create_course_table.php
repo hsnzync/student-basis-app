@@ -27,6 +27,11 @@ class CreateCourseTable extends Migration
             $table->integer('points')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->integer('created_by')->nullable()->unsigned()->index();
+            $table->integer('deleted_by')->nullable()->unsigned()->index();
+            $table->integer('updated_by')->nullable()->unsigned()->index();
 
             $table->foreign('subject_id')->references('id')->on('subject')->onDelete('cascade');
         });

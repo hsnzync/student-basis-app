@@ -6,7 +6,8 @@ use Image;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\SubjectRequest;
+use App\Http\Requests\Subject\CreateSubjectRequest;
+use App\Http\Requests\Subject\UpdateSubjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\School;
@@ -26,7 +27,7 @@ class SubjectController extends Controller
         return view('admin.subject.edit', compact('subject', 'programmes'));
     }
 
-    public function update(Request $request, Subject $subject): RedirectResponse
+    public function update(UpdateSubjectRequest $request, Subject $subject): RedirectResponse
     {
         if($request->hasFile('image_url')) {
 
@@ -54,7 +55,7 @@ class SubjectController extends Controller
         return view('admin.subject.edit', compact('subject', 'programmes'));
     }
 
-    public function store(SubjectRequest $request) : RedirectResponse
+    public function store(CreateSubjectRequest $request) : RedirectResponse
     {
         $subject                = new Subject();
         $subject->title         = $request->title;

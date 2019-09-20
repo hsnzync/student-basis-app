@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\School;
+use App\Models\Role;
 use App\Models\Programme;
+use Hash;
 
 class UserController extends Controller
 {
@@ -29,10 +32,16 @@ class UserController extends Controller
         return view('admin.user.edit', compact('user', 'schools', 'programmes'));
     }
 
-    public function update(UserRequest $request, User $user): RedirectResponse
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
+        $student_role_id = Role::whereSlug('student')->first()->id;
+
         $user->update($request->all());
-        return redirect()->route('admin.user.edit', $user->id)->with('status', '"' . $user->first_name .' ' . $user->last_name . '" is bijgewerkt!');
+        $user->password = Hash::make($request->password);
+        $user->roles()->sync( $student_role_id );
+        $user->save();
+
+        return redirect()->route('admin.user.edit', $user->id)->with('status','"' . $user->fullname . '"' . ' is bijgewerkt!');
     }
 
     public function create()
@@ -43,18 +52,23 @@ class UserController extends Controller
         return view('admin.user.edit', compact('user', 'schools', 'programmes'));
     }
 
-    public function store(UserRequest $request) : RedirectResponse
-    {
-        $user = User::create($request->all());
-        return redirect()->route('admin.user.edit', $user->id)->with('status', '"' . $user->first_name .' ' . $user->last_name . '" is toegevoegd!');
-    }
+    public function store(CreateUserRequest $request) : RedirectResponse
+    {        
+        $student_role_id = Role::whereSlug('student')->first()->id;
 
+        $user = User::create($request->all());
+        $user->password = Hash::make($request->password);
+        $user->roles()->attach( $student_role_id );
+        $user->save();
+
+        return redirect()->route('admin.user.edit', $user->id)->with('status','"' . $user->fullname . '"' . ' is toegevoegd!');
+    }
 
     public function destroy($id) : RedirectResponse
     {
-        $user = School::find($id);
+        $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('user.index')->with('status', '"' . $user->title . '" is verwijderd!');
+        return redirect()->route('admin.user.index')->with('status','"' . $user->fullname . '"' . ' is verwijderd!');
     }
 }

@@ -16,6 +16,7 @@
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('platform.browse.index') }}">Bladeren</a>
+                    <a class="nav-link" href="#">Community</a>
                     <a class="nav-link" href="#">Help</a>
                 </li>
                 @endauth

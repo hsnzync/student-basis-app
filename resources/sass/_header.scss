@@ -40,17 +40,15 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d47c2', endColorstr='#4f98dd',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     position: relative;
     margin: 0;
-    height: 970px;
+    height: 750px;
     border-radius: 0 !important;
 
   .row {
-    margin: 150px auto 0 auto;
+    margin: 100px auto 0 auto;
     max-width: 1350px;
 
     .top-header {
       padding: 0 20px;
-      text-align: center;
-      margin: 0 auto 50px auto;
 
       &:last-of-type {
         position: relative;
@@ -77,17 +75,18 @@
 
                   &:first-of-type {
                       background-color: #3FA9F5;
+                      margin-left: 0;
                   }
               }
           }
       }
 
-      img {
-        width: 60%;
-        border: 15px solid #000;
-        border-radius: 20px;
+      // img {
+      //   width: 60%;
+      //   border: 15px solid #000;
+      //   border-radius: 20px;
       
-      }
+      // }
     }
 
     .header-shape {

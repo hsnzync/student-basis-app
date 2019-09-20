@@ -22,6 +22,7 @@ class CreateProgrammeTable extends Migration
             $table->string('slug', 128)->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('school_id')->references('id')->on('school')->onDelete('cascade');
         });
