@@ -116,8 +116,7 @@
 }
 
 .navbar-laravel .container .navbar-nav .main-btn:hover {
-  -webkit-transform: translate(0, -2px);
-          transform: translate(0, -2px);
+  transform: translate(0, -2px);
 }
 
 .navbar-laravel .container .dropdown-item.active,
@@ -642,6 +641,10 @@ body .sidebar-nav #wrapper.toggled #sidebar-wrapper {
 }
 
 .search-bar .form-control::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.search-bar .form-control::-moz-placeholder {
   color: #fff;
 }
 

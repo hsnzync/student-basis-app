@@ -10,7 +10,7 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src={{ asset('js/jquery-3.4.1.slim.min.js') }}></script>
+    <script src={{ asset('js/jquery-3.4.1.min.js') }}></script>
     <script src={{ asset('js/app.js') }} defer></script>
 
     <!-- Fonts -->
@@ -50,7 +50,9 @@
             @endif
         @endauth   
     </div>
-            
+
+    <script src="{{ asset('js/modal-window.js') }}"></script>
+    
     <script>
         $(function(){
             @section('js')
