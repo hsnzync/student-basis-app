@@ -8,9 +8,14 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/Okipa/laravel-html-helper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Okipa/laravel-html-helper/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Okipa/laravel-html-helper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Okipa/laravel-html-helper/?branch=master)
 
-Usefull helpers to generate clean HTML with Laravel.
+Usefull helpers to dynamically generate clean HTML with Laravel.
 
-------------------------------------------------------------------------------------------------------------------------
+## Compatibility
+
+| Laravel version | PHP version | Package version |
+|---|---|---|
+| ^5.5 | ^7.2 | ^1.2 |
+| ^5.5 | ^7.1 | ^1.0 |
 
 ## Table of Contents
 - [Installation](#installation)
@@ -27,18 +32,8 @@ Usefull helpers to generate clean HTML with Laravel.
 
 - Install the package with composer :
 ```bash
-composer require okipa/laravel-html-helper
+composer require "okipa/laravel-html-helper:^2.0"
 ```
-
-- Laravel 5.5+ uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
-If you don't use auto-discovery or if you use a Laravel 5.4- version, add the package service provider in the `register()` method from your `app/Providers/AppServiceProvider.php` :
-```php
-// laravel html helper
-// https://github.com/Okipa/laravel-html-helper
-$this->app->register(Okipa\LaravelHtmlHelper\HtmlHelperServiceProvider::class);
-```
-
-------------------------------------------------------------------------------------------------------------------------
 
 ## API
 

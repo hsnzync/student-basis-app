@@ -16,7 +16,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
-        "nesbot/carbon": "2.22.0 as 1.39.0",
+        "nesbot/carbon": "1.26.3",
         "okipa/laravel-bootstrap-components": "^0.6.0",
         "okipa/laravel-toggle-switch-button": "^2.0.0"
     },
