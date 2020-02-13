@@ -2,7 +2,7 @@
     <div class="container row">
         <div class="col-md-6 top-header">
             <div class="header-component">
-                <h1>Maak studeren leuker</h1>
+                <h1>Studeren voor de middelbare scholen</h1>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 

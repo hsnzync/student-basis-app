@@ -22,12 +22,6 @@
                         </span>
                     @endif
                 </div>
-
-                <div class="col-lg-5">
-                    Login met je schoolaccount
-                    <br>
-                    <a href="https://login.hr.nl/v1/login" style="color:#fff;">Ga naar de schoolpagina</a>
-                </div>
             </div>
 
             <div class="row">

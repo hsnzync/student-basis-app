@@ -6,7 +6,7 @@
         <div class="button-section">
             <a href="{{ route('admin.course.index', $subject_id, $course->id) }}" class="btn btn-primary">Overzicht</a>
         </div>
-    
+
         @if ($errors->any())
             <div class="alert alert-danger errors">
                 @foreach ($errors->all() as $error)
@@ -22,7 +22,7 @@
         @endif
 
         <div class="card-body">
-            
+
             @if( !$course->id )
                 {!! Form::model( $course, [ 'route' => ['admin.course.store', $subject_id, $course->id], 'method' => 'POST', 'enctype' => 'multipart/form-data'] ) !!}
             @else
@@ -37,9 +37,9 @@
 
             <div class="form-group">
                 @if($course->image_url)
-                    <img src="/uploads/images/{{ $course->image_url }}" alt="course" class="c-admin-image" height="200" width="200">
+                    <img src="/uploads/images/{{ $course->image_url }}" alt="course" class="form-img">
                 @else
-                    <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="course" class="c-admin-image" height="200" width="200">
+                    <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="course" class="form-img">
                 @endif
             </div>
 

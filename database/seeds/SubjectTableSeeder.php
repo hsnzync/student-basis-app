@@ -13,28 +13,28 @@ class SubjectTableSeeder extends Seeder
     {
         DB::table('subject')->insert([
             [
-                'programme_id' => 1,
-                'title' => 'Design Patterns',
+                'grade_id' => 1,
+                'title' => 'Wiskunde',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'slug' => 'design-patterns',
+                'slug' => 'wiskunde',
             ],
             [
-                'programme_id' => 1,
-                'title' => 'Serious Javascript',
+                'grade_id' => 1,
+                'title' => 'Maatschappijleer',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'slug' => 'serieus-javascript',
+                'slug' => 'maatschappijleer',
             ],
             [
-                'programme_id' => 2,
-                'title' => 'Ondernemen',
+                'grade_id' => 2,
+                'title' => 'Economie',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'slug' => 'ondernemen',
+                'slug' => 'economie',
             ],
             [
-                'programme_id' => 3,
-                'title' => 'Design Thinking',
+                'grade_id' => 3,
+                'title' => 'Aardrijkskunde',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'slug' => 'design thinking',
+                'slug' => 'aardrijkskunde',
             ]
         ]);
     }

@@ -27,7 +27,7 @@ class CreateSubjectRequest extends FormRequest
             'title'         => 'required|max:128',
             'description'   => 'required|min:5',
             'slug'          => 'required|min:1',
-            'programme_id'  => 'required',
+            'grade_id'      => 'required',
         ];
     }
 }

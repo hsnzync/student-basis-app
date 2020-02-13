@@ -15,26 +15,26 @@ class CourseTableSeeder extends Seeder
             [
                 'subject_id' => 1,
                 'is_unlocked' => true,
-                'slug' => 'introductie',
-                'title' => 'Introductie',
+                'slug' => 'wiskunde-basis',
+                'title' => 'Wiskunde basis',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'points' => 30
+                'points' => 15
             ],
             [
                 'subject_id' => 1,
                 'is_unlocked' => false,
-                'slug' => 'theorie',
-                'title' => 'Theorie',
+                'slug' => 'wiskunde-breuken',
+                'title' => 'Wiskunde breuken',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'points' => 70
+                'points' => 30
             ],
             [
                 'subject_id' => 2,
                 'is_unlocked' => false,
-                'slug' => 'introductie',
-                'title' => 'Introductie',
+                'slug' => 'wiskunde-decimalen',
+                'title' => 'Wiskunde decimalen',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'points' => 20
+                'points' => 30
             ],
         ]);
     }

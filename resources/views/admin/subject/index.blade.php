@@ -18,7 +18,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Titel</th>
-                <th scope="col">Opleiding</th>
+                <th scope="col">Opleidingsniveau</th>
                 <th scope="col">Cursussen</th>
                 <th scope="col">Aantal</th>
                 <th scope="col">Status</th>
@@ -27,12 +27,12 @@
             </tr>
         </thead>
         <tbody>
-            
+
             @foreach($subjects as $subject)
                 <tr>
                     <th scope="row">{{ $subject->id }}</th>
                     <td>{{ $subject->title }}</td>
-                    <td>{{ $subject->programme->title }}</td>
+                    <td>{{ $subject->grade->title }}</td>
                     <td>
                         <a href="{{ route('admin.course.index', $subject->id) }}" class="table-list-btn">
                             {{ $subject->courses ? $subject->courses->count() : '' }}
@@ -48,11 +48,11 @@
                         {!! Form::open(['method' => 'POST', 'route' => ['admin.subject.destroy', $subject->id] ]) !!}
                             @csrf
                             @method('DELETE')
-        
+
                             <button type="submit" class="btn btn-danger">
                                 <i class="fas fa-trash" aria-hidden="true"></i>
                             </button>
-                        {!! Form::close() !!}                
+                        {!! Form::close() !!}
                     </td>
                 </tr>
             @endforeach

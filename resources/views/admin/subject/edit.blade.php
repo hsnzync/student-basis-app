@@ -37,9 +37,9 @@
 
             <div class="form-group">
                 @if($subject->image_url)
-                    <img src="/uploads/images/{{ $subject->image_url }}" alt="subject" class="form-group-image">
+                    <img src="/uploads/images/{{ $subject->image_url }}" alt="subject" class="form-img">
                 @else
-                    <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="subject" class="c-admin-image" height="200" width="200">
+                    <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="subject" class="form-img">
                 @endif
             </div>
 
@@ -60,7 +60,7 @@
             </div>
 
             <div class="form-group">
-                {!! Form::select('programme_id', $programmes, $subject->programme_id, ['class' => 'form-control', 'placeholder'=>'Selecteer opleiding']) !!}
+                {!! Form::select('grade_id', $grades, $subject->grade_id, ['class' => 'form-control', 'placeholder'=>'Selecteer opleiding']) !!}
             </div>
 
             <div class="form-group">

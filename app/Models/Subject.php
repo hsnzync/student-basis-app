@@ -12,20 +12,20 @@ class Subject extends Model
     public $table = 'subject';
 
     protected $fillable = [
-        'is_completed', 
-        'is_unlocked', 
-        'is_active', 
-        'user_id', 
-        'title', 
-        'slug', 
-        'description', 
+        'is_completed',
+        'is_unlocked',
+        'is_active',
+        'user_id',
+        'title',
+        'slug',
+        'description',
         'level',
-        'programme_id'
+        'grade_id'
     ];
 
-    public function programme()
+    public function grade()
     {
-        return $this->belongsTo('App\Models\Programme', 'programme_id', 'id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id', 'id');
     }
 
     public function courses()

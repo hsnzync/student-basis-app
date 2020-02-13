@@ -21,7 +21,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::query();
         $loading_count = 6;
-        
+
         if($request->has('limit')) {
             $limit = $request->get('limit');
         }
@@ -46,7 +46,7 @@ class SubjectController extends Controller
         $subjects = $subjects
             ->offset( $offset )
             ->limit( $limit )
-            ->where('programme_id', $user->programme_id)
+            ->where('grade_id', $user->grade_id)
             ->orderBy('id', 'asc')
             ->active()
             ->get();

@@ -26,14 +26,13 @@ class CreateUserRequest extends FormRequest
         return [
             'first_name'        => 'required',
             'last_name'         => 'required',
-            'student_number'    => 'required|unique:user,student_number',
             'email'             => 'required|email',
             'level'             => 'required|digits_between:1,50',
             'password'          => 'required|min:6',
             'password-confirm'  => 'required|same:password',
             'experience_points' => 'required|digits_between:0,5000',
             'school_id'         => 'required',
-            'programme_id'      => 'required',
+            'grade_id'          => 'required',
         ];
     }
 }

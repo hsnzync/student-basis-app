@@ -1,0 +1,24 @@
+.modal-window {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    top: 150%;
+    transform: translateY(-50%);
+    &:before {
+        content: "";
+        position: absolute;
+        background: #000;
+        opacity: 0.5;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+    span {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-weight: 900;
+        cursor: pointer;
+    }
+}

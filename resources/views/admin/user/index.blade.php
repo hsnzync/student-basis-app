@@ -24,10 +24,8 @@
                 </tr>
             </thead>
             <tbody>
-                
-                @foreach($users as $user)
-                    <modal @close="showModal = false" :user="{!! $user !!}"></modal>
 
+                @foreach($users as $user)
                     <tr>
                     <th scope="row">{{ $user->id }}</th>
                     </td>
@@ -35,21 +33,18 @@
                     <td>{{ $user->email }}</td>
                     <td>{!! $user->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
                     <td><a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                    {!! Form::open(['method' => 'POST', 'route' => ['admin.user.destroy', $user->id] ]) !!}
                     <td>
-                        <button type="submit" class="btn btn-danger" @click="showModal = true">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="button" class="btn btn-danger" @click="showModal = true">
                             <i class="fas fa-trash" aria-hidden="true"></i>
                         </button>
-                        
-                        {{--  {!! Form::open(['method' => 'POST', 'route' => ['admin.user.destroy', $user->id] ]) !!}
-                            @csrf
-                            @method('DELETE')
-        
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash" aria-hidden="true"></i>
-                            </button>
-                        {!! Form::close() !!}  --}}
-
                     </td>
+                    <modal-window v-if="showModal" @close="showModal = false" />
+
+                    {!! Form::close() !!}
                     </tr>
                 @endforeach
             </tbody>

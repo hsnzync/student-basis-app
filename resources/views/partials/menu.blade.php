@@ -12,7 +12,7 @@
                     <a href="{{ route('admin.school.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/school') ? 'is-active' : '' }}">Scholen</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.programme.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/programme') ? 'is-active' : '' }}">Opleidingen</a>
+                    <a href="{{ route('admin.grade.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/grade') ? 'is-active' : '' }}">Onderwijsniveau</a>
                 </li>
             @endif
             <li>

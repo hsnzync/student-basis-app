@@ -7,7 +7,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\School;
-use App\Models\Programme;
 use App\Models\Achievement;
 use Image;
 
@@ -15,10 +14,10 @@ class AccountController extends Controller
 {
     public function index()
     {
-        $users = User::with('school')->where('id', Auth::user()->id)->get();
+        $user = User::with('school')->where('id', Auth::user()->id)->firstOrfail();
         // $achievements = Achievement::
 
-        return view('platform.account.index', compact('users'));
+        return view('platform.account.index', compact('user'));
     }
 
     public function edit(User $user)

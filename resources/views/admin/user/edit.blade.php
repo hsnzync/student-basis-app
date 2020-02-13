@@ -47,11 +47,6 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('student_number', 'Studentnummer:') !!}
-                    {!! Form::number('student_number', $user->student_number, ['class' => 'form-control' ]) !!}
-                </div>
-    
-                <div class="form-group">
                     {!! Form::label('email', 'Emailadres:') !!}
                     {!! Form::email('email', $user->email, ['class' => 'form-control' ]) !!}
                 </div>
@@ -83,7 +78,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::select('programme_id', $programmes, $user->programme_id, ['class' => 'form-control', 'placeholder'=>'Selecteer opleiding']) !!}
+                    {!! Form::select('grade_id', $grades, $user->grade_id, ['class' => 'form-control', 'placeholder'=>'Selecteer onderwijsniveau']) !!}
                 </div>
 
                 <div class="form-group">

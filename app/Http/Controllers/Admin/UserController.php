@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\School;
 use App\Models\Role;
-use App\Models\Programme;
+use App\Models\Grade;
 use Hash;
 
 class UserController extends Controller
@@ -28,8 +28,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $schools = School::pluck('title', 'id');
-        $programmes = Programme::pluck('title', 'id');
-        return view('admin.user.edit', compact('user', 'schools', 'programmes'));
+        $grades = Grade::pluck('title', 'id');
+        return view('admin.user.edit', compact('user', 'schools', 'grades'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
@@ -48,12 +48,12 @@ class UserController extends Controller
     {
         $user = new User();
         $schools = School::pluck('title', 'id');
-        $programmes = Programme::pluck('title', 'id');
-        return view('admin.user.edit', compact('user', 'schools', 'programmes'));
+        $grades = Grade::pluck('title', 'id');
+        return view('admin.user.edit', compact('user', 'schools', 'grades'));
     }
 
     public function store(CreateUserRequest $request) : RedirectResponse
-    {        
+    {
         $student_role_id = Role::whereSlug('student')->first()->id;
 
         $user = User::create($request->all());

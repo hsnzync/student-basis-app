@@ -11,18 +11,16 @@
 
     <!-- Scripts -->
     <script src={{ asset('js/jquery-3.4.1.min.js') }}></script>
-    <script src={{ asset('js/app.js') }} defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }} integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }} integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> --}}
+    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> --}}
 </head>
 <body>
-                    
+
     <div id="app" class="base">
 
         @auth
@@ -33,7 +31,7 @@
                     @yield('content')
                 </div>
             @else
-            @include('partials.navigation') 
+            @include('partials.navigation')
                 <div class="main">
                     @yield('content')
                 </div>
@@ -48,11 +46,11 @@
             @if( request()->route()->getName() == 'landing.index' )
                 @include('partials.footer')
             @endif
-        @endauth   
+        @endauth
+        <modal-window :showing="isActiveModal" @close="isActiveModal = false"/>
+
     </div>
 
-    <script src="{{ asset('js/modal-window.js') }}"></script>
-    
     <script>
         $(function(){
             @section('js')
@@ -60,4 +58,5 @@
         })
     </script>
 </body>
+    <script src={{ asset('js/app.js') }} defer></script>
 </html>

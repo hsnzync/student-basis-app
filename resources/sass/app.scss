@@ -1,61 +1,60 @@
-
 // Fonts
 //@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
-@import 'fonts';
+@import "variables";
+@import "fonts";
 
-@import 'navigation';
-@import 'footer';
-@import 'profile';
-@import 'header';
-@import 'card';
+@import "navigation";
+@import "footer";
+@import "profile";
+@import "header";
+@import "card";
 
-@import 'admin';
-@import 'auth';
-@import 'sidebar';
+@import "admin";
+@import "auth";
+@import "sidebar";
 
-@import 'utilities/helpers';
-@import 'utilities/search';
-@import 'utilities/filter';
+@import "utilities/helpers";
+@import "utilities/search";
+@import "utilities/filter";
+@import "utilities/modal";
 
 // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 .base {
-  // background-color: #fbfbfb;
+    // background-color: #fbfbfb;
 }
 
 .main-landing {
-  margin-top: -127px;
+    margin-top: -130px;
 }
 
 .main {
-  font-family: $font-regular;
-  background-color: #fff;
+    font-family: $font-regular;
 
-  a {
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  .main-container {
-    margin: 80px auto 150px auto;
-    max-width: 1250px;
-
-    .badge {
-      padding: 10px;
-      font-family: $font-medium;
+    a {
+        &:hover {
+            text-decoration: none;
+        }
     }
 
-    .c-header-title {
-      margin-bottom: 30px;
-    }
+    .main-container {
+        margin: 80px auto 150px auto;
+        max-width: 1250px;
 
-    .form-group {
-      margin: 20px auto;
+        .badge {
+            padding: 10px;
+            font-family: $font-medium;
+        }
+
+        .c-header-title {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin: 20px auto;
+        }
     }
-  }
 }

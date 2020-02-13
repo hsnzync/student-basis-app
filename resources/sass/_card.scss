@@ -15,9 +15,8 @@
     }
 
     .main-section-title {
-        
         margin-bottom: 30px;
-        
+
         h1 {
             font-size: 40px;
             font-family: $font-bold;
@@ -31,7 +30,7 @@
             padding: 15px;
 
             .locked:after {
-                content: 'Niet vrijgespeeld';
+                content: "Niet vrijgespeeld";
                 line-height: 280px;
                 color: #fff;
                 font-family: $font-medium;
@@ -49,14 +48,13 @@
         }
 
         .main-features-section {
-            background-color: #EBEBEB;
+            background-color: #ebebeb;
             border: 1px solid #c5c5c5;
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
 
             .main-features-image-section {
-
                 margin: 20px 0;
 
                 img {
@@ -81,9 +79,13 @@
             border-radius: 10px;
             padding: 0;
             box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
+            transition: 0.5s;
+
+            &:hover {
+                transform: translateY(-10px);
+            }
 
             .main-block-image-section {
-
                 margin: 25px;
 
                 img {
@@ -94,7 +96,6 @@
             }
 
             .main-block-text {
-
                 text-align: left;
                 margin: 25px;
 
@@ -120,9 +121,9 @@
                 margin-bottom: 20px;
                 padding: 0;
                 margin: 0 auto 30px;
-                
+
                 .progress-bar {
-                    background-color: #0EDB94;
+                    background-color: #0edb94;
                 }
             }
         }
@@ -131,11 +132,11 @@
     .main-features-section-btn {
         position: relative;
         top: 30px;
-        
+
         .features-btn {
             color: #fff;
-            padding: 15px 40px;;
-            background-color: #3B3A47;
+            padding: 15px 40px;
+            background-color: #3b3a47;
             border-radius: 35px;
             font-size: 15px;
             font-family: $font-medium;

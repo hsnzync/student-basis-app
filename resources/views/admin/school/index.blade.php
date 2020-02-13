@@ -25,24 +25,29 @@
         </thead>
 
         <tbody>
-            @foreach($schools as $school)
-                <tr>
-                    <th scope="row">{{ $school->id }}</th>
-                    <td>{{ $school->title }}</td>
-                    <td>{!! $school->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
-                    <td><a href="{{ route('admin.school.edit', $school->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
-                    <td>
-                        {!! Form::open(['method' => 'POST', 'route' => ['admin.school.destroy', $school->id] ]) !!}
+            @if(count($schools) > 0 )
+                @foreach($schools as $key => $school)
+                {!! Form::open(['method' => 'POST', 'route' => ['admin.school.destroy', $school->id] ]) !!}
+                    <tr>
+                        <th scope="row">{{ $school->id }}</th>
+                        <td>{{ $school->title }}</td>
+                        <td>{!! $school->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
+                        <td><a href="{{ route('admin.school.edit', $school->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                        <td>
                             @csrf
                             @method('DELETE')
-        
-                            <button type="submit" class="btn btn-danger">
+
+                            {{-- <button type="button" class="btn btn-danger" @click.prevent="handleModal({{ json_encode($key) }})"> --}}
+                            <button type="button" class="btn btn-danger" @click="isActiveModal = true">
                                 <i class="fas fa-trash" aria-hidden="true"></i>
                             </button>
-                        {!! Form::close() !!}                
-                    </td>
-                </tr>
-            @endforeach
+                        </td>
+                    </tr>
+                    {!! Form::close() !!}
+                @endforeach
+            @else
+                <p>Geen resultaten gevonden</p>
+            @endif
         </tbody>
 
     </table>

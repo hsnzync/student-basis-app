@@ -16,27 +16,26 @@ class CreateUserTable extends Migration
         Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->nullable()->unsigned();
-            $table->integer('programme_id')->nullable()->unsigned();
+            $table->integer('grade_id')->nullable()->unsigned();
             $table->boolean('is_active')->nullable()->default(true);
 
             $table->string('first_name', 128)->nullable();
             $table->string('last_name', 128)->nullable();
-            $table->string('student_number', 128)->unique()->nullable();
             $table->string('email', 128)->unique()->nullable();
             $table->string('password')->nullable();
 
             $table->string('avatar', 128)->default('default.png');
             $table->integer('level')->nullable()->default(1);
             $table->integer('experience_points')->nullable();
-            
+
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            
+
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('school_id')->references('id')->on('school');
-            $table->foreign('programme_id')->references('id')->on('programme');
+            $table->foreign('grade_id')->references('id')->on('grade');
 
         });
     }

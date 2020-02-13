@@ -17,11 +17,6 @@ class School extends Model
         'location',
     ];
 
-    public function programmes()
-    {
-        return $this->hasMany(Programme::class);
-    }
-
     public function scopeActive($query)
     {
         return $query->where('is_active', true);

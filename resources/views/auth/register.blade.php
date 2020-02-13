@@ -36,9 +36,9 @@
             </div>
 
             <div class="row">
-                <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
                     <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email adres">
+                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Emailadres">
 
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
@@ -46,21 +46,10 @@
                         </span>
                     @endif
                 </div>
-
-                <div class="form-group col-lg-2">
-                    <label for="student_number">Studentnummer</label>
-                    <input id="student_number" type="text" class="form-control{{ $errors->has('student_number') ? ' is-invalid' : '' }}" name="student_number" required placeholder="Studentnummer">
-
-                    @if ($errors->has('student_number'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('student_number') }}</strong>
-                        </span>
-                    @endif
-                </div>
             </div>
 
             <div class="row">
-                <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
                     <label for="password">Wachtwoord</label>
                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Wachtwoord">
 
@@ -80,12 +69,12 @@
             <div class="row">
                 <div class="form-group col-lg-4">
                     <label for="school">School</label>
-                    {!! Form::select('school_id', $schools, null, ['class' => 'form-control js-schools $errors->has("school_id") ? " is-invalid" : "" ', 'placeholder'=>'Selecteer school']) !!}
+                    {!! Form::select('school_id', $schools, null, ['class' => 'form-control', 'placeholder'=>'Kies je school']) !!}
                 </div>
 
-                <div class="form-group col-lg-4 js-programmes-form hide">
-                    <label for="programme">Opleiding</label>
-                    <select class="form-control js-programmes-overview" name="programme_id"></select>
+                <div class="form-group col-lg-4">
+                    <label for="grade">Onderwijsniveau</label>
+                    {!! Form::select('grade_id', $grades, null, ['class' => 'form-control', 'placeholder'=>'Kies je onderwijsniveau']) !!}
                 </div>
             </div>
 
@@ -105,7 +94,7 @@
 
 @section('js')
     @parent
-    
+
         var registration_func = new registration();
         registration_func.init();
 

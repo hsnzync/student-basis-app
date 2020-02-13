@@ -13,15 +13,15 @@ class SchoolTableSeeder extends Seeder
     {
         DB::table('school')->insert([
             [
-                'title'     => 'Hogeschool Rotterdam',
-                'slug'      => 'hogeschool-rotterdam',
+                'title'     => 'Wolfert College',
+                'slug'      => 'wolfert-college',
                 'location'  => 'Rotterdam',
                 'is_active' => true
             ],
             [
-                'title'     => 'Hogeschool Inholland',
-                'slug'      => 'hogeschool-inholland',
-                'location'  => 'Rotterdam',
+                'title'     => 'Lentiz Geuzencollege',
+                'slug'      => 'lentiz-geuzencollege',
+                'location'  => 'Maassluis',
                 'is_active' => true
             ],
         ]);

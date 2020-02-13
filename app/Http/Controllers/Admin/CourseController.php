@@ -24,7 +24,7 @@ class CourseController extends Controller
         return view('admin.course.edit', compact('course', 'subject_id'));
     }
 
-    public function update(CourseRequest $request, Course $course): RedirectResponse
+    public function update(CourseRequest $request, $subject_id, Course $course): RedirectResponse
     {
         if($request->hasFile('image_url')) {
             $image = $request->file('image_url');
@@ -36,13 +36,13 @@ class CourseController extends Controller
         $course->title          = $request->title;
         $course->description    = $request->description;
         $course->slug           = $request->slug;
-        $course->subject_id     = $request->subject_id;
+        $course->subject_id     = $subject_id;
         $course->is_active      = $request->is_active;
         $course->is_unlocked    = $request->is_unlocked;
 
         $course->save();
 
-        return redirect()->route('admin.course.edit', $course->id)->with('status', '"' . $course->title . '" is bijgewerkt!');
+        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is bijgewerkt!');
     }
 
     public function show($subject_id)
@@ -67,7 +67,7 @@ class CourseController extends Controller
         $course->is_active      = $request->is_active;
         $course->is_unlocked    = $request->is_unlocked;
         $course->subject_id     = $subject_id;
-        
+
         if($request->hasFile('image_url')) {
 
             $image = $request->file('image_url');
@@ -75,9 +75,9 @@ class CourseController extends Controller
             Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $course->image_url = $filename;
         }
-        
+
         $course->save();
-        
+
         return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is toegevoegd!');
     }
 

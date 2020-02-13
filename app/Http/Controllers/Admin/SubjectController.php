@@ -11,20 +11,20 @@ use App\Http\Requests\Subject\UpdateSubjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\School;
-use App\Models\Programme;
+use App\Models\Grade;
 
 class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::with('programme')->orderBy('id', 'asc')->get();
+        $subjects = Subject::with('grade')->orderBy('id', 'asc')->get();
         return view('admin.subject.index', compact('subjects'));
     }
 
     public function edit(Subject $subject)
     {
-        $programmes = Programme::pluck('title', 'id');
-        return view('admin.subject.edit', compact('subject', 'programmes'));
+        $grades = Grade::pluck('title', 'id');
+        return view('admin.subject.edit', compact('subject', 'grades'));
     }
 
     public function update(UpdateSubjectRequest $request, Subject $subject): RedirectResponse
@@ -36,23 +36,23 @@ class SubjectController extends Controller
             Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $subject->image_url = $filename;
         }
-        
+
         $subject->title         = $request->title;
         $subject->description   = $request->description;
         $subject->slug          = $request->slug;
-        $subject->programme_id  = $request->programme_id;
+        $subject->grade_id      = $request->grade_id;
         $subject->is_active     = $request->is_active;
 
         $subject->save();
-        
+
         return redirect()->route('admin.subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is bijgewerkt!');
     }
 
     public function create()
     {
         $subject = new Subject();
-        $programmes = Programme::pluck('title', 'id');
-        return view('admin.subject.edit', compact('subject', 'programmes'));
+        $grades = Grade::pluck('title', 'id');
+        return view('admin.subject.edit', compact('subject', 'grades'));
     }
 
     public function store(CreateSubjectRequest $request) : RedirectResponse
@@ -61,7 +61,7 @@ class SubjectController extends Controller
         $subject->title         = $request->title;
         $subject->description   = $request->description;
         $subject->slug          = $request->slug;
-        $subject->programme_id  = $request->programme_id;
+        $subject->grade_id  = $request->grade_id;
         $subject->is_active     = $request->is_active;
 
         if($request->hasFile('image_url')) {
@@ -71,9 +71,9 @@ class SubjectController extends Controller
             Image::make($image)->save(public_path('/uploads/images/'. $filename));
             $subject->image_url = $filename;
         }
-        
+
         $subject->save();
-        
+
         return redirect()->route('admin.subject.edit', $subject->id)->with('status', '"' . $subject->title . '" is toegevoegd!');
     }
 

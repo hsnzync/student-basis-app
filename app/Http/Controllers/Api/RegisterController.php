@@ -4,24 +4,24 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Programme;
+use App\Models\Grade;
 
 class RegisterController extends Controller
 {
     /**
-     * Show programmes
+     * Show grades
      *
      * @return view
      */
 
-     public function getProgrammes(Request $request)
+     public function getGrades(Request $request)
      {
-        $programmes = Programme::where('school_id', $request->school)
+        $grades = Grade::where('school_id', $request->school)
             ->active()
             ->get();
-            
+
         return response()->json([
-            'programmes' => $programmes
+            'grades' => $grades
         ]);
      }
 }

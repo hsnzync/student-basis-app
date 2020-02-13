@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable, SoftDeletes;
 
     public $table = 'user';
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -30,13 +30,13 @@ class User extends Authenticatable
         'level',
         'experience_points',
         'is_active',
-        
-        'programme_id',
+
+        'grade_id',
         'school_id',
     ];
 
     protected $hidden = [
-        'password', 
+        'password',
         'remember_token',
     ];
 
