@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\School;
 use App\Models\Role;
-use App\Models\Grade;
 use Hash;
 
 class UserController extends Controller
@@ -19,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::orderBy('id', 'asc')
             ->whereHas('roles', function($query) {
-                $query->where('slug', '!=', 'superadmin');
+                $query->where('slug', '!=', 'student');
             })
             ->get();
         return view('admin.user.index', compact('users'));
@@ -28,17 +27,17 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $schools = School::pluck('title', 'id');
-        $grades = Grade::pluck('title', 'id');
-        return view('admin.user.edit', compact('user', 'schools', 'grades'));
+        return view('admin.user.edit', compact('user', 'schools'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
-        $student_role_id = Role::whereSlug('student')->first()->id;
+        $superadmin_role_id = Role::whereSlug('superadmin')->first()->id;
+        $teacher_role_id = Role::whereSlug('teacher')->first()->id;
 
         $user->update($request->all());
         $user->password = Hash::make($request->password);
-        $user->roles()->sync( $student_role_id );
+        $user->roles()->sync( $request->is_admin ? $superadmin_role_id : $teacher_role_id );
         $user->save();
 
         return redirect()->route('admin.user.edit', $user->id)->with('status','"' . $user->fullname . '"' . ' is bijgewerkt!');
@@ -48,17 +47,17 @@ class UserController extends Controller
     {
         $user = new User();
         $schools = School::pluck('title', 'id');
-        $grades = Grade::pluck('title', 'id');
-        return view('admin.user.edit', compact('user', 'schools', 'grades'));
+        return view('admin.user.edit', compact('user', 'schools'));
     }
 
     public function store(CreateUserRequest $request) : RedirectResponse
     {
-        $student_role_id = Role::whereSlug('student')->first()->id;
+        $superadmin_role_id = Role::whereSlug('superadmin')->first()->id;
+        $teacher_role_id = Role::whereSlug('teacher')->first()->id;
 
         $user = User::create($request->all());
         $user->password = Hash::make($request->password);
-        $user->roles()->attach( $student_role_id );
+        $user->roles()->attach( $request->is_admin ? $superadmin_role_id : $teacher_role_id );
         $user->save();
 
         return redirect()->route('admin.user.edit', $user->id)->with('status','"' . $user->fullname . '"' . ' is toegevoegd!');

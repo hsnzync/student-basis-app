@@ -19,7 +19,8 @@
 
         h1 {
             font-size: 40px;
-            font-family: $font-bold;
+            font-family: $font-regular;
+            font-weight: 900;
         }
     }
 
@@ -33,7 +34,7 @@
                 content: "Niet vrijgespeeld";
                 line-height: 280px;
                 color: #fff;
-                font-family: $font-medium;
+                font-family: $font-regular;
                 font-size: 20px;
                 position: absolute;
                 top: 0;
@@ -64,7 +65,8 @@
 
             h4 {
                 font-size: 25px;
-                font-family: $font-bold;
+                font-family: $font-regular;
+                font-weight: 900;
             }
 
             p {
@@ -101,7 +103,8 @@
 
                 h4 {
                     font-size: 20px;
-                    font-family: $font-bold;
+                    font-family: $font-regular;
+                    font-weight: 900;
                     color: #000;
                 }
 
@@ -139,7 +142,7 @@
             background-color: #3b3a47;
             border-radius: 35px;
             font-size: 15px;
-            font-family: $font-medium;
+            font-family: $font-regular;
             margin: 0 8px;
         }
     }

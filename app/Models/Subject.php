@@ -20,13 +20,7 @@ class Subject extends Model
         'slug',
         'description',
         'level',
-        'grade_id'
     ];
-
-    public function grade()
-    {
-        return $this->belongsTo('App\Models\Grade', 'grade_id', 'id');
-    }
 
     public function courses()
     {

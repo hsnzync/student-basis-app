@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
-use App\Models\School;
+use App\Models\User;
 use App\Models\Subject;
-use App\Models\Newsletter;
 use App\Http\Requests\NewsletterRequest;
 
 class HomeController extends Controller
@@ -20,15 +19,30 @@ class HomeController extends Controller
     public function index()
     {
         $subjects = Subject::orderBy('id', 'asc')->active()->take(3)->get();
-
         return view('index', compact('subjects'));
     }
 
-    public function create(NewsletterRequest $request) : RedirectResponse
+    public function login(Request $request)
     {
-        $newsletter = new Newsletter();
-        $newsletter->create(['email' => $request->email]);
+        $userdata = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-        return back();
+        if( auth()->attempt($userdata) ) {
+
+            $roles = auth()->user()->roles;
+
+            foreach($roles as $role) {
+                if($role->slug == 'superadmin') {
+                    return redirect()->route('admin.index');
+                } else {
+                    return redirect()->route('platform.browse.index');
+                }
+            }
+
+        } else {
+            return redirect()->route('landing.index')->with('status', 'Account bestaat niet in ons systeem!');
+        }
     }
 }

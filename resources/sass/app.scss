@@ -1,14 +1,14 @@
 // Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 // Variables
 @import "variables";
-@import "fonts";
+// @import "fonts";
 
 @import "navigation";
 @import "footer";
 @import "profile";
-@import "header";
+@import "landing";
 @import "card";
 
 @import "admin";
@@ -16,6 +16,7 @@
 @import "sidebar";
 
 @import "utilities/helpers";
+@import "utilities/space";
 @import "utilities/search";
 @import "utilities/filter";
 @import "utilities/modal";
@@ -23,8 +24,8 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
-.base {
-    // background-color: #fbfbfb;
+body {
+    font-family: $font-regular;
 }
 
 .main-landing {
@@ -46,7 +47,7 @@
 
         .badge {
             padding: 10px;
-            font-family: $font-medium;
+            font-family: $font-regular;
         }
 
         .c-header-title {

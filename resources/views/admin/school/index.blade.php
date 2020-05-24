@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('content')
 <div class="main-container">
@@ -13,19 +13,20 @@
         </div>
     @endif
 
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Naam</th>
-            <th scope="col">Status</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            </tr>
-        </thead>
+    @if(count($schools) > 0)
 
-        <tbody>
-            @if(count($schools) > 0 )
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Naam</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
                 @foreach($schools as $key => $school)
                 {!! Form::open(['method' => 'POST', 'route' => ['admin.school.destroy', $school->id] ]) !!}
                     <tr>
@@ -38,18 +39,18 @@
                             @method('DELETE')
 
                             {{-- <button type="button" class="btn btn-danger" @click.prevent="handleModal({{ json_encode($key) }})"> --}}
-                            <button type="button" class="btn btn-danger" @click="isActiveModal = true">
+                            <button type="button" class="btn btn-danger" @click="handleModal({{json_encode($school)}})">
                                 <i class="fas fa-trash" aria-hidden="true"></i>
                             </button>
                         </td>
                     </tr>
                     {!! Form::close() !!}
                 @endforeach
-            @else
-                <p>Geen resultaten gevonden</p>
-            @endif
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
+    @else
+        @include('partials/helpers/status', ['status' => 'Geen scholen gevonden'])
+    @endif
 </div>
 @endsection

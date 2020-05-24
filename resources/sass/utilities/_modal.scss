@@ -1,9 +1,15 @@
 .modal-window {
     position: absolute;
-    margin: auto;
-    text-align: center;
-    top: 150%;
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+
+    .login {
+        padding: 50px;
+    }
+
     &:before {
         content: "";
         position: absolute;
@@ -14,11 +20,16 @@
         bottom: 0;
         right: 0;
     }
-    span {
-        position: absolute;
-        right: 10px;
-        top: 5px;
-        font-weight: 900;
-        cursor: pointer;
+    .modal-window-box {
+        top: 50%;
+        transform: translateY(-50%);
+        position: relative;
+        span {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            font-weight: 900;
+            cursor: pointer;
+        }
     }
 }

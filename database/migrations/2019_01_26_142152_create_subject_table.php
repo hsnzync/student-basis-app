@@ -15,7 +15,6 @@ class CreateSubjectTable extends Migration
     {
         Schema::create('subject', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('grade_id')->nullable()->unsigned();
             $table->boolean('is_active')->nullable()->default(true);
 
             $table->string('title', 128)->nullable();
@@ -29,9 +28,6 @@ class CreateSubjectTable extends Migration
             $table->integer('created_by')->nullable()->unsigned()->index();
             $table->integer('deleted_by')->nullable()->unsigned()->index();
             $table->integer('updated_by')->nullable()->unsigned()->index();
-
-
-            $table->foreign('grade_id')->references('id')->on('grade')->onDelete('cascade');
         });
     }
 

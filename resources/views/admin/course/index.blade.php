@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('content')
 <div class="main-container">
@@ -14,39 +14,43 @@
         </div>
     @endif
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Naam</th>
-                <th scope="col">Vak</th>
-                <th scope="col">Status</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($courses as $course)
+    @if(count($courses) > 0)
+        <table class="table">
+            <thead>
                 <tr>
-                    <th scope="row">{{ $course->id }}</th>
-                    <td>{{ $course->title }}</td>
-                    <td>{{ $course->subject->title }}</td>
-                    <td>{!! $course->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
-                    <td><a href="{{ route('admin.course.edit', [$subject_id, $course->id]) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
-                    <td>
-                        {!! Form::open(['method' => 'POST', 'route' => ['admin.course.destroy', $subject_id, $course->id ]]) !!}
-                            @csrf
-                            @method('DELETE')
-        
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash" aria-hidden="true"></i>
-                            </button>
-                        {!! Form::close() !!}                
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Vak</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach($courses as $course)
+                    <tr>
+                        <th scope="row">{{ $course->id }}</th>
+                        <td>{{ $course->title }}</td>
+                        <td>{{ $course->subject->title }}</td>
+                        <td>{!! $course->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
+                        <td><a href="{{ route('admin.course.edit', [$subject_id, $course->id]) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
+                        <td>
+                            {!! Form::open(['method' => 'POST', 'route' => ['admin.course.destroy', $subject_id, $course->id ]]) !!}
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                </button>
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        @include('partials/helpers/status', ['status' => 'Geen cursussen gevonden'])
+    @endif
 
 </div>
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Grade;
+// use App\Models\Grade;
 
 class RegisterController extends Controller
 {
@@ -16,12 +16,12 @@ class RegisterController extends Controller
 
      public function getGrades(Request $request)
      {
-        $grades = Grade::where('school_id', $request->school)
-            ->active()
-            ->get();
+        // $grades = Grade::where('school_id', $request->school)
+        //     ->active()
+        //     ->get();
 
-        return response()->json([
-            'grades' => $grades
-        ]);
+        // return response()->json([
+        //     'grades' => $grades
+        // ]);
      }
 }

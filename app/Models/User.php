@@ -30,8 +30,7 @@ class User extends Authenticatable
         'level',
         'experience_points',
         'is_active',
-
-        'grade_id',
+        'is_admin',
         'school_id',
     ];
 

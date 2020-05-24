@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('content')
     <div class="main-container">
@@ -27,7 +27,7 @@
             @else
                 {!! Form::model( $school, [ 'route' => [ 'admin.school.update', $school->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
             @endif
-            
+
             <div class="form-group">
                 {!! Form::label('title', 'Naam:') !!}
                 {!! Form::text('title', $school->title, ['class' => 'form-control', 'id' => 'title' ]) !!}

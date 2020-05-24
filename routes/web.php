@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['guest']], function () {
     Route::get('',                                          'HomeController@index')->name('landing.index');
-    Route::post('',                                         'HomeController@create');
+    Route::post('login',                                    'HomeController@login')->name('login');
 });
 
 Route::group(['middleware' => ['auth.user'], 'as' => 'platform.'], function() {

@@ -27,12 +27,8 @@ class UpdateUserRequest extends FormRequest
             'first_name'        => 'required',
             'last_name'         => 'required',
             'email'             => 'required|email',
-            'level'             => 'required|digits_between:1,50',
             'password'          => 'required|min:6',
             'password-confirm'  => 'required|same:password',
-            'experience_points' => 'required|digits_between:0,5000',
-            'school_id'         => 'required',
-            'grade_id'          => 'required',
         ];
     }
 }

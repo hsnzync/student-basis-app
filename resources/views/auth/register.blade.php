@@ -71,15 +71,10 @@
                     <label for="school">School</label>
                     {!! Form::select('school_id', $schools, null, ['class' => 'form-control', 'placeholder'=>'Kies je school']) !!}
                 </div>
-
-                <div class="form-group col-lg-4">
-                    <label for="grade">Onderwijsniveau</label>
-                    {!! Form::select('grade_id', $grades, null, ['class' => 'form-control', 'placeholder'=>'Kies je onderwijsniveau']) !!}
-                </div>
             </div>
 
             <div class="form-group col-lg-12 form-submit-btn">
-                <button type="submit" class="main-btn">
+                <button type="submit" class="main-button">
                     {{ __('Registreren') }}
                 </button>
 

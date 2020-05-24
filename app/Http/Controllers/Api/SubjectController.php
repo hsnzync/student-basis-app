@@ -46,7 +46,6 @@ class SubjectController extends Controller
         $subjects = $subjects
             ->offset( $offset )
             ->limit( $limit )
-            ->where('grade_id', $user->grade_id)
             ->orderBy('id', 'asc')
             ->active()
             ->get();

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('content')
 @include('partials/header-section', ['title' => 'Overzicht', 'subtitle' => 'Welkom, ' . Auth::user()->username])

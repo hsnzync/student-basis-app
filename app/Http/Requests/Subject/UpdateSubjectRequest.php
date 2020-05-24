@@ -27,7 +27,6 @@ class UpdateSubjectRequest extends FormRequest
             'title'         => 'required|min:5|max:50',
             'description'   => 'required|min:5',
             'slug'          => 'required|min:1',
-            'grade_id'      => 'required',
         ];
     }
 }

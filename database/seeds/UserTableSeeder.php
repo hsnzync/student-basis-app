@@ -14,6 +14,8 @@ class UserTableSeeder extends Seeder
     {
         DB::table('user')->insert([
             [
+                'first_name'        => 'Admin',
+                'last_name'         => 'Achternaam',
                 'email'             => 'super@admin.com',
                 'password'          => bcrypt('0000'),
                 'experience_points' => 100

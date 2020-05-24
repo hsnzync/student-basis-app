@@ -1,23 +1,24 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+// window.Vue = require("vue");
+import Vue from "vue";
 
-window.Vue = require("vue");
-// import "./modal-window";
-// import ModalWindow from "./components/ModalWindow";
-Vue.component("modal-window", require("./components/ModalWindow.vue").default);
+// Vue.component(
+//     "login-window",
+//     require("./components/platform/LoginWindow.vue").default
+// );
 
+/** PLATFORM COMPONENTS */
 require("./bootstrap");
-require("./components/cards");
-require("./components/registration");
+require("./components/platform/cards");
+require("./components/platform/registration");
 
-new Vue({
+/** ADMIN COMPONENTS */
+require("./components/admin/modal-window");
+
+let app = new Vue({
     el: "#app",
-    // components: { ModalWindow },
-    data: {
-        isActiveModal: false
-        // selected: []
+    data() {
+        return {
+            hasLogin: false
+        };
     }
-}).$mount("#app");
+}).$mount(app);

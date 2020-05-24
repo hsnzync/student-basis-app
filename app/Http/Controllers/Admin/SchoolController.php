@@ -25,7 +25,7 @@ class SchoolController extends Controller
     public function update(SchoolRequest $request, School $school): RedirectResponse
     {
         $school->update($request->all());
-        return redirect()->route('school.edit', $school->id)->with('status', '"' . $school->title . '" is bijgewerkt!');
+        return redirect()->route('admin.school.edit', $school->id)->with('status', '"' . $school->title . '" is bijgewerkt!');
     }
 
     public function create()
@@ -37,7 +37,7 @@ class SchoolController extends Controller
     public function store(SchoolRequest $request) : RedirectResponse
     {
         $school = School::create($request->all());
-        return redirect()->route('school.edit', $school->id)->with('status', '"' . $school->title . '" is toegevoegd!');
+        return redirect()->route('admin.school.edit', $school->id)->with('status', '"' . $school->title . '" is toegevoegd!');
     }
 
 

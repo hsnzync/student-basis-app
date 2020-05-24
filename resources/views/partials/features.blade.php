@@ -1,7 +1,7 @@
 {{-- Home features --}}
 <div class="main-section">
     <div class="main-section-title">
-        <h1>Blijf gemotiveerd tijdens je studie</h1>
+        <h1>Makkelijke manier om te oefenen voor je vakken</h1>
     </div>
     <div class="col-12 row">
         <div class="main-features-wrapper col-lg-4">
@@ -33,7 +33,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </div>
         </div>
-        
+
     </div>
     {{--  <div class="col-12 main-features-section-btn">
         <a class="features-btn" href="#">Lees meer</a>

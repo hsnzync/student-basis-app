@@ -4,24 +4,25 @@
     <div class="list-group list-group-flush">
         <ul>
             <li>
-                <a href="{{ route('admin.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin') ? 'is-active' : '' }}">Overzicht</a>
+                <a href="{{ route('admin.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin') ? 'is-active' : 'bg-dark' }}">Overzicht</a>
             </li>
             <li class="list-group-head">Onderdelen</li>
             @if(auth()->user()->hasRole('superadmin'))
                 <li>
-                    <a href="{{ route('admin.school.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/school') ? 'is-active' : '' }}">Scholen</a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.grade.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/grade') ? 'is-active' : '' }}">Onderwijsniveau</a>
+                    <a href="{{ route('admin.school.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/school*') ? 'is-active' : 'bg-dark' }}">Scholen</a>
                 </li>
             @endif
             <li>
-                <a href="{{ route('admin.subject.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/subject') ? 'is-active' : '' }}">Vakken</a>
+                <a href="{{ route('admin.subject.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/subject*') ? 'is-active' : 'bg-dark' }}">Vakken</a>
+            </li>
+
+            <li>
+                <a href="{{ route('admin.student.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/student*') ? 'is-active' : 'bg-dark' }}">Leerlingen</a>
             </li>
 
             <li class="list-group-head">Algemeen</li>
             <li>
-                <a href="{{ route('admin.user.index') }}" class="list-group-item list-group-item-action bg-dark {{ request()->is('admin/user') ? 'is-active' : '' }}">Gebruikers</a>
+                <a href="{{ route('admin.user.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/user*') ? 'is-active' : 'bg-dark' }}">Gebruikers</a>
             </li>
 
             <li>

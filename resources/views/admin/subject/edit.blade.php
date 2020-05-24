@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('content')
     <div class="main-container">
@@ -57,10 +57,6 @@
                 {!! Form::label('slug', 'Url:') !!}
                 {!! Form::text('slug', $subject->slug, ['class' => 'form-control' ]) !!}
                 <p class="form-group-helper">Kleine letters, spaties vervangen met een '-'</p>
-            </div>
-
-            <div class="form-group">
-                {!! Form::select('grade_id', $grades, $subject->grade_id, ['class' => 'form-control', 'placeholder'=>'Selecteer opleiding']) !!}
             </div>
 
             <div class="form-group">

@@ -1,10 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-laravel {{ request()->route()->getName() == 'landing.index' || request()->route()->getName() == 'register' || request()->route()->getName() == 'login' ? '' : 'navbar-main' }}">
     <div class="container">
-        @auth
-            <a class="navbar-brand" href="/browse">Studentbase.</a>
-        @else
-            <a class="navbar-brand" href="/">Studentbase.</a>
-        @endauth
+        <a class="navbar-brand" href="{{ auth()->user() ? '/browse' : '/'  }}">Studentbase</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,26 +17,9 @@
                 </li>
                 @endauth
 
-                {{-- @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('landing.catalog') }}">Catalog</a>
-                </li>
-                @endguest --}}
-
                 <!-- Authentication Links -->
-                @guest
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Inloggen</a>
-                        </li>
-                        <li class="nav-item main-btn">
-                            <a class="nav-link" href="{{ route('register') }}">Registeren</a>
-                        </li>
-                    @endif
-                @else
-
+                @auth
                     <li class="nav-item dropdown">
-
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="avatar" class="rounded-circle c-navbar-avatar">
                             <span class="caret"></span>
@@ -61,7 +40,7 @@
                             </form>
                         </div>
                     </li>
-                @endguest
+                @endauth
             </ul>
         </div>
     </div>

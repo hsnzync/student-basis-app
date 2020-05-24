@@ -6,7 +6,6 @@ use Mail;
 
 use App\Models\User;
 use App\Models\School;
-use App\Models\Grade;
 use App\Models\Role;
 use App\Mail\SendRegistrationMail;
 
@@ -49,7 +48,6 @@ class RegisterController extends Controller
             'email'             => ['required', 'string', 'email', 'max:255', 'unique:user'],
             'password'          => ['required', 'string', 'min:4', 'confirmed'],
             'school_id'         => ['required'],
-            'grade_id'          => ['required']
         ]);
     }
 
@@ -61,8 +59,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $schools = School::active()->orderBy('title')->pluck('title', 'id');
-        $grades = Grade::active()->orderBy('title')->pluck('title', 'id');
-        return view('auth.register', compact('schools', 'grades'));
+        return view('auth.register', compact('schools'));
     }
 
     /**
@@ -81,8 +78,6 @@ class RegisterController extends Controller
             'email'             => $data['email'],
             'password'          => Hash::make($data['password']),
             'experience_points' => 0
-            'school_id'         => $data['school_id'],
-            'grade_id'          => $data['grade_id']
         ]);
 
         $user->roles()->attach( $student_role_id );

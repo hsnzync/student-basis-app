@@ -35,9 +35,6 @@ export default {
             required: true,
             type: Boolean
         }
-    },
-    mounted() {
-        console.log("Component mounted.");
     }
     // computed: {
     //     showModal() {

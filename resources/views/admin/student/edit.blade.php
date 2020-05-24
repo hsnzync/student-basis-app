@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="main-container">
-        {{-- @include('partials/header-section', ['title' => !$user->id ? 'Toevoegen' : $user->fullname . ' bewerken', 'subtitle' => false]) --}}
+        {{-- @include('partials/header-section', ['title' => !$student->id ? 'Toevoegen' : $student->fullname . ' bewerken', 'subtitle' => false]) --}}
         // ADMIN HEADER TOEVOEGEN MET ONDERSTE STUK
-        @if( !$user->id )
+        @if( !$student->id )
             <h1>Nieuwe gebruiker toevoegen</h1>
         @else
-            <h1>{{ $user->fullname }} bewerken</h1>
+            <h1>{{ $student->fullname }} bewerken</h1>
         @endif
 
         <div class="button-section col-lg-12">
-            <a href="{{ route('admin.user.index') }}" class="btn btn-primary">Overzicht</a>
+            <a href="{{ route('admin.student.index') }}" class="btn btn-primary">Overzicht</a>
         </div>
 
         @if ($errors->any())
@@ -29,26 +29,26 @@
         @endif
 
         <div class="col-lg-12">
-            @if( !$user->id )
-                {!! Form::model( $user, [ 'route' => 'admin.user.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'row'] ) !!}
+            @if( !$student->id )
+                {!! Form::model( $student, [ 'route' => 'admin.student.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'row'] ) !!}
             @else
-                {!! Form::model( $user, [ 'route' => [ 'admin.user.update', $user->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data', 'class' => 'row'] ) !!}
+                {!! Form::model( $student, [ 'route' => [ 'admin.student.update', $student->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data', 'class' => 'row'] ) !!}
             @endif
 
             <div class="col-lg-9 main-body">
                 <div class="form-group">
                     {!! Form::label('first-name', 'Voornaam:') !!}
-                    {!! Form::text('first_name', $user->first_name, ['class' => 'form-control', 'id' => 'first-name' ]) !!}
+                    {!! Form::text('first_name', $student->first_name, ['class' => 'form-control', 'id' => 'first-name' ]) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('last-name', 'Achternaam:') !!}
-                    {!! Form::text('last_name', $user->last_name, ['class' => 'form-control', 'id' => 'last-name' ]) !!}
+                    {!! Form::text('last_name', $student->last_name, ['class' => 'form-control', 'id' => 'last-name' ]) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('email', 'Emailadres:') !!}
-                    {!! Form::email('email', $user->email, ['class' => 'form-control' ]) !!}
+                    {!! Form::email('email', $student->email, ['class' => 'form-control' ]) !!}
                 </div>
 
                 <div class="form-group">
@@ -60,19 +60,27 @@
                     {!! Form::label('password-confirm', 'Bevestig wachtwoord:') !!}
                     {!! Form::input('password', 'password-confirm', null, ['class' => 'form-control', 'id' => 'password-confirm' ]) !!}
                 </div>
-                @if(auth()->user()->hasRole('superadmin'))
-                    <div class="form-group">
-                        <div class="custom-control custom-switch">
-                            <input type="hidden" name="is_admin" value="0">
-                            <input type="checkbox" id="is_admin" name="is_admin" class="custom-control-input" value="1" {{ $user->is_admin ? 'checked=checked' : '' }}>
-                            <label class="custom-control-label" for="is_admin">Superadmin</label>
-                        </div>
-                    </div>
-                @endif
+            </div>
+
+            <div class="col-lg-3 main-body">
+                <div class="form-group">
+                    {!! Form::label('level', 'Level:') !!}
+                    {!! Form::text('level', $student->level, ['class' => 'form-control' ]) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('experience_points', 'Punten:') !!}
+                    {!! Form::text('experience_points', $student->experience_points, ['class' => 'form-control' ]) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::select('school_id', $schools, $student->school_id, ['class' => 'form-control', 'placeholder'=>'Selecteer school']) !!}
+                </div>
+
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="hidden" name="is_active" value="0">
-                        <input type="checkbox" id="is_active" name="is_active" class="custom-control-input" value="1" {{ $user->is_active ? 'checked=checked' : '' }}>
+                        <input type="checkbox" id="is_active" name="is_active" class="custom-control-input" value="1" {{ $student->is_active ? 'checked=checked' : '' }}>
                         <label class="custom-control-label" for="is_active">Activeer</label>
                     </div>
                 </div>

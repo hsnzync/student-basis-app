@@ -11,20 +11,18 @@ use App\Http\Requests\Subject\UpdateSubjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\School;
-use App\Models\Grade;
 
 class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::with('grade')->orderBy('id', 'asc')->get();
+        $subjects = Subject::orderBy('id', 'asc')->get();
         return view('admin.subject.index', compact('subjects'));
     }
 
     public function edit(Subject $subject)
     {
-        $grades = Grade::pluck('title', 'id');
-        return view('admin.subject.edit', compact('subject', 'grades'));
+        return view('admin.subject.edit', compact('subject'));
     }
 
     public function update(UpdateSubjectRequest $request, Subject $subject): RedirectResponse
@@ -40,7 +38,6 @@ class SubjectController extends Controller
         $subject->title         = $request->title;
         $subject->description   = $request->description;
         $subject->slug          = $request->slug;
-        $subject->grade_id      = $request->grade_id;
         $subject->is_active     = $request->is_active;
 
         $subject->save();
@@ -51,8 +48,7 @@ class SubjectController extends Controller
     public function create()
     {
         $subject = new Subject();
-        $grades = Grade::pluck('title', 'id');
-        return view('admin.subject.edit', compact('subject', 'grades'));
+        return view('admin.subject.edit', compact('subject'));
     }
 
     public function store(CreateSubjectRequest $request) : RedirectResponse
@@ -61,7 +57,6 @@ class SubjectController extends Controller
         $subject->title         = $request->title;
         $subject->description   = $request->description;
         $subject->slug          = $request->slug;
-        $subject->grade_id  = $request->grade_id;
         $subject->is_active     = $request->is_active;
 
         if($request->hasFile('image_url')) {
