@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="landing">
+    {{-- <div class="landing"> --}}
         <div class="col-md-4 landing-section">
             {{-- <div class="top-landing"> --}}
                 <h1>Inloggen</h1>
 
                 @if (session('status'))
-                    <div class="alert alert-danger errors ml0">
+                    <div class="alert alert-danger errors ml-0">
                         {{ session('status') }}
                     </div>
                 @endif
@@ -32,5 +32,5 @@
         <div class="col-md-8 landing-section">
             <img src="{{ asset('img/header-img.jpg') }}">
         </div>
-    </div>
+    {{-- </div> --}}
 @endsection

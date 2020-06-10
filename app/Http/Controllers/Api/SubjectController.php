@@ -44,14 +44,14 @@ class SubjectController extends Controller
         $user = User::find( $user_id );
 
         $subjects = $subjects
-            ->offset( $offset )
+            // ->offset( $offset )
             ->limit( $limit )
             ->orderBy('id', 'asc')
             ->active()
             ->get();
 
         return response()->json([
-            'html'              => view('partials.sections.subjects', compact('subjects'))->render(),
+            'subjects'          => $subjects,
             'load_more_btn'     => ($count_subjects > $offset + $limit ? true : false),
             'loading_count'     => $count_subjects
         ]);

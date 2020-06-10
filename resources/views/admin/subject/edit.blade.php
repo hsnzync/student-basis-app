@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="main-container">
-        @include('partials/header-section', ['title' => !$subject->id ? 'Toevoegen' : $subject->title, 'subtitle' => false])
+        @include('partials/header', ['title' => !$subject->id ? 'Toevoegen' : $subject->title, 'subtitle' => false])
         <div class="button-section">
             <a href="{{ route('admin.subject.index') }}" class="btn btn-primary">Overzicht</a>
         </div>

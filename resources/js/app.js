@@ -1,24 +1,11 @@
-// window.Vue = require("vue");
-import Vue from "vue";
+window.Vue = require('vue')
 
-// Vue.component(
-//     "login-window",
-//     require("./components/platform/LoginWindow.vue").default
-// );
+/** COMPONENTS */
+Vue.component('CardBlocks', require('./components/CardBlocks.vue').default)
+Vue.component('ModalWindow', require('./components/ModalWindow.vue').default)
 
-/** PLATFORM COMPONENTS */
-require("./bootstrap");
-require("./components/platform/cards");
-require("./components/platform/registration");
+require('./bootstrap')
 
-/** ADMIN COMPONENTS */
-require("./components/admin/modal-window");
-
-let app = new Vue({
-    el: "#app",
-    data() {
-        return {
-            hasLogin: false
-        };
-    }
-}).$mount(app);
+new Vue({
+    el: '#app'
+}).$mount('#app')

@@ -37,7 +37,7 @@ class HomeController extends Controller
                 if($role->slug == 'superadmin') {
                     return redirect()->route('admin.index');
                 } else {
-                    return redirect()->route('platform.browse.index');
+                    return redirect()->route('platform.browse.index', ['id' => auth()->user()->id]);
                 }
             }
 

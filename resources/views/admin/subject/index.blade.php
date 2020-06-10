@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="main-container">
-        @include('partials/header-section', ['title' => 'Vakken', 'subtitle' => false])
+        @include('partials/header', ['title' => 'Vakken', 'subtitle' => false])
         <div class="button-section">
             <a href="{{ route('admin.subject.create') }}" class="btn btn-primary">Toevoegen</a>
         </div>

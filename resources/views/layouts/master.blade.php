@@ -6,8 +6,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
-    <!-- Scripts -->
-    <script src={{ asset('js/jquery-3.4.1.min.js') }}></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
@@ -17,28 +15,14 @@
 </head>
 <body>
 
-    <div id="app" class="base">
-
-        @auth
-            @include('partials.navigation')
-            <div class="main">
-                @yield('content')
-            </div>
-        @else
-            @include('partials.navigation')
-            <div class="main-landing">
-                @yield('content')
-            </div>
-        @endauth
+    <div class="base">
+        @include('partials.navigation')
+        <div class="main">
+            @yield('content')
+        </div>
     </div>
 
-    {{-- <script>
-        $(function(){
-            @section('js')
-            @show
-        })
-    </script> --}}
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('js')
 
 </body>

@@ -1,32 +1,31 @@
 <!-- Sidebar -->
-<div class="bg-dark sidebar-nav" id="sidebar-wrapper">
-    <div class="sidebar-heading">Admin overzicht</div>
-    <div class="list-group list-group-flush">
+<div class="nav-main bg-dark col-sm-1 px-4">
+    <div class="nav-title py-3"><i class="fab fa-stripe-s"></i></div>
+    <div class="nav-content">
         <ul>
-            <li>
-                <a href="{{ route('admin.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin') ? 'is-active' : 'bg-dark' }}">Overzicht</a>
+            <li class="py-3">
+                <a href="{{ route('admin.index') }}" class="nav-content-item {{ request()->is('admin') ? 'is-active' : '' }}"><i class="fas fa-compass"></i></a>
             </li>
-            <li class="list-group-head">Onderdelen</li>
             @if(auth()->user()->hasRole('superadmin'))
-                <li>
-                    <a href="{{ route('admin.school.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/school*') ? 'is-active' : 'bg-dark' }}">Scholen</a>
+                <li class="py-3">
+                    <a href="{{ route('admin.school.index') }}" class="nav-content-item {{ request()->is('admin/school*') ? 'is-active' : '' }}"><i class="fas fa-university"></i></a>
                 </li>
             @endif
-            <li>
-                <a href="{{ route('admin.subject.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/subject*') ? 'is-active' : 'bg-dark' }}">Vakken</a>
+            <li class="py-3">
+                <a href="{{ route('admin.subject.index') }}" class="nav-content-item {{ request()->is('admin/subject*') ? 'is-active' : '' }}"><i class="fas fa-shapes"></i></a>
             </li>
 
-            <li>
-                <a href="{{ route('admin.student.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/student*') ? 'is-active' : 'bg-dark' }}">Leerlingen</a>
+            <li class="py-3">
+                <a href="{{ route('admin.student.index') }}" class="nav-content-item {{ request()->is('admin/student*') ? 'is-active' : '' }}"><i class="fas fa-user-friends"></i></a>
             </li>
 
-            <li class="list-group-head">Algemeen</li>
-            <li>
-                <a href="{{ route('admin.user.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/user*') ? 'is-active' : 'bg-dark' }}">Gebruikers</a>
+            <li class="py-3">
+                <a href="{{ route('admin.user.index') }}" class="nav-content-item {{ request()->is('admin/user*') ? 'is-active' : '' }}"><i class="fas fa-user"></i></a>
             </li>
-
-            <li>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action bg-dark alt-btn">Uitloggen</a>
+        </ul>
+        <ul>
+            <li class="py-3">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-content-item"><i class="fas fa-sign-out-alt"></i></a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>

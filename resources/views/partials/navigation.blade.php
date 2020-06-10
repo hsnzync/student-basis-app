@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-laravel {{ request()->route()->getName() == 'landing.index' || request()->route()->getName() == 'register' || request()->route()->getName() == 'login' ? '' : 'navbar-main' }}">
+<nav class="navbar navbar-expand-sm navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ auth()->user() ? '/browse' : '/'  }}">Studentbase</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -12,8 +12,8 @@
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('platform.browse.index') }}">Bladeren</a>
-                    <a class="nav-link" href="#">Community</a>
-                    <a class="nav-link" href="#">Help</a>
+                    {{-- <a class="nav-link" href="#">Community</a> --}}
+                    {{-- <a class="nav-link" href="#">Help</a> --}}
                 </li>
                 @endauth
 

@@ -1,81 +1,77 @@
-.home-container {
-    margin: 0 0 50px 0;
-}
+// .home-container {
+//     margin: 0 0 50px 0;
+// }
 
-.main-section {
-    text-align: center;
+// .main-section {
+//     text-align: center;
 
-    &.main-block {
-        margin: 40px -15px;
-    }
+// .row {
+//     margin: 0;
+//     padding: 0;
+// }
 
-    .row {
-        margin: 0;
-        padding: 0;
-    }
+// .main-section-title {
+//     margin-bottom: 30px;
 
-    .main-section-title {
-        margin-bottom: 30px;
+//     h1 {
+//         font-size: 40px;
+//         font-family: $font-regular;
+//         font-weight: 900;
+//     }
+// }
 
-        h1 {
-            font-size: 40px;
-            font-family: $font-regular;
-            font-weight: 900;
-        }
-    }
+.cards {
+    max-width: 1000px;
+    margin: auto;
 
-    .main-features-wrapper {
+    .card-wrapper {
         padding: 30px;
 
-        &.main-block-wrapper {
-            padding: 15px;
-
-            .locked:after {
-                content: "Niet vrijgespeeld";
-                line-height: 280px;
-                color: #fff;
-                font-family: $font-regular;
-                font-size: 20px;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 100%;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.8);
-                border-radius: 20px;
-            }
-        }
-
-        .main-features-section {
-            background-color: #ebebeb;
-            border: 1px solid #c5c5c5;
+        .locked:after {
+            content: 'Niet vrijgespeeld';
+            line-height: 280px;
+            color: #fff;
+            font-family: $font-regular;
+            font-size: 20px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-
-            .main-features-image-section {
-                margin: 20px 0;
-
-                img {
-                    width: 50%;
-                }
-            }
-
-            h4 {
-                font-size: 25px;
-                font-family: $font-regular;
-                font-weight: 900;
-            }
-
-            p {
-                font-size: 17px;
-                font-family: $font-regular;
-            }
         }
 
-        .main-block-section {
+        // .main-features-section {
+        //     background-color: #ebebeb;
+        //     border: 1px solid #c5c5c5;
+        //     border-radius: 20px;
+        //     padding: 20px;
+        //     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+
+        //     .main-features-image-section {
+        //         margin: 20px 0;
+
+        //         img {
+        //             width: 50%;
+        //         }
+        //     }
+
+        //     h4 {
+        //         font-size: 25px;
+        //         font-family: $font-regular;
+        //         font-weight: 900;
+        //     }
+
+        //     p {
+        //         font-size: 17px;
+        //         font-family: $font-regular;
+        //     }
+        // }
+
+        .card-section {
             background-color: #fff;
             border: 1px solid #ebebeb;
             border-radius: 10px;
@@ -87,7 +83,7 @@
                 transform: translateY(-10px);
             }
 
-            .main-block-image-section {
+            .card-image {
                 margin: 25px;
 
                 img {
@@ -97,7 +93,7 @@
                 }
             }
 
-            .main-block-text {
+            .card-text {
                 text-align: left;
                 margin: 25px;
 
@@ -111,11 +107,6 @@
                 p {
                     font-size: 13px;
                     color: #000;
-                }
-
-                span {
-                    font-size: 13px;
-                    color: #888;
                 }
             }
 
@@ -131,19 +122,20 @@
             }
         }
     }
-
-    .main-features-section-btn {
-        position: relative;
-        top: 30px;
-
-        .features-btn {
-            color: #fff;
-            padding: 15px 40px;
-            background-color: #3b3a47;
-            border-radius: 35px;
-            font-size: 15px;
-            font-family: $font-regular;
-            margin: 0 8px;
-        }
-    }
 }
+
+// .main-features-section-btn {
+//     position: relative;
+//     top: 30px;
+
+//     .features-btn {
+//         color: #fff;
+//         padding: 15px 40px;
+//         background-color: #3b3a47;
+//         border-radius: 35px;
+//         font-size: 15px;
+//         font-family: $font-regular;
+//         margin: 0 8px;
+//     }
+// }
+// }

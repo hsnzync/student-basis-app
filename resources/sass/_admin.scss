@@ -1,64 +1,61 @@
-.main {
-    &.admin {
-        max-width: 1200px;
-        margin: 0 0 0 25%;
-        transition: 0.3s;
+.admin {
+    transition: 0.3s;
 
-        .header-section {
-            width: 300px;
-            position: relative;
-            top: 57px;
+    .header-section {
+        width: 300px;
+        position: relative;
+        top: 57px;
 
-            .header-section-title {
-                text-align: left;
-                margin: 0;
-                max-width: 100%;
-
-                h1 {
-                    font-size: 30px;
-                    font-family: $font-regular;
-                }
-            }
-        }
-
-        .main-container {
-            width: calc(100% - 50px);
+        .header-section-title {
+            text-align: left;
             margin: 0;
-            position: relative;
-            top: 50px;
+            max-width: 100%;
 
-            .admin-overview {
-                margin-top: 100px;
-            }
-
-            .button-section {
-                margin: 20px 0;
-                text-align: right;
-            }
-
-            .table-list-btn {
-                position: relative;
-            }
-
-            .main-body {
-                .form-group-image {
-                    height: 200px;
-                    width: 200px;
-                    object-fit: cover;
-                }
-
-                .form-group-helper {
-                    font-size: 12px;
-                    margin-top: 10px;
-                }
+            h1 {
+                font-size: 30px;
+                font-family: $font-regular;
             }
         }
-        img {
-            &.form-img {
-                width: 200px;
+    }
+
+    .main-container {
+        .card-body {
+            overflow-y: auto;
+            max-height: calc(100vh - 210px);
+            padding: 0;
+        }
+
+        .admin-overview {
+            margin-top: 100px;
+        }
+
+        .button-section {
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .table-list-btn {
+            position: relative;
+        }
+
+        .main-body {
+            .form-group-image {
                 height: 200px;
+                width: 200px;
                 object-fit: cover;
             }
+
+            .form-group-helper {
+                font-size: 12px;
+                margin-top: 10px;
+            }
+        }
+    }
+    img {
+        &.form-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
         }
     }
 }

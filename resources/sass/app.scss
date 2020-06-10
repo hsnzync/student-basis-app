@@ -10,13 +10,14 @@
 @import "profile";
 @import "landing";
 @import "card";
+@import "header";
+@import "searchbar";
 
 @import "admin";
 @import "auth";
 @import "sidebar";
 
 @import "utilities/helpers";
-@import "utilities/space";
 @import "utilities/search";
 @import "utilities/filter";
 @import "utilities/modal";
@@ -26,10 +27,7 @@
 
 body {
     font-family: $font-regular;
-}
-
-.main-landing {
-    margin-top: -130px;
+    background-color: $quaternary;
 }
 
 .main {
@@ -41,21 +39,21 @@ body {
         }
     }
 
-    .main-container {
-        margin: 80px auto 150px auto;
-        max-width: 1250px;
+    // .main-container {
+    //     margin: 80px auto 150px auto;
+    //     max-width: 1250px;
 
-        .badge {
-            padding: 10px;
-            font-family: $font-regular;
-        }
+    //     .badge {
+    //         padding: 10px;
+    //         font-family: $font-regular;
+    //     }
 
-        .c-header-title {
-            margin-bottom: 30px;
-        }
+    //     .c-header-title {
+    //         margin-bottom: 30px;
+    //     }
 
-        .form-group {
-            margin: 20px auto;
-        }
-    }
+    //     .form-group {
+    //         margin: 20px auto;
+    //     }
+    // }
 }

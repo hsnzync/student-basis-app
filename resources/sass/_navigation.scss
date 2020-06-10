@@ -20,7 +20,7 @@
             &::after {
                 content: "⬛";
                 font-size: 9px;
-                color: $blue;
+                color: $primary;
                 position: relative;
                 top: 0.5px;
                 left: 1px;
@@ -50,9 +50,9 @@
                 margin: 0 10px;
 
                 .nav-link {
-                    color: #fff;
+                    color: $tertiary;
                     transition: 0.2s ease-out;
-                    line-height: 30px;
+                    line-height: 35px;
                     display: inline-block;
 
                     .c-navbar-avatar {
@@ -62,7 +62,7 @@
                     }
 
                     &:hover {
-                        color: #3fa9f5;
+                        color: $primary;
                     }
                 }
             }
@@ -78,19 +78,11 @@
         }
     }
 
-    .nav-dropdown {
-        a {
-            color: #000 !important;
-        }
-    }
-
-    &.navbar-main {
-        background-color: #3b3a47;
-
-        .container {
-            padding: 30px 45px;
-        }
-    }
+    // .nav-dropdown {
+    //     a {
+    //         color: #000 !important;
+    //     }
+    // }
 }
 
 .page-nav {

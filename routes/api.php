@@ -12,6 +12,5 @@
 */
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function() {
-    Route::post('load-subjects',        'SubjectController@getSubjects');
-    Route::post('load-programmes',      'RegisterController@getProgrammes');
+    Route::get('load-subjects', 'SubjectController@getSubjects');
 });

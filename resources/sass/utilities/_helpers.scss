@@ -3,7 +3,7 @@
 }
 
 .is-active {
-    background-color: #1d2124 !important;
+    color: $primary !important;
 }
 
 .errors,
@@ -19,14 +19,14 @@
     color: #fff;
     border: none;
     border-radius: 5px;
-    background-color: $blue;
+    background-color: $primary;
     font-family: $font-regular;
     margin: 0;
     padding: 8px 20px;
     font-size: 15px;
     transition: 0.3s;
     &:hover {
-        background-color: $darkblue;
+        background-color: $secondary;
         text-decoration: none;
         color: #fff;
     }

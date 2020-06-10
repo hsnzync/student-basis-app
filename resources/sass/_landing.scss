@@ -1,95 +1,43 @@
-.landing {
-    max-width: 1480px;
-    margin: 100px auto;
-    .landing-section {
-        &:nth-of-type(1) {
-            padding: 0 70px 0 40px;
-            height: 100%;
-            top: 50%;
-            position: relative;
-            transform: translateY(50%);
-
-            h1 {
-                font-size: 30px;
-                font-weight: 700;
-                margin-bottom: 30px;
-            }
-
-            // .top-landing {
-            // .landing-links {
-            //     position: relative;
-            //     top: 15px;
-            //     a {
-            //         padding: 15px 45px;
-            //     }
-            // }
-            // }
-        }
-        &:nth-of-type(2) {
-            padding: 0 0 0 20px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            img {
-                width: 100%;
-                height: inherit;
-                object-fit: cover;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: $break-medium) {
-    .landing {
-        margin: 0;
-        .landing-section {
-            &:nth-of-type(2) {
-                height: 500px;
-                position: relative;
-                padding: 0;
-                margin-top: 230px;
-            }
-        }
-    }
-}
-
-.top-section {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-
-    .top-section-block {
-        border-radius: 10px;
-
-        &.top-section-continue {
-            background-color: #000;
-            margin-left: 3%;
-            max-width: 30%;
-        }
-
-        background-color: #538cd9;
-        padding: 50px;
+.landing-section {
+    &:nth-of-type(1) {
+        padding: 0 70px 0 40px;
+        height: 100%;
+        position: relative;
+        top: 40%;
+        transform: translateY(40%);
 
         h1 {
-            color: #fff;
-        }
-
-        p {
-            color: #fff;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 30px;
         }
     }
-
-    h1 {
-        font-family: $font-regular;
-        font-weight: 900;
-        font-size: 50px;
+    &:nth-of-type(2) {
+        padding: 0 0 0 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        img {
+            width: 100%;
+            height: inherit;
+            object-fit: cover;
+        }
     }
 }
 
 @media screen and (max-width: $break-medium) {
-    .top-section-continue {
-        margin-left: 0 !important;
-        max-width: initial !important;
-        margin-top: 20px;
+    .landing-section {
+        &:nth-of-type(1) {
+            top: 30%;
+            transform: translateY(30%);
+        }
+
+        &:nth-of-type(2) {
+            height: 500px;
+            position: relative;
+            padding: 0;
+            margin-top: 230px;
+        }
     }
 }

@@ -1,16 +1,16 @@
 @foreach($subjects as $subject)
     @if($subject->courses->count())
-        <div class="main-features-wrapper main-block-wrapper col-sm-3" data-section="subjects-results">
+        <div class="card-wrapper col-md-4" data-section="subjects-results">
             <a href="browse/{{$subject->slug}}" class="browse-item">
-                <div class="main-block-section">
-                    <div class="main-block-image-section">
+                <div class="card-section">
+                    <div class="card-image">
                         @if($subject->image_url)
                             <img src="/uploads/images/{{ $subject->image_url }}" alt="{{ $subject->slug }}">
                         @else
                             <img src="/uploads/images/fallback/fallback.jpg" alt="{{ $subject->slug }}">
                         @endif
                     </div>
-                    <div class="main-block-text">
+                    <div class="card-text">
                         <h4>{{ $subject->title }}</h4>
                         <p>9/10</p>
                         {{-- Carbon to parse date --}}
