@@ -1,90 +1,67 @@
-.navbar-laravel {
-    z-index: 10;
-    padding: 0 !important;
-
-    @media screen and (max-width: $break-small) {
-        .container {
-            padding-right: 40px !important;
-            padding-left: 40px !important;
-        }
+.nav-main {
+    min-height: 100vh;
+    z-index: 1;
+    .nav-title {
+        text-align: center;
+        position: absolute;
+        top: 15px;
+        left: 0;
+        right: 0;
+        color: #fff;
+        font-size: 20px;
     }
+    .nav-content {
+        height: 100%;
+        ul {
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
 
-    .container {
-        max-width: 1480px;
-        padding: 40px;
-
-        .navbar-brand {
-            font-size: 25px;
-            font-weight: 600;
-            color: #000;
-            &::after {
-                content: "⬛";
-                font-size: 9px;
-                color: $primary;
-                position: relative;
-                top: 0.5px;
-                left: 1px;
+            &:hover {
+                cursor: pointer;
             }
-        }
+            li {
+                text-align: center;
 
-        .navbar-collapse {
-            max-width: max-content;
-        }
-
-        @media screen and (max-width: $break-small) {
-            .navbar-collapse {
-                max-width: 100%;
-            }
-
-            .nav-link {
-                padding: 5px;
-                display: block !important;
-            }
-        }
-
-        .navbar-nav {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-
-            .nav-item {
-                margin: 0 10px;
-
-                .nav-link {
-                    color: $tertiary;
-                    transition: 0.2s ease-out;
-                    line-height: 35px;
-                    display: inline-block;
-
-                    .c-navbar-avatar {
-                        height: 35px;
-                        width: 35px;
-                        object-fit: cover;
-                    }
-
-                    &:hover {
+                &:hover {
+                    .nav-content-item {
                         color: $primary;
                     }
                 }
-            }
 
-            .dropdown {
-                margin-right: 0;
-            }
-        }
+                .nav-content-item {
+                    color: #fff;
+                    font-size: 20px;
+                    transition: 0.3s;
 
-        .dropdown-item.active,
-        .dropdown-item:active {
-            background: #fff;
+                    .avatar {
+                        height: 30px;
+                        width: 30px;
+                        object-fit: cover;
+                    }
+                }
+                .dropdown-menu {
+                    transform: translate(calc(100vw - 93vw), -15px) !important;
+                }
+            }
+            &:last-of-type {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -30px;
+                top: auto;
+            }
         }
     }
-
-    // .nav-dropdown {
-    //     a {
-    //         color: #000 !important;
-    //     }
-    // }
 }
 
-.page-nav {
-    background-color: #333;
-}
+// @media screen and (max-width: $break-medium) {
+//     .nav-main {
+//         margin-left: -100%;
+//     }
+// }

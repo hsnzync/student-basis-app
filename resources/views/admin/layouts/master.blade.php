@@ -19,7 +19,7 @@
 
     <div id="app" class="base row ml-0 mr-0">
 
-        @include('partials.menu')
+        @include('admin.partials.navigation')
         <div class="admin col-sm-11 p-5">
             @yield('content')
         </div>

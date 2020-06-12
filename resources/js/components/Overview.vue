@@ -1,18 +1,7 @@
 <template>
-    <div v-if="!isLoading" class="col-12 row">
-        <div class="card-wrapper col-md-4" v-for="(subject, index) in subjects" :key="index">
-            <a :href="generateCourseUrl(subject.slug)" class="browse-item">
-                <div class="card-section">
-                    <div class="card-image">
-                        <img src="/uploads/images/fallback/fallback.jpg" alt="test" />
-                    </div>
-                    <div class="card-text">
-                        <h4>{{ subject.title }}</h4>
-                        <p>Aangemaakt op: 01-01-2020</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+    <div v-if="!isLoadingSubjects" class="row m-0">
+        <Subjects :subjects="subjects" />
+        <Courses :courses="courses" />
     </div>
     <div v-else>
         <!-- <img src="'/svg/loader.svg'" alt="loader" /> -->
@@ -22,15 +11,20 @@
 
 <script>
 import axios from 'axios'
+import Subjects from './Subjects'
+import Courses from './Courses'
 
 export default {
-    name: 'CardBlocks',
+    name: 'Overview',
+    components: { Subjects, Courses },
     data() {
         return {
             subjects: [],
+            courses: [],
             limit: 6,
             offset: 6,
-            isLoading: true
+            isLoadingSubjects: true,
+            isLoadingCourses: false
         }
     },
     mounted() {
@@ -38,7 +32,7 @@ export default {
     },
     methods: {
         fetchSubjects() {
-            this.isLoading = true
+            this.isLoadingSubjects = true
             let url = new URL(window.location.href)
             let id_param = url.searchParams.get('id')
 
@@ -53,14 +47,11 @@ export default {
                 )
                 .then(response => {
                     this.subjects = response.data.subjects
-                    this.isLoading = false
+                    this.isLoadingSubjects = false
                 })
                 .catch(e => {
                     console.error(e)
                 })
-        },
-        generateCourseUrl(slug) {
-            return 'browse/' + slug
         }
     }
 }

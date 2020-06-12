@@ -1,0 +1,72 @@
+.subjects-section {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100vh;
+    background-color: $quaternary;
+    height: 100vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .subjects-wrapper {
+        .subjects {
+            // .locked:after {
+            //     content: 'Niet vrijgespeeld';
+            //     line-height: 280px;
+            //     color: #fff;
+            //     font-family: $font-regular;
+            //     font-size: 20px;
+            //     position: absolute;
+            //     top: 0;
+            //     bottom: 0;
+            //     left: 0;
+            //     right: 0;
+            //     height: 100%;
+            //     width: 100%;
+            //     background-color: rgba(0, 0, 0, 0.8);
+            //     border-radius: 20px;
+            // }
+            .subject {
+                background-color: #fff;
+                border-radius: 20px;
+                padding: 0;
+                transition: 0.5s;
+
+                &:hover {
+                    transform: translateX(10px);
+                }
+
+                .subject-image {
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 15px;
+                    }
+                }
+
+                .subject-text {
+                    h4 {
+                        font-weight: 700;
+                        color: $tertiary;
+                    }
+
+                    p {
+                        font-size: 13px;
+                        color: $tertiary;
+                    }
+                }
+
+                .progress {
+                    height: 10px;
+                    margin-bottom: 20px;
+                    padding: 0;
+                    margin: 0 auto 30px;
+
+                    .progress-bar {
+                        background-color: #0edb94;
+                    }
+                }
+            }
+        }
+    }
+}

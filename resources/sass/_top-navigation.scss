@@ -1,0 +1,84 @@
+.navbar-laravel {
+    z-index: 10;
+    padding: 0 !important;
+
+    @media screen and (max-width: $break-small) {
+        .container {
+            padding-right: 40px !important;
+            padding-left: 40px !important;
+        }
+    }
+
+    .container {
+        max-width: 1480px;
+        padding: 40px;
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 600;
+            color: #000;
+            &::after {
+                content: '⬛';
+                font-size: 9px;
+                color: $primary;
+                position: relative;
+                top: 0.5px;
+                left: 1px;
+            }
+        }
+
+        .navbar-collapse {
+            max-width: max-content;
+        }
+
+        @media screen and (max-width: $break-small) {
+            .navbar-collapse {
+                max-width: 100%;
+            }
+
+            .nav-link {
+                padding: 5px;
+                display: block !important;
+            }
+        }
+
+        .navbar-nav {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+
+            .nav-item {
+                margin: 0 10px;
+
+                .nav-link {
+                    color: $tertiary;
+                    transition: 0.2s ease-out;
+                    line-height: 35px;
+                    display: inline-block;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+
+            .dropdown {
+                margin-right: 0;
+            }
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            background: #fff;
+        }
+    }
+
+    // .nav-dropdown {
+    //     a {
+    //         color: #000 !important;
+    //     }
+    // }
+}
+
+.page-nav {
+    background-color: #333;
+}

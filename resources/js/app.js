@@ -1,7 +1,9 @@
 window.Vue = require('vue')
 
 /** COMPONENTS */
-Vue.component('CardBlocks', require('./components/CardBlocks.vue').default)
+Vue.component('Overview', require('./components/Overview.vue').default)
+Vue.component('OverviewWrapper', require('./components/OverviewWrapper.vue').default)
+Vue.component('OverviewSection', require('./components/OverviewSection.vue').default)
 Vue.component('ModalWindow', require('./components/ModalWindow.vue').default)
 
 require('./bootstrap')

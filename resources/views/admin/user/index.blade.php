@@ -32,7 +32,7 @@
                             </td>
                             <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{!! $user->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
+                            <td><span class="badge badge-{{ $user->is_active ? 'success' : 'secondary' }} p-2">{{ $user->is_active ? 'Actief' : 'Inactief' }}</td>
                             <td>
                                 <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
                             </td>

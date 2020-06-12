@@ -32,7 +32,7 @@
                         </td>
                         <td>{{ $student->first_name }} {{ $student->last_name }}</td>
                         <td>{{ $student->email }}</td>
-                        <td>{!! $student->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
+                        <td><span class="badge badge-{{ $student->is_active ? 'success' : 'secondary' }} p-2">{{ $student->is_active ? 'Actief' : 'Inactief' }}</td>
                         <td><a href="{{ route('admin.student.edit', $student->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                         {!! Form::open(['method' => 'POST', 'route' => ['admin.student.destroy', $student->id] ]) !!}
                         <td>

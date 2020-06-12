@@ -1,0 +1,16 @@
+.main-button {
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-color: $primary;
+    font-family: $font-regular;
+    margin: 0;
+    padding: 8px 20px;
+    font-size: 15px;
+    transition: 0.3s;
+    &:hover {
+        background-color: $secondary;
+        text-decoration: none;
+        color: #fff;
+    }
+}

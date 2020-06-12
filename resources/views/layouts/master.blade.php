@@ -15,9 +15,13 @@
 </head>
 <body>
 
-    <div class="base">
-        @include('partials.navigation')
-        <div class="main">
+    <div id="app" class="base row ml-0 mr-0">
+        @guest
+            @include('partials.top-navigation')
+        @else
+            @include('partials.navigation')
+        @endguest
+        <div class="main {{ auth()->guest() ? 'row col-sm-12 m-0' : 'col-sm-11' }} p-0">
             @yield('content')
         </div>
     </div>

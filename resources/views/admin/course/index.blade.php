@@ -32,7 +32,7 @@
                         <th scope="row">{{ $course->id }}</th>
                         <td>{{ $course->title }}</td>
                         <td>{{ $course->subject->title }}</td>
-                        <td>{!! $course->is_active ? '<span class="badge badge-success">Actief</span>' : '<span class="badge badge-secondary">Inactief</span>' !!}</td>
+                        <td><span class="badge badge-{{ $course->is_active ? 'success' : 'secondary' }} p-2">{{ $course->is_active ? 'Actief' : 'Inactief' }}</td>
                         <td><a href="{{ route('admin.course.edit', [$subject_id, $course->id]) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td>
                             {!! Form::open(['method' => 'POST', 'route' => ['admin.course.destroy', $subject_id, $course->id ]]) !!}

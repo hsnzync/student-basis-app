@@ -1,33 +1,33 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 // Variables
-@import "variables";
+@import 'variables';
 // @import "fonts";
 
-@import "navigation";
-@import "footer";
-@import "profile";
-@import "landing";
-@import "card";
-@import "header";
-@import "searchbar";
+@import 'navigation';
+@import 'top-navigation';
+@import 'footer';
+@import 'profile';
+@import 'landing';
+@import 'subjects';
+@import 'header';
+@import 'searchbar';
+@import 'buttons';
 
-@import "admin";
-@import "auth";
-@import "sidebar";
+@import 'admin';
+@import 'auth';
 
-@import "utilities/helpers";
-@import "utilities/search";
-@import "utilities/filter";
-@import "utilities/modal";
+@import 'utilities/helpers';
+@import 'utilities/search';
+@import 'utilities/filter';
+@import 'utilities/modal';
 
 // Bootstrap
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 
 body {
     font-family: $font-regular;
-    background-color: $quaternary;
 }
 
 .main {
@@ -38,22 +38,4 @@ body {
             text-decoration: none;
         }
     }
-
-    // .main-container {
-    //     margin: 80px auto 150px auto;
-    //     max-width: 1250px;
-
-    //     .badge {
-    //         padding: 10px;
-    //         font-family: $font-regular;
-    //     }
-
-    //     .c-header-title {
-    //         margin-bottom: 30px;
-    //     }
-
-    //     .form-group {
-    //         margin: 20px auto;
-    //     }
-    // }
 }
