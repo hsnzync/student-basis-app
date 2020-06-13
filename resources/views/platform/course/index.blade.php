@@ -3,7 +3,7 @@
 @section('content')
     <div class="main-container">
         @foreach($subjects as $subject)
-            @include('partials/header-section', ['title' => $subject->title, 'previous_item' => $subject->courses])
+            @include('partials/header', ['title' => $subject->title, 'previous_item' => $subject->courses])
         @endforeach
         <div class="main-section main-block">
             <div class="col-12 row">

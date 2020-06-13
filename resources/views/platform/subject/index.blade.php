@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('content')
-    <overview />
+    <overview :initial="{{ $subjects->first() }}" />
 @endsection

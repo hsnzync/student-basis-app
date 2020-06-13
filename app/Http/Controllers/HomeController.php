@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
-use App\Models\Subject;
-use App\Http\Requests\NewsletterRequest;
 
 class HomeController extends Controller
 {
@@ -18,18 +16,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::orderBy('id', 'asc')->active()->take(3)->get();
-        return view('index', compact('subjects'));
+        return view('index');
     }
 
     public function login(Request $request)
     {
         $userdata = [
-            'email' => $request->email,
-            'password' => $request->password
+            'email'     => $request->email,
+            'password'  => $request->password,
+            'is_active' => true
         ];
 
-        if( auth()->attempt($userdata) ) {
+        if(auth()->attempt($userdata)) {
 
             $roles = auth()->user()->roles;
 
@@ -42,7 +40,7 @@ class HomeController extends Controller
             }
 
         } else {
-            return redirect()->route('landing.index')->with('status', 'Account bestaat niet in ons systeem!');
+            return redirect()->route('landing.index')->with('status', 'Onjuiste gebruikergegevens ingevoerd.');
         }
     }
 }

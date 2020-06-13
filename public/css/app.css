@@ -243,6 +243,7 @@
   padding: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .subjects-section .subjects-wrapper .subjects .subject:hover {
@@ -250,8 +251,21 @@
           transform: translateX(10px);
 }
 
+.subjects-section .subjects-wrapper .subjects .subject.open {
+  background-color: #3490dc;
+}
+
+.subjects-section .subjects-wrapper .subjects .subject.open .subject-text h4 {
+  color: #fff;
+}
+
+.subjects-section .subjects-wrapper .subjects .subject.open .subject-text p {
+  color: #fff;
+}
+
 .subjects-section .subjects-wrapper .subjects .subject .subject-image img {
   width: 100%;
+  height: 110px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 15px;

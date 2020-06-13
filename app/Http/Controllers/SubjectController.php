@@ -11,7 +11,8 @@ class SubjectController extends Controller
     public function index(Request $request)
     {
         // $user = User::where('id', auth()->user()->id)->active()->firstOrFail();
-        $subjects = Subject::orderBy('created_at', 'asc')->active()->get();
+        $subjects = Subject::orderBy('created_at', 'asc')->orderBy('id')->active()->get();
+
 
         /**
          * TODO:

@@ -13,4 +13,5 @@
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function() {
     Route::get('load-subjects', 'SubjectController@getSubjects');
+    Route::get('load-courses', 'CourseController@getCourses');
 });

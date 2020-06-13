@@ -1,6 +1,6 @@
 <template>
-    <!-- <div class="col-sm-7 courses-section p-5"> -->
     <overview-section :type="type" :size="size">
+        <title-section :title="initialSubject.title" />
         <overview-wrapper :type="type">
             <div class="courses pt-5" v-for="(course, index) in courses" :key="index">
                 <a :href="generateUrl(course.slug)">
@@ -16,16 +16,17 @@
             </div>
         </overview-wrapper>
     </overview-section>
-    <!-- </div> -->
 </template>
 
 <script>
 import OverviewWrapper from './OverviewWrapper'
 import OverviewSection from './OverviewSection'
+import TitleSection from './TitleSection'
 
 export default {
     name: 'Courses',
     components: { OverviewWrapper, OverviewSection },
+    inject: ['initialSubject'],
     props: {
         courses: {
             type: Array,

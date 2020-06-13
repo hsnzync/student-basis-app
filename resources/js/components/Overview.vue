@@ -1,6 +1,6 @@
 <template>
     <div v-if="!isLoadingSubjects" class="row m-0">
-        <Subjects :subjects="subjects" />
+        <Subjects :subjects="subjects" @showCourse="fetchCourses" />
         <Courses :courses="courses" />
     </div>
     <div v-else>
@@ -17,6 +17,12 @@ import Courses from './Courses'
 export default {
     name: 'Overview',
     components: { Subjects, Courses },
+    props: {
+        initial: {
+            type: Number,
+            required: false
+        }
+    },
     data() {
         return {
             subjects: [],
@@ -25,6 +31,11 @@ export default {
             offset: 6,
             isLoadingSubjects: true,
             isLoadingCourses: false
+        }
+    },
+    provide() {
+        return {
+            initialSubject: this.initial
         }
     },
     mounted() {
@@ -48,6 +59,18 @@ export default {
                 .then(response => {
                     this.subjects = response.data.subjects
                     this.isLoadingSubjects = false
+                })
+                .catch(e => {
+                    console.error(e)
+                })
+        },
+        fetchCourses(value) {
+            console.info('PARENT: ', value)
+
+            axios
+                .get('api/load-courses?subject=' + value)
+                .then(response => {
+                    this.courses = response.data.courses
                 })
                 .catch(e => {
                     console.error(e)
