@@ -24,8 +24,11 @@
     "dependencies": {
         "bootstrap": "^4.3.1",
         "bootstrap-scss": "^4.3.1",
+        "es6-promise": "^4.2.8",
         "foundation-sites": "^6.5.3",
         "jquery": "^3.4.1",
-        "popper.js": "^1.15.0"
+        "popper.js": "^1.15.0",
+        "v-lazy-image": "^1.4.0",
+        "vuex": "^3.4.0"
     }
 }

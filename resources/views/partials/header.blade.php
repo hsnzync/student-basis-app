@@ -3,7 +3,4 @@
     @if( $subtitle )
         <p>{{ $subtitle }}</p>
     @endif
-    {{-- @if( $has_filter )
-        Filter here
-    @endif --}}
 </div>

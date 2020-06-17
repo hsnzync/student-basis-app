@@ -39,7 +39,7 @@ class StudentController extends Controller
         $student->roles()->sync( $student_role_id );
         $student->save();
 
-        return redirect()->route('admin.student.edit', $student->id)->with('status','"' . $student->fullname . '"' . ' is bijgewerkt!');
+        return redirect()->route('admin.student.edit', $student->id)->with('success','"' . $student->fullname . '"' . ' is bijgewerkt!');
     }
 
     public function create()
@@ -58,7 +58,7 @@ class StudentController extends Controller
         $student->roles()->attach( $student_role_id );
         $student->save();
 
-        return redirect()->route('admin.student.edit', $student->id)->with('status','"' . $student->fullname . '"' . ' is toegevoegd!');
+        return redirect()->route('admin.student.edit', $student->id)->with('success','"' . $student->fullname . '"' . ' is toegevoegd!');
     }
 
     public function destroy($id) : RedirectResponse
@@ -66,6 +66,6 @@ class StudentController extends Controller
         $student = User::find($id);
         $student->delete();
 
-        return redirect()->route('admin.student.index')->with('status','"' . $student->fullname . '"' . ' is verwijderd!');
+        return redirect()->route('admin.student.index')->with('error','"' . $student->fullname . '"' . ' is verwijderd!');
     }
 }

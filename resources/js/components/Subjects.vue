@@ -1,57 +1,91 @@
 <template>
     <overview-section :type="type" :size="size">
-        <!-- <div class="col-sm-4 subjects-section p-5"> -->
-        <title-section :title="title" />
-        <div class="subject-search">
-            <div class="form-group mb-0">
-                <input type="text" name="search" class="form-control" placeholder="Zoeken.." />
+        <header-section :title="title" />
+        <div class="item-search">
+            <div class="form-group mb-0 mt-4">
+                <i class="fas fa-search"></i>
+                <input type="text" v-model="search" class="form-control" placeholder="Zoeken.." />
             </div>
         </div>
-        <overview-wrapper :type="type">
+        <overview-wrapper v-if="!isLoading">
             <div
-                class="subjects pt-5"
-                v-for="(subject, index) in subjects"
+                class="items pt-5"
+                v-for="(subject, index) in filteredSubjects"
                 :key="index"
-                @click="handleClick(subject.id)"
+                @click="handleClick(subject)"
             >
-                <div class="subject row m-0 p-3" :class="{ open: selected === subject.id }">
-                    <div class="subject-image col-4 p-0">
-                        <img :src="generateThumbnail(subject.image_url)" :alt="subject.title" />
+                <div class="item row m-0 p-3" :class="{ open: selected === subject.id }">
+                    <div class="item-image col-4 p-0">
+                        <v-lazy-image
+                            :src="generateThumbnail(subject.image_url)"
+                            src-placeholder="https://cdn.dribbble.com/users/358080/screenshots/1986444/loader.gif"
+                        />
                     </div>
-                    <div class="subject-text col-8">
-                        <h4>{{ subject.title }}</h4>
-                        <p>Aangemaakt op: 01-01-2020</p>
+                    <div class="item-text col-8 row ml-0 py-2">
+                        <div>
+                            <h4>{{ subject.title }}</h4>
+                            <RatingSection :score="4" />
+                            <p class="mt-3 mb-0">Frank Stolz</p>
+                        </div>
+                        <LabelSection :status="'Beschikbaar'" />
                     </div>
                 </div>
             </div>
         </overview-wrapper>
-        <!-- <div class="col-12 main-features-section-btn">
-            <a class="features-btn js-load-subjects" href="#">Load more</a>
-        </div> -->
+
+        <EmptySubjectPlaceholder v-else :count="6" />
     </overview-section>
 </template>
 
 <script>
+import VLazyImage from 'v-lazy-image'
+
 import OverviewWrapper from './OverviewWrapper'
 import OverviewSection from './OverviewSection'
-import TitleSection from './TitleSection'
+import HeaderSection from './HeaderSection'
+import RatingSection from './RatingSection'
+import LabelSection from './LabelSection'
+import EmptySubjectPlaceholder from './loaders/EmptySubjectPlaceholder'
 
 export default {
     name: 'Subjects',
-    components: { OverviewWrapper, OverviewSection, TitleSection },
+    components: {
+        VLazyImage,
+        OverviewWrapper,
+        OverviewSection,
+        HeaderSection,
+        RatingSection,
+        LabelSection,
+        EmptySubjectPlaceholder
+    },
     inject: ['initialSubject'],
     props: {
         subjects: {
             type: Array,
             required: false
+        },
+        isLoading: {
+            type: Boolean,
+            required: false
         }
+    },
+    created() {
+        console.info(this.subjects)
     },
     data() {
         return {
             type: 'subjects',
             title: 'Vakken',
             size: '4',
-            selected: this.initialSubject.id
+            selected: this.initialSubject.id,
+            search: ''
+        }
+    },
+    computed: {
+        filteredSubjects() {
+            return this.subjects.filter(subject => {
+                return subject.title.toLowerCase().includes(this.search.toLowerCase())
+            })
         }
     },
     methods: {
@@ -61,9 +95,11 @@ export default {
             }
             return '/uploads/images/fallback/fallback.jpg'
         },
-        handleClick(id) {
-            this.selected = id
-            this.$emit('showCourse', id)
+        handleClick(subject) {
+            this.selected = subject.id
+            this.$emit('showCourse', subject.id)
+
+            this.$store.commit('handleSubject', subject)
         }
     }
 }

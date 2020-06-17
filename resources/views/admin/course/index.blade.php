@@ -1,18 +1,13 @@
 @extends('admin.layouts.master')
 
 @section('content')
-<div class="main-container">
     @include('partials/header', ['title' => 'Cursussen', 'subtitle' => false])
     <div class="button-section">
         <a href="{{ route('admin.subject.index') }}" class="btn btn-primary">Vakken</a>
         <a href="{{ route('admin.course.create', $subject_id) }}" class="btn btn-primary">Toevoegen</a>
     </div>
 
-    @if (session('status'))
-        <div class="alert alert-danger">
-            {{ session('status') }}
-        </div>
-    @endif
+    @include('partials/helpers/notifications')
 
     @if(count($courses) > 0)
         <table class="table">
@@ -39,9 +34,8 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-trash" aria-hidden="true"></i>
-                                </button>
+                                <action-button :item="{{$course}}" />
+
                             {!! Form::close() !!}
                         </td>
                     </tr>
@@ -51,6 +45,4 @@
     @else
         @include('partials/helpers/status', ['status' => 'Geen cursussen gevonden'])
     @endif
-
-</div>
 @endsection

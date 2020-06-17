@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +230,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Carbon' => 'Carbon\Carbon',
+        'Avatar' => Laravolt\Avatar\Facade::class,
     ],
-
 ];

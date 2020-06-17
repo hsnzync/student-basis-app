@@ -1,6 +1,7 @@
 .navbar-laravel {
     z-index: 10;
     padding: 0 !important;
+    height: 150px;
 
     @media screen and (max-width: $break-small) {
         .container {
@@ -11,7 +12,7 @@
 
     .container {
         max-width: 1480px;
-        padding: 40px;
+        padding: 40px 90px;
 
         .navbar-brand {
             font-size: 25px;

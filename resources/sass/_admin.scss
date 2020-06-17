@@ -1,6 +1,4 @@
 .admin {
-    transition: 0.3s;
-
     .header-section {
         width: 300px;
         position: relative;
@@ -18,16 +16,10 @@
         }
     }
 
-    .main-container {
-        .card-body {
-            overflow-y: auto;
-            max-height: calc(100vh - 210px);
-            padding: 0;
-        }
-
-        .admin-overview {
-            margin-top: 100px;
-        }
+    .overview {
+        padding: 100px 100px 100px 175px;
+        height: 100vh;
+        overflow: auto;
 
         .button-section {
             margin: 20px 0;
@@ -49,6 +41,9 @@
                 font-size: 12px;
                 margin-top: 10px;
             }
+        }
+        td:last-of-type {
+            max-width: 50px;
         }
     }
     img {

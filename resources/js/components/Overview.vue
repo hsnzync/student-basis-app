@@ -1,25 +1,23 @@
 <template>
-    <div v-if="!isLoadingSubjects" class="row m-0">
-        <Subjects :subjects="subjects" @showCourse="fetchCourses" />
+    <div class="overview row m-0">
+        <Subjects :subjects="subjects" @showCourse="fetchCourses" :is-loading="isLoading" />
         <Courses :courses="courses" />
     </div>
-    <div v-else>
-        <!-- <img src="'/svg/loader.svg'" alt="loader" /> -->
-        Aan het laden...
-    </div>
+    <!-- <Loader v-else /> -->
 </template>
 
 <script>
 import axios from 'axios'
 import Subjects from './Subjects'
 import Courses from './Courses'
+import Loader from './generic/Loader'
 
 export default {
     name: 'Overview',
-    components: { Subjects, Courses },
+    components: { Subjects, Courses, Loader },
     props: {
         initial: {
-            type: Number,
+            type: Object,
             required: false
         }
     },
@@ -29,8 +27,7 @@ export default {
             courses: [],
             limit: 6,
             offset: 6,
-            isLoadingSubjects: true,
-            isLoadingCourses: false
+            isLoading: false
         }
     },
     provide() {
@@ -40,10 +37,11 @@ export default {
     },
     mounted() {
         this.fetchSubjects()
+        this.fetchCourses() // fire this initially so first subject courses will be fetched
     },
     methods: {
         fetchSubjects() {
-            this.isLoadingSubjects = true
+            this.isLoading = true
             let url = new URL(window.location.href)
             let id_param = url.searchParams.get('id')
 
@@ -58,17 +56,16 @@ export default {
                 )
                 .then(response => {
                     this.subjects = response.data.subjects
-                    this.isLoadingSubjects = false
+                    this.isLoading = false
                 })
                 .catch(e => {
                     console.error(e)
                 })
         },
         fetchCourses(value) {
-            console.info('PARENT: ', value)
-
+            let id = value || 1
             axios
-                .get('api/load-courses?subject=' + value)
+                .get('api/load-courses?subject=' + id)
                 .then(response => {
                     this.courses = response.data.courses
                 })

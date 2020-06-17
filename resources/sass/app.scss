@@ -10,10 +10,11 @@
 @import 'footer';
 @import 'profile';
 @import 'landing';
-@import 'subjects';
+@import 'items';
 @import 'header';
-@import 'searchbar';
 @import 'buttons';
+@import 'labels';
+@import 'loader';
 
 @import 'admin';
 @import 'auth';
@@ -22,16 +23,29 @@
 @import 'utilities/search';
 @import 'utilities/filter';
 @import 'utilities/modal';
+@import 'utilities/alerts';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 body {
     font-family: $font-regular;
+    background-color: #ececf5;
+    #app {
+        position: relative;
+        max-width: 1750px;
+        margin: 0 auto;
+        background-color: #fff;
+        height: 100vh;
+    }
 }
 
 .main {
     font-family: $font-regular;
+
+    .overview {
+        padding-left: 75px !important;
+    }
 
     a {
         &:hover {

@@ -1,0 +1,19 @@
+.loader {
+    height: 100px;
+    width: 25%;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    p {
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+        position: relative;
+        top: 30%;
+        font-size: 20px;
+    }
+}

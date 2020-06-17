@@ -40,7 +40,7 @@ class HomeController extends Controller
             }
 
         } else {
-            return redirect()->route('landing.index')->with('status', 'Onjuiste gebruikergegevens ingevoerd.');
+            return redirect()->route('landing.index')->with('error', 'Onjuiste gebruikergegevens ingevoerd.');
         }
     }
 }

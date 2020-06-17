@@ -40,7 +40,7 @@ class UserController extends Controller
         $user->roles()->sync( $request->is_admin ? $superadmin_role_id : $teacher_role_id );
         $user->save();
 
-        return redirect()->route('admin.user.edit', $user->id)->with('status','"' . $user->fullname . '"' . ' is bijgewerkt!');
+        return redirect()->route('admin.user.edit', $user->id)->with('success','"' . $user->fullname . '"' . ' is bijgewerkt!');
     }
 
     public function create()
@@ -60,7 +60,7 @@ class UserController extends Controller
         $user->roles()->attach( $request->is_admin ? $superadmin_role_id : $teacher_role_id );
         $user->save();
 
-        return redirect()->route('admin.user.edit', $user->id)->with('status','"' . $user->fullname . '"' . ' is toegevoegd!');
+        return redirect()->route('admin.user.edit', $user->id)->with('success','"' . $user->fullname . '"' . ' is toegevoegd!');
     }
 
     public function destroy($id) : RedirectResponse
@@ -68,6 +68,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('admin.user.index')->with('status','"' . $user->fullname . '"' . ' is verwijderd!');
+        return redirect()->route('admin.user.index')->with('error','"' . $user->fullname . '"' . ' is verwijderd!');
     }
 }

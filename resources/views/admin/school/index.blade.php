@@ -1,17 +1,12 @@
 @extends('admin.layouts.master')
 
 @section('content')
-<div class="main-container">
     @include('partials/header', ['title' => 'Scholen', 'subtitle' => false])
     <div class="button-section">
         <a href="{{ route('admin.school.create') }}" class="btn btn-primary">Toevoegen</a>
     </div>
 
-    @if (session('status'))
-        <div class="alert alert-danger">
-            {{ session('status') }}
-        </div>
-    @endif
+    @include('partials/helpers/notifications')
 
     @if(count($schools) > 0)
 
@@ -38,19 +33,15 @@
                             @csrf
                             @method('DELETE')
 
-                            {{-- <button type="button" class="btn btn-danger" @click.prevent="handleModal({{ json_encode($key) }})"> --}}
-                            <button type="button" class="btn btn-danger" @click="handleModal({{json_encode($school)}})">
-                                <i class="fas fa-trash" aria-hidden="true"></i>
-                            </button>
+                            <action-button :item="{{$school}}" />
+
                         </td>
                     </tr>
                     {!! Form::close() !!}
                 @endforeach
             </tbody>
-
         </table>
     @else
         @include('partials/helpers/status', ['status' => 'Geen scholen gevonden'])
     @endif
-</div>
 @endsection

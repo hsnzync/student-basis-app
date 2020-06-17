@@ -17,16 +17,16 @@
 </head>
 <body>
 
-    <div id="app" class="base row ml-0 mr-0">
-
+    <div id="app" class="base row">
         @include('admin.partials.navigation')
-        <div class="admin col-sm-11 p-5">
-            @yield('content')
+        <div class="admin col-sm-12 px-0">
+            <div class="overview">
+                @yield('content')
+            </div>
         </div>
-        <modal-window :showing="isActiveModal" @close="isActiveModal = false"/>
+        {{-- <ModalWindow v-if="isActive" />" --}}
 
     </div>
-
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

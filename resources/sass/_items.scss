@@ -1,4 +1,6 @@
-.subjects-section {
+.items-section,
+.subjects-section,
+.courses-section {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 100vh;
@@ -8,8 +10,8 @@
     &::-webkit-scrollbar {
         display: none;
     }
-    .subjects-wrapper {
-        .subjects {
+    .items-wrapper {
+        .items {
             // .locked:after {
             //     content: 'Niet vrijgespeeld';
             //     line-height: 280px;
@@ -26,7 +28,7 @@
             //     background-color: rgba(0, 0, 0, 0.8);
             //     border-radius: 20px;
             // }
-            .subject {
+            .item {
                 background-color: #fff;
                 border-radius: 20px;
                 padding: 0;
@@ -39,7 +41,7 @@
 
                 &.open {
                     background-color: $primary;
-                    .subject-text {
+                    .item-text {
                         h4 {
                             color: #fff;
                         }
@@ -49,7 +51,7 @@
                     }
                 }
 
-                .subject-image {
+                .item-image {
                     img {
                         width: 100%;
                         height: 110px;
@@ -58,7 +60,7 @@
                     }
                 }
 
-                .subject-text {
+                .item-text {
                     h4 {
                         font-weight: 700;
                         color: $tertiary;
@@ -81,6 +83,19 @@
                     }
                 }
             }
+            &.placeholder {
+                .placeholder-space {
+                    background: $quaternary;
+                    height: 15px;
+                    width: 100%;
+                    margin: 7px 10px;
+                    border-radius: 5px;
+                }
+            }
         }
     }
+}
+
+.courses-section {
+    background-color: #fff;
 }

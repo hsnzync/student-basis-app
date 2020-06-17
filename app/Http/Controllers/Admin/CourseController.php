@@ -42,7 +42,7 @@ class CourseController extends Controller
 
         $course->save();
 
-        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is bijgewerkt!');
+        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', '"' . $course->title . '" is bijgewerkt!');
     }
 
     public function show($subject_id)
@@ -78,7 +78,7 @@ class CourseController extends Controller
 
         $course->save();
 
-        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is toegevoegd!');
+        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', '"' . $course->title . '" is toegevoegd!');
     }
 
     public function destroy($subject_id, $course_id) : RedirectResponse
@@ -86,6 +86,6 @@ class CourseController extends Controller
         $course = Course::find($course_id);
         $course->delete();
 
-        return redirect()->route('admin.course.index', [$subject_id, $course->id])->with('status', '"' . $course->title . '" is verwijderd!');
+        return redirect()->route('admin.course.index', [$subject_id, $course->id])->with('error', '"' . $course->title . '" is verwijderd!');
     }
 }

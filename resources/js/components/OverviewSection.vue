@@ -1,7 +1,7 @@
 <template>
-    <div :class="sectionClass">
+    <section :class="sectionClass">
         <slot />
-    </div>
+    </section>
 </template>
 
 <script>

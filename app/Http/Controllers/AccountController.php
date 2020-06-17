@@ -9,13 +9,13 @@ use App\Models\User;
 use App\Models\School;
 use App\Models\Achievement;
 use Image;
+use Avatar;
 
 class AccountController extends Controller
 {
     public function index()
     {
         $user = User::with('school')->where('id', Auth::user()->id)->firstOrfail();
-        // $achievements = Achievement::
 
         return view('platform.account.index', compact('user'));
     }
@@ -28,6 +28,9 @@ class AccountController extends Controller
     public function update(Request $request, User $user) : RedirectResponse
     {
         $users = User::where('id', Auth::user()->id)->get();
+        $full_name = join(' ', [auth()->user()->first_name, auth()->user()->last_name]);
+
+        // Avatar::create($full_name)->save(public_path('/uploads/avatar'));
 
         if($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
