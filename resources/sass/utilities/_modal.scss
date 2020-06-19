@@ -6,12 +6,8 @@
     bottom: 0;
     z-index: 10000;
 
-    .login {
-        padding: 50px;
-    }
-
     &:before {
-        content: "";
+        content: '';
         position: absolute;
         background: #000;
         opacity: 0.5;
@@ -20,16 +16,14 @@
         bottom: 0;
         right: 0;
     }
-    .modal-window-box {
+
+    .modal-content {
         top: 50%;
         transform: translateY(-50%);
-        position: relative;
-        span {
-            position: absolute;
-            right: 10px;
-            top: 5px;
-            font-weight: 900;
-            cursor: pointer;
+
+        .subject-title {
+            color: $primary;
+            font-weight: 700;
         }
     }
 }

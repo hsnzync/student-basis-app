@@ -1,21 +1,21 @@
 <template>
-    <div class="modal-window">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <span>Sluiten</span>
-                    <div class="card-header">
-                        <p>
-                            Weet u zeker dat u dit onderdeel wilt verwijderen?
-                        </p>
-                    </div>
+    <div class="modal-window row justify-content-center m-0" @click.self="close">
+        <div class="col-sm-5">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>
+                        Weet u zeker dat <span class="subject-title">{{ itemTitle }}</span> wilt
+                        verwijderen?
+                    </h5>
+                </div>
 
-                    <div class="card-body">
-                        <button type="submit" class="btn btn-danger">
-                            <i aria-hidden="true" class="fas fa-trash"></i>
-                            Bevestigen
-                        </button>
-                    </div>
+                <div class="modal-body">
+                    <button type="submit" class="btn btn-danger">
+                        Bevestigen
+                    </button>
+                    <button type="button" class="btn btn-link" @click="$emit('close')">
+                        Annuleren
+                    </button>
                 </div>
             </div>
         </div>
@@ -25,7 +25,17 @@
 <script>
 export default {
     name: 'ModalWindow',
-    data() {},
-    props: {}
+    props: {
+        item: {
+            type: Object,
+            default: () => {},
+            required: true
+        }
+    },
+    computed: {
+        itemTitle() {
+            return this.item?.title || this.item?.first_name + ' ' + this.item?.last_name
+        }
+    }
 }
 </script>

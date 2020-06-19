@@ -1,9 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    @include('partials/header', ['title' => 'Studenten', 'subtitle' => false])
-    <div class="button-section">
-        <a href="{{route('admin.student.create')}}" class="btn btn-primary">Toevoegen</a>
+    <div class="mb-5">
+        @include('partials/header', ['title' => 'Studenten', 'subtitle' => false])
+        @include('partials/action-button', ['route' => 'admin.student.create', 'sub_item' => null, 'type' => 'primary', 'text' => 'Toevoegen'])
     </div>
 
     @include('partials/helpers/notifications')
@@ -45,6 +45,6 @@
             </tbody>
         </table>
     @else
-        @include('partials/helpers/status', ['status' => 'Geen studenten gevonden'])
+        @include('partials/helpers/empty-placeholder', ['status' => 'Geen studenten gevonden'])
     @endif
 @stop

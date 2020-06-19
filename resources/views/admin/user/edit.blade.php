@@ -1,16 +1,8 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    @if( !$user->id )
-        <h1>Nieuwe gebruiker toevoegen</h1>
-    @else
-        <h1>{{ $user->fullname }} bewerken</h1>
-    @endif
-
-    <div class="button-section col-lg-12">
-        <a href="{{ route('admin.user.index') }}" class="btn btn-primary">Overzicht</a>
-    </div>
-
+    @include('partials/breadcrumbs', ['title' => 'Gebruikers', 'item' => $user, 'sub_item' => null, 'current_item' => $user->fullname,  'route' => 'admin.user.index'])
+    @include('partials/header', ['title' => !$user->id ? 'Toevoegen' : $user->fullname, 'subtitle' => false])
     @include('partials/helpers/validations')
     @include('partials/helpers/notifications')
 

@@ -1,11 +1,8 @@
 @extends('admin.layouts.master')
 
 @section('content')
+    @include('partials/breadcrumbs', ['title' => 'Cursussen', 'item' => $course, 'sub_item' => $subject_id, 'current_item' => $course->title, 'route' => 'admin.course.index'])
     @include('partials/header', ['title' => !$course->id ? 'Toevoegen' : $course->title, 'subtitle' => false])
-    <div class="button-section">
-        <a href="{{ route('admin.course.index', $subject_id, $course->id) }}" class="btn btn-primary">Overzicht</a>
-    </div>
-
     @include('partials/helpers/validations')
     @include('partials/helpers/notifications')
 

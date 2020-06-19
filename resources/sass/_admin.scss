@@ -1,19 +1,6 @@
 .admin {
-    .header-section {
-        width: 300px;
-        position: relative;
-        top: 57px;
-
-        .header-section-title {
-            text-align: left;
-            margin: 0;
-            max-width: 100%;
-
-            h1 {
-                font-size: 30px;
-                font-family: $font-regular;
-            }
-        }
+    .header {
+        display: inline-block;
     }
 
     .overview {
@@ -22,8 +9,9 @@
         overflow: auto;
 
         .button-section {
-            margin: 20px 0;
-            text-align: right;
+            display: inline-block;
+            position: relative;
+            top: -7px;
         }
 
         .table-list-btn {
@@ -41,9 +29,6 @@
                 font-size: 12px;
                 margin-top: 10px;
             }
-        }
-        td:last-of-type {
-            max-width: 50px;
         }
     }
     img {

@@ -10,7 +10,7 @@
 import axios from 'axios'
 import Subjects from './Subjects'
 import Courses from './Courses'
-import Loader from './generic/Loader'
+import Loader from './loaders/Loader'
 
 export default {
     name: 'Overview',

@@ -1,15 +1,17 @@
 <template>
-    <button type="button" class="btn btn-danger" @click="handleModal" v-if="!isClicked">
-        <i class="fas fa-trash" aria-hidden="true"></i>
-    </button>
-    <button type="submit" class="btn btn-danger" v-else>
-        Bevestig
-    </button>
+    <div>
+        <button type="button" class="btn btn-danger" @click="handleModal">
+            <i class="fas fa-trash" aria-hidden="true"></i>
+        </button>
+        <ModalWindow :item="item" v-if="isActive" @close="closeModal" />
+    </div>
 </template>
 
 <script>
+import ModalWindow from './ModalWindow'
 export default {
     name: 'ActionButton',
+    components: { ModalWindow },
     props: {
         item: {
             type: Object,
@@ -18,12 +20,15 @@ export default {
     },
     data() {
         return {
-            isClicked: false
+            isActive: false
         }
     },
     methods: {
         handleModal(value) {
-            this.isClicked = true
+            this.isActive = true
+        },
+        closeModal() {
+            this.isActive = false
         }
     }
 }

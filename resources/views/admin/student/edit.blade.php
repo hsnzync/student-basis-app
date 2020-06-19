@@ -1,16 +1,8 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    @if( !$student->id )
-        <h1>Nieuwe gebruiker toevoegen</h1>
-    @else
-        <h1>{{ $student->fullname }} bewerken</h1>
-    @endif
-
-    <div class="button-section">
-        <a href="{{ route('admin.student.index') }}" class="btn btn-primary">Overzicht</a>
-    </div>
-
+    @include('partials/breadcrumbs', ['title' => 'Studenten', 'item' => $student, 'sub_item' => null, 'current_item' => $student->fullname,  'route' => 'admin.student.index'])
+    @include('partials/header', ['title' => !$student->id ? 'Toevoegen' : $student->fullname, 'subtitle' => false])
     @include('partials/helpers/validations')
     @include('partials/helpers/notifications')
 

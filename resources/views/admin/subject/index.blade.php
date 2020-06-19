@@ -1,9 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    @include('partials/header', ['title' => 'Vakken', 'subtitle' => false])
-    <div class="button-section">
-        <a href="{{ route('admin.subject.create') }}" class="btn btn-primary">Toevoegen</a>
+    <div class="mb-5">
+        @include('partials/header', ['title' => 'Vakken', 'subtitle' => false])
+        @include('partials/action-button', ['route' => 'admin.subject.create', 'sub_item' => null, 'type' => 'primary', 'text' => 'Toevoegen'])
     </div>
 
     @include('partials/helpers/notifications')
@@ -28,7 +28,7 @@
                         <th scope="row">{{ $subject->id }}</th>
                         <td>{{ $subject->title }}</td>
                         <td>
-                            <a href="{{ route('admin.course.index', $subject->id) }}" class="table-list-btn">
+                            <a href="{{ count($subject->courses) > 0 ? route('admin.course.index', $subject->id) : '#' }}" class="table-list-btn">
                                 {{ $subject->courses ? $subject->courses->count() : '' }} item(s)
                             </a>
                         </td>
@@ -48,6 +48,6 @@
             </tbody>
         </table>
     @else
-        @include('partials/helpers/status', ['status' => 'Geen vakken gevonden'])
+        @include('partials/helpers/empty-placeholder', ['status' => 'Geen vakken gevonden'])
     @endif
 @endsection

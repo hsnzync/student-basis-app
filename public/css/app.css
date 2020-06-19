@@ -385,21 +385,8 @@
   font-size: 20px;
 }
 
-.admin .header-section {
-  width: 300px;
-  position: relative;
-  top: 57px;
-}
-
-.admin .header-section .header-section-title {
-  text-align: left;
-  margin: 0;
-  max-width: 100%;
-}
-
-.admin .header-section .header-section-title h1 {
-  font-size: 30px;
-  font-family: "Roboto", sans-serif;
+.admin .header {
+  display: inline-block;
 }
 
 .admin .overview {
@@ -409,8 +396,9 @@
 }
 
 .admin .overview .button-section {
-  margin: 20px 0;
-  text-align: right;
+  display: inline-block;
+  position: relative;
+  top: -7px;
 }
 
 .admin .overview .table-list-btn {
@@ -427,10 +415,6 @@
 .admin .overview .main-body .form-group-helper {
   font-size: 12px;
   margin-top: 10px;
-}
-
-.admin .overview td:last-of-type {
-  max-width: 50px;
 }
 
 .admin img.form-img {
@@ -544,10 +528,6 @@
   z-index: 10000;
 }
 
-.modal-window .login {
-  padding: 50px;
-}
-
 .modal-window:before {
   content: "";
   position: absolute;
@@ -559,19 +539,15 @@
   right: 0;
 }
 
-.modal-window .modal-window-box {
+.modal-window .modal-content {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  position: relative;
 }
 
-.modal-window .modal-window-box span {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  font-weight: 900;
-  cursor: pointer;
+.modal-window .modal-content .subject-title {
+  color: #3490dc;
+  font-weight: 700;
 }
 
 /* CUSTOM ALERTS STYLING */
