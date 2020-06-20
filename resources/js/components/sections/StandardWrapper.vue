@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'OverviewWrapper',
+    name: 'Wrapper',
     props: {
         type: {
             type: String,

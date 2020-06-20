@@ -3,7 +3,7 @@
 @section('content')
     <div class="mb-5">
         @include('partials/header', ['title' => 'Gebruikers', 'subtitle' => false])
-        @include('partials/action-button', ['route' => 'admin.user.create', 'sub_item' => null, 'type' => 'primary', 'text' => 'Toevoegen'])
+        @include('partials/actions-button', ['route' => 'admin.user.create', 'sub_item' => null, 'type' => 'primary', 'text' => 'Toevoegen'])
     </div>
 
     @include('partials/helpers/notifications')
@@ -37,7 +37,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <action-button :item="{{$user}}" />
+                            <actions-button :item="{{$user}}" />
 
                             {!! Form::close() !!}
                         </td>

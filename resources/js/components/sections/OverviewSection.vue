@@ -19,7 +19,7 @@ export default {
     },
     computed: {
         sectionClass() {
-            return this.type + '-section p-5 col-sm-' + this.size
+            return this.type + '-section p-5 col-lg-' + this.size
         }
     }
 }

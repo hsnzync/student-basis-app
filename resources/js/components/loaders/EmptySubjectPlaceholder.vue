@@ -1,5 +1,5 @@
 <template>
-    <overview-wrapper>
+    <standard-wrapper>
         <div class="items placeholder pt-5" v-for="(x, index) in count" :key="index">
             <div class="item row m-0 p-3">
                 <div class="item-image col-4 p-0">
@@ -14,14 +14,15 @@
                 </div>
             </div>
         </div>
-    </overview-wrapper>
+    </standard-wrapper>
 </template>
 
 <script>
-import OverviewWrapper from '../OverviewWrapper'
+import { StandardWrapper } from '../sections'
 
 export default {
     name: 'EmptySubjectPlaceholder',
+    components: { StandardWrapper },
     props: {
         count: {
             type: Number,

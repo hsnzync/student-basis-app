@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: 'RatingSection',
+    name: 'Rating',
     props: {
         score: {
             type: Number,

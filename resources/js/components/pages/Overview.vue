@@ -1,16 +1,15 @@
 <template>
     <div class="overview row m-0">
         <Subjects :subjects="subjects" @showCourse="fetchCourses" :is-loading="isLoading" />
-        <Courses :courses="courses" />
+        <Courses :courses="courses" :inital="initial" />
     </div>
-    <!-- <Loader v-else /> -->
 </template>
 
 <script>
 import axios from 'axios'
-import Subjects from './Subjects'
-import Courses from './Courses'
-import Loader from './loaders/Loader'
+
+import { Subjects, Courses } from '../features'
+import { Loader } from '../loaders'
 
 export default {
     name: 'Overview',
@@ -32,7 +31,7 @@ export default {
     },
     provide() {
         return {
-            initialSubject: this.initial
+            initial: this.initial
         }
     },
     mounted() {

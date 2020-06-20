@@ -1,13 +1,13 @@
 <template>
     <overview-section :type="type" :size="size">
-        <header-section :title="title" />
+        <HeaderTitle :title="title" />
         <div class="item-search">
             <div class="form-group mb-0 mt-4">
                 <i class="fas fa-search"></i>
                 <input type="text" v-model="search" class="form-control" placeholder="Zoeken.." />
             </div>
         </div>
-        <overview-wrapper v-if="!isLoading">
+        <standard-wrapper v-if="!isLoading">
             <div
                 class="items pt-5"
                 v-for="(subject, index) in filteredSubjects"
@@ -24,14 +24,14 @@
                     <div class="item-text col-8 row ml-0 py-2">
                         <div>
                             <h4>{{ subject.title }}</h4>
-                            <RatingSection :score="4" />
+                            <Rating :score="4" />
                             <p class="mt-3 mb-0">Frank Stolz</p>
                         </div>
-                        <LabelSection :status="'Beschikbaar'" />
+                        <LabelBadge :status="'Beschikbaar'" />
                     </div>
                 </div>
             </div>
-        </overview-wrapper>
+        </standard-wrapper>
 
         <EmptySubjectPlaceholder v-else :count="6" />
     </overview-section>
@@ -39,26 +39,24 @@
 
 <script>
 import VLazyImage from 'v-lazy-image'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
-import OverviewWrapper from './OverviewWrapper'
-import OverviewSection from './OverviewSection'
-import HeaderSection from './HeaderSection'
-import RatingSection from './RatingSection'
-import LabelSection from './LabelSection'
-import EmptySubjectPlaceholder from './loaders/EmptySubjectPlaceholder'
+import { StandardWrapper, OverviewSection } from '../sections'
+import { Rating, LabelBadge, HeaderTitle } from '../elements'
+import { EmptySubjectPlaceholder } from '../loaders'
 
 export default {
     name: 'Subjects',
     components: {
         VLazyImage,
-        OverviewWrapper,
+        StandardWrapper,
         OverviewSection,
-        HeaderSection,
-        RatingSection,
-        LabelSection,
+        Rating,
+        LabelBadge,
+        HeaderTitle,
         EmptySubjectPlaceholder
     },
-    inject: ['initialSubject'],
+    inject: ['initial'],
     props: {
         subjects: {
             type: Array,
@@ -77,7 +75,7 @@ export default {
             type: 'subjects',
             title: 'Vakken',
             size: '4',
-            selected: this.initialSubject.id,
+            selected: this.initial.id,
             search: ''
         }
     },
@@ -89,6 +87,8 @@ export default {
         }
     },
     methods: {
+        ...mapMutations(['SELECTED_SUBJECT']),
+        ...mapActions(['selectedSubject']),
         generateThumbnail(url) {
             if (url) {
                 return '/uploads/images/' + url
@@ -98,8 +98,7 @@ export default {
         handleClick(subject) {
             this.selected = subject.id
             this.$emit('showCourse', subject.id)
-
-            this.$store.commit('handleSubject', subject)
+            this.selectedSubject(subject)
         }
     }
 }

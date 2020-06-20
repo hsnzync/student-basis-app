@@ -8,9 +8,10 @@
 </template>
 
 <script>
-import ModalWindow from './ModalWindow'
+import { ModalWindow } from '../features'
+
 export default {
-    name: 'ActionButton',
+    name: 'ActionsButton',
     components: { ModalWindow },
     props: {
         item: {

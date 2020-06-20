@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { AVAILABLE, IN_PROGRESS, DONE } from '../constants/labels'
+import { AVAILABLE, IN_PROGRESS, DONE } from '../../constants/labels'
 
 export default {
-    name: 'LabelSection',
+    name: 'LabelBadge',
     props: {
         status: {
             type: String,

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'TitleSection',
+    name: 'HeaderTitle',
     props: {
         title: {
             type: String,

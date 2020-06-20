@@ -3,7 +3,7 @@
 @section('content')
     <div class="mb-5">
         @include('partials/header', ['title' => 'Scholen', 'subtitle' => false])
-        @include('partials/action-button', ['route' => 'admin.school.create', 'sub_item' => null, 'type' => 'primary', 'text' => 'Toevoegen'])
+        @include('partials/actions-button', ['route' => 'admin.school.create', 'sub_item' => null, 'type' => 'primary', 'text' => 'Toevoegen'])
     </div>
 
     @include('partials/helpers/notifications')
@@ -33,7 +33,7 @@
                             @csrf
                             @method('DELETE')
 
-                            <action-button :item="{{$school}}" />
+                            <actions-button :item="{{$school}}" />
 
                         </td>
                     </tr>
