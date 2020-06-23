@@ -13,29 +13,29 @@
             {!! Form::model( $course, [ 'route' => [ 'admin.course.update', $subject_id, $course->id ], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'] ) !!}
         @endif
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             {!! Form::label('form-file', 'Afbeelding:') !!}
             <br>
             {!! Form::file('image_url', ['accept' => 'image/*', 'class' => 'form-control-file', 'id' => 'form-file']) !!}
-        </div>
+        </div> --}}
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             @if($course->image_url)
                 <img src="/uploads/images/{{ $course->image_url }}" alt="course" class="form-img">
             @else
                 <img src="http://archwayarete.greatheartsacademies.org/wp-content/uploads/sites/11/2016/11/default-placeholder.png" alt="course" class="form-img">
             @endif
-        </div>
+        </div> --}}
 
         <div class="form-group">
             {!! Form::label('title', 'Naam:') !!}
             {!! Form::text('title', $course->title, ['class' => 'form-control', 'id' => 'title' ]) !!}
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             {!! Form::label('description', 'Omschrijving:') !!}
             {!! Form::textarea('description', $course->description, ['class' => 'form-control' ]) !!}
-        </div>
+        </div> --}}
 
         <div class="form-group">
             {!! Form::label('slug', 'Url:') !!}
@@ -43,13 +43,13 @@
             <p class="form-group-helper">Kleine letters, spaties vervangen met een '-'</p>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <div class="custom-control custom-switch">
                 <input type="hidden" name="is_unlocked" value="0">
                 <input type="checkbox" id="is_unlocked" name="is_unlocked" class="custom-control-input" value="1" {{ $course->is_unlocked ? 'checked=checked' : '' }}>
                 <label class="custom-control-label" for="is_unlocked">Beschikbaar</label>
             </div>
-        </div>
+        </div> --}}
 
         <div class="form-group">
             <div class="custom-control custom-switch">

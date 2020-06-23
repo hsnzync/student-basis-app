@@ -1,6 +1,6 @@
 <template>
     <div class="label-section">
-        <span class="badge p-2" :class="labelClass">{{ labelValue }}</span>
+        <span class="badge" :class="labelClass">{{ labelValue }}</span>
     </div>
 </template>
 

@@ -1,15 +1,20 @@
 <template>
     <overview-section :type="type" :size="size">
         <HeaderTitle :title="activeSubject.title" />
-        <standard-wrapper v-if="courses.length > 0">
-            <div class="items pt-5" v-for="(course, index) in courses" :key="index">
+        <standard-wrapper v-if="courses.length > 0" class="row col-md-12 p-0">
+            <div
+                class="items col-md-6 px-0 pt-5"
+                :class="setAvailability(course)"
+                v-for="(course, index) in courses"
+                :key="index"
+            >
                 <a :href="generateUrl(course.slug)">
-                    <div class="item row m-0 p-3">
+                    <div class="item row ml-4 mr-4 mb-4 mt-0 p-3">
                         <div class="item-image col-4 p-0">
                             <!-- <img src="/uploads/images/fallback/fallback.jpg" :alt="course.title" /> -->
                             <img :src="generateThumbnail(course.image_url)" />
                         </div>
-                        <div class="item-text col-8">
+                        <div class="item-content col-8">
                             <h4>{{ course.title }}</h4>
                         </div>
                     </div>
@@ -46,14 +51,6 @@ export default {
     },
     computed: {
         ...mapState(['activeSubject'])
-
-        // subjectTitle() {
-        //     if (this.$store.state.activeSubject) {
-        //         return this.$store.state.activeSubject?.title
-        //     }
-
-        //     return this.title
-        // }
     },
     methods: {
         ...mapMutations(['INITIAL_SUBJECT']),
@@ -67,6 +64,13 @@ export default {
         },
         generateUrl(slug) {
             return 'browse/' + slug
+        },
+        setAvailability(course) {
+            if (!course.is_unlocked) {
+                return 'locked'
+            }
+
+            return 'unlocked'
         }
     }
 }

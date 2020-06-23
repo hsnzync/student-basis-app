@@ -26,19 +26,10 @@ class CourseController extends Controller
 
     public function update(CourseRequest $request, $subject_id, Course $course): RedirectResponse
     {
-        if($request->hasFile('image_url')) {
-            $image = $request->file('image_url');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/images/'. $filename));
-            $course->image_url = $filename;
-        }
-
         $course->title          = $request->title;
-        $course->description    = $request->description;
         $course->slug           = $request->slug;
         $course->subject_id     = $subject_id;
         $course->is_active      = $request->is_active;
-        $course->is_unlocked    = $request->is_unlocked;
 
         $course->save();
 
@@ -61,20 +52,10 @@ class CourseController extends Controller
     {
         $course = new Course();
         $course->title          = $request->title;
-        $course->description    = $request->description;
         $course->slug           = $request->slug;
         $course->subject_id     = $request->subject_id;
         $course->is_active      = $request->is_active;
-        $course->is_unlocked    = $request->is_unlocked;
         $course->subject_id     = $subject_id;
-
-        if($request->hasFile('image_url')) {
-
-            $image = $request->file('image_url');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->save(public_path('/uploads/images/'. $filename));
-            $course->image_url = $filename;
-        }
 
         $course->save();
 

@@ -1,8 +1,13 @@
 <!-- Sidebar -->
 <div class="nav-main bg-dark px-0">
-    <div class="nav-title py-5"><i class="fab fa-stripe-s"></i></div>
+    {{-- <div class="nav-title py-5"><i class="fab fa-stripe-s"></i></div> --}}
     <div class="nav-content">
         <ul class="nav-items">
+            <li class="py-1">
+                <span class="nav-content-item title">
+                    <i class="fab fa-stripe-s"></i>
+                </span>
+            </li>
             <li class="py-1">
                 <a href="{{ route('platform.browse.index') }}" class="nav-content-item {{ request()->is('browse') ? 'is-active' : '' }}"><i class="fas fa-columns"></i></a>
                 Dashboard
@@ -24,10 +29,9 @@
         </ul>
         <div class="nav-footer">
             <ul class="m-0">
-                <li class="nav-item dropdown py-5">
+                <li class="nav-item dropdown py-4">
                     <a id="nav-item-dropdown" class="nav-content-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="avatar" class="rounded-circle avatar">
-                        {{-- <img src="{{ Avatar::create($full_name)->toBase64() }}" /> --}}
+                        {{ $user_initials }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right nav-dropdown" aria-labelledby="nav-item-dropdown">

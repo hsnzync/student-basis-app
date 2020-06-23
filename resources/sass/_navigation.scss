@@ -4,29 +4,23 @@
     width: 85px;
 
     z-index: 1;
-    .nav-title {
-        text-align: center;
-        color: $quaternary;
-        font-size: 20px;
-    }
+    // .nav-title {
+    //     text-align: center;
+    //     color: $quaternary;
+    //     font-size: 25px;
+    // }
     .nav-content {
         // height: 100%;
         ul {
             padding: 0;
             list-style: none;
 
-            &.nav-items {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
             &:hover {
                 cursor: pointer;
             }
             li {
                 text-align: center;
-                color: $quaternary;
+                color: $light-gray;
                 transition: 0.3s;
                 font-size: 10px;
 
@@ -34,32 +28,61 @@
                     color: $primary;
                     .nav-content-item {
                         color: $primary;
+
+                        &.title {
+                            color: #fff;
+                        }
                     }
                 }
 
                 .nav-content-item {
                     display: block;
                     color: $quaternary;
-                    font-size: 17px;
+                    font-size: 22px;
                     transition: 0.3s;
                     padding: 30px 30px 10px 30px;
                     width: 85px;
                     padding: 30px 0 0;
 
-                    .avatar {
-                        height: 35px;
-                        width: 35px;
-                        object-fit: cover;
+                    &.title {
+                        font-size: 25px;
                     }
                 }
                 .dropdown-menu {
-                    transform: translate(calc(100vw - 97vw), 50px) !important;
+                    transform: translate(calc(100vw - 95vw)) !important;
                 }
             }
         }
         .nav-footer {
             position: absolute;
             bottom: 0;
+            left: 0;
+            right: 0;
+
+            .nav-item {
+                transition: 0.3s;
+                &:hover {
+                    .nav-content-item {
+                        background: $secondary;
+                        color: #fff;
+                    }
+                }
+                .nav-content-item {
+                    max-width: 45px;
+                    background: $primary;
+                    padding: 10px;
+                    border-radius: 100%;
+                    margin: auto;
+                    transition: 0.3s;
+                    font-size: 15px;
+
+                    &:hover {
+                        text-decoration: none;
+                        color: #fff;
+                        background: $secondary;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,8 +1,12 @@
 <!-- Sidebar -->
 <div class="nav-main bg-dark px-0">
-    <div class="nav-title py-5"><i class="fab fa-stripe-s"></i></div>
     <div class="nav-content">
         <ul class="nav-items">
+            <li class="py-1">
+                <span class="nav-content-item title">
+                    <i class="fab fa-stripe-s"></i>
+                </span>
+            </li>
             <li class="py-1">
                 <a href="{{ route('admin.index') }}" class="nav-content-item {{ request()->is('admin') ? 'is-active' : '' }}"><i class="fas fa-compass"></i></a>
                 Dashboard

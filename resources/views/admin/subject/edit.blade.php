@@ -33,11 +33,6 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('description', 'Omschrijving:') !!}
-            {!! Form::textarea('description', $subject->description, ['class' => 'form-control' ]) !!}
-        </div>
-
-        <div class="form-group">
             {!! Form::label('slug', 'Url:') !!}
             {!! Form::text('slug', $subject->slug, ['class' => 'form-control' ]) !!}
             <p class="form-group-helper">Kleine letters, spaties vervangen met een '-'</p>

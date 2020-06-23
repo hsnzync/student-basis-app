@@ -5,6 +5,7 @@
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star-half-alt"></i>
+        <span>{{ score }}</span>
     </div>
 </template>
 

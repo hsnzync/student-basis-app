@@ -36,7 +36,6 @@ class SubjectController extends Controller
         }
 
         $subject->title         = $request->title;
-        $subject->description   = $request->description;
         $subject->slug          = $request->slug;
         $subject->is_active     = $request->is_active;
 
@@ -55,11 +54,8 @@ class SubjectController extends Controller
     {
         $subject                = new Subject();
         $subject->title         = $request->title;
-        $subject->description   = $request->description;
         $subject->slug          = $request->slug;
         $subject->is_active     = $request->is_active;
-        // REPLACE WITH PACKAGE THAT KEEPS TRACK OF THESE KIND OF THINGS!!
-        $subject->created_by    = auth()->user()->id;
 
         if($request->hasFile('image_url')) {
 

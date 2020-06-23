@@ -7,9 +7,10 @@
                 <input type="text" v-model="search" class="form-control" placeholder="Zoeken.." />
             </div>
         </div>
+        <ItemFilter />
         <standard-wrapper v-if="!isLoading">
             <div
-                class="items pt-5"
+                class="items pt-4"
                 v-for="(subject, index) in filteredSubjects"
                 :key="index"
                 @click="handleClick(subject)"
@@ -21,11 +22,11 @@
                             src-placeholder="https://cdn.dribbble.com/users/358080/screenshots/1986444/loader.gif"
                         />
                     </div>
-                    <div class="item-text col-8 row ml-0 py-2">
+                    <div class="item-content col-8 row ml-0 py-2">
                         <div>
                             <h4>{{ subject.title }}</h4>
                             <Rating :score="4" />
-                            <p class="mt-3 mb-0">Frank Stolz</p>
+                            <Participants />
                         </div>
                         <LabelBadge :status="'Beschikbaar'" />
                     </div>
@@ -42,7 +43,7 @@ import VLazyImage from 'v-lazy-image'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 import { StandardWrapper, OverviewSection } from '../sections'
-import { Rating, LabelBadge, HeaderTitle } from '../elements'
+import { Rating, LabelBadge, HeaderTitle, Participants, ItemFilter } from '../elements'
 import { EmptySubjectPlaceholder } from '../loaders'
 
 export default {
@@ -54,6 +55,8 @@ export default {
         Rating,
         LabelBadge,
         HeaderTitle,
+        Participants,
+        ItemFilter,
         EmptySubjectPlaceholder
     },
     inject: ['initial'],
@@ -66,9 +69,6 @@ export default {
             type: Boolean,
             required: false
         }
-    },
-    created() {
-        console.info(this.subjects)
     },
     data() {
         return {
