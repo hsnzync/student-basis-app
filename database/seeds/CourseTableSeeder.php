@@ -14,27 +14,39 @@ class CourseTableSeeder extends Seeder
         DB::table('course')->insert([
             [
                 'subject_id' => 1,
-                'is_unlocked' => true,
                 'slug' => 'wiskunde-basis',
                 'title' => 'Wiskunde basis',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'points' => 15
+                'points' => 150
             ],
             [
                 'subject_id' => 1,
-                'is_unlocked' => false,
-                'slug' => 'wiskunde-breuken',
-                'title' => 'Wiskunde breuken',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'points' => 30
+                'slug' => 'breuken',
+                'title' => 'Breuken',
+                'points' => 100
+            ],
+            [
+                'subject_id' => 1,
+                'slug' => 'procenten',
+                'title' => 'Procenten',
+                'points' => 120
             ],
             [
                 'subject_id' => 2,
-                'is_unlocked' => false,
-                'slug' => 'wiskunde-decimalen',
-                'title' => 'Wiskunde decimalen',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
-                'points' => 30
+                'slug' => 'introductie',
+                'title' => 'Introductie',
+                'points' => 100
+            ],
+            [
+                'subject_id' => 2,
+                'slug' => 'kennis-van-zaken',
+                'title' => 'Kennis van zaken',
+                'points' => 120
+            ],
+            [
+                'subject_id' => 3,
+                'slug' => 'begroting',
+                'title' => 'Begroting',
+                'points' => 200
             ],
         ]);
     }

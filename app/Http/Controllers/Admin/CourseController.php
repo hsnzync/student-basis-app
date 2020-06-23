@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\CourseRequest;
+use App\Http\Requests\Course\CreateCourseRequest;
+use App\Http\Requests\Course\UpdateCourseRequest;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Subject;
@@ -24,16 +25,17 @@ class CourseController extends Controller
         return view('admin.course.edit', compact('course', 'subject_id'));
     }
 
-    public function update(CourseRequest $request, $subject_id, Course $course): RedirectResponse
+    public function update(UpdateCourseRequest $request, $subject_id, Course $course): RedirectResponse
     {
         $course->title          = $request->title;
-        $course->slug           = $request->slug;
+        $course->slug           = str_slug($request->title);
+        $course->points         = $request->points;
         $course->subject_id     = $subject_id;
         $course->is_active      = $request->is_active;
 
         $course->save();
 
-        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', '"' . $course->title . '" is bijgewerkt!');
+        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', $course->title . ' is bijgewerkt.');
     }
 
     public function show($subject_id)
@@ -48,18 +50,18 @@ class CourseController extends Controller
         return view('admin.course.edit', compact('course', 'subject_id'));
     }
 
-    public function store($subject_id, CourseRequest $request) : RedirectResponse
+    public function store($subject_id, CreateCourseRequest $request) : RedirectResponse
     {
         $course = new Course();
         $course->title          = $request->title;
-        $course->slug           = $request->slug;
-        $course->subject_id     = $request->subject_id;
+        $course->slug           = str_slug($request->title);
+        $course->points         = $request->points;
         $course->is_active      = $request->is_active;
         $course->subject_id     = $subject_id;
 
         $course->save();
 
-        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', '"' . $course->title . '" is toegevoegd!');
+        return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', $course->title . ' is toegevoegd.');
     }
 
     public function destroy($subject_id, $course_id) : RedirectResponse
@@ -67,6 +69,6 @@ class CourseController extends Controller
         $course = Course::find($course_id);
         $course->delete();
 
-        return redirect()->route('admin.course.index', [$subject_id, $course->id])->with('error', '"' . $course->title . '" is verwijderd!');
+        return redirect()->route('admin.course.index', [$subject_id, $course->id])->with('error', $course->title . ' is verwijderd.');
     }
 }

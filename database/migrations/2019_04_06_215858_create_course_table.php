@@ -15,15 +15,11 @@ class CreateCourseTable extends Migration
     {
         Schema::create('course', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('subject_id')->nullable()->unsigned();    
+            $table->integer('subject_id')->nullable()->unsigned();
             $table->boolean('is_active')->nullable()->default(true);
-            $table->boolean('is_completed')->nullable()->default(false);
-            $table->boolean('is_unlocked')->nullable()->default(false);
-            
+
             $table->string('title', 128)->nullable();
-            $table->text('description', 500)->nullable();
             $table->string('slug', 128)->nullable();
-            $table->string('image_url')->nullable();
             $table->integer('points')->nullable();
 
             $table->timestamps();

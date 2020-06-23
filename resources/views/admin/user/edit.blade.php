@@ -15,34 +15,34 @@
 
         <div class="col-lg-9 main-body">
             <div class="form-group">
-                {!! Form::label('first-name', 'Voornaam:') !!}
+                {!! Form::label('first-name', 'Voornaam') !!}
                 {!! Form::text('first_name', $user->first_name, ['class' => 'form-control', 'id' => 'first-name' ]) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('last-name', 'Achternaam:') !!}
+                {!! Form::label('last-name', 'Achternaam') !!}
                 {!! Form::text('last_name', $user->last_name, ['class' => 'form-control', 'id' => 'last-name' ]) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('email', 'Emailadres:') !!}
+                {!! Form::label('email', 'Email') !!}
                 {!! Form::email('email', $user->email, ['class' => 'form-control' ]) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('password', 'Wachtwoord:') !!}
+                {!! Form::label('password', 'Wachtwoord') !!}
                 {!! Form::input('password', 'password', null, ['class' => 'form-control', 'id' => 'password' ]) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('password-confirm', 'Bevestig wachtwoord:') !!}
+                {!! Form::label('password-confirm', 'Bevestig wachtwoord') !!}
                 {!! Form::input('password', 'password-confirm', null, ['class' => 'form-control', 'id' => 'password-confirm' ]) !!}
             </div>
             @if(auth()->user()->hasRole('superadmin'))
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="hidden" name="is_admin" value="0">
-                        <input type="checkbox" id="is_admin" name="is_admin" class="custom-control-input" value="1" {{ $user->is_admin ? 'checked=checked' : '' }}>
+                        <input type="checkbox" id="is_admin" name="is_admin" class="custom-control-input" value="1" {{ $user_role == 'superadmin' ? 'checked=checked' : '' }}>
                         <label class="custom-control-label" for="is_admin">Superadmin</label>
                     </div>
                 </div>

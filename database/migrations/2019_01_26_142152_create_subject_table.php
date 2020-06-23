@@ -18,7 +18,6 @@ class CreateSubjectTable extends Migration
             $table->boolean('is_active')->nullable()->default(true);
 
             $table->string('title', 128)->nullable();
-            $table->text('description', 500)->nullable();
             $table->string('slug', 128)->nullable();
             $table->string('image_url')->nullable();
 

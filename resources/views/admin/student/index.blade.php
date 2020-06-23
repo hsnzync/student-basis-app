@@ -45,6 +45,6 @@
             </tbody>
         </table>
     @else
-        @include('partials/helpers/empty-placeholder', ['status' => 'Geen studenten gevonden'])
+        @include('partials/helpers/empty-placeholder', ['status' => 'Geen studenten gevonden.'])
     @endif
 @stop

@@ -12,14 +12,10 @@ class Subject extends Model
     public $table = 'subject';
 
     protected $fillable = [
-        'is_completed',
-        'is_unlocked',
         'is_active',
-        'user_id',
         'title',
         'slug',
-        'description',
-        'level',
+        'image_url'
     ];
 
     public function courses()

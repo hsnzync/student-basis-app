@@ -24,9 +24,7 @@ class UpdateSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required|min:5|max:50',
-            'description'   => 'required|min:5',
-            'slug'          => 'required|min:1',
+            'title'         => 'required|min:5|max:50'
         ];
     }
 }

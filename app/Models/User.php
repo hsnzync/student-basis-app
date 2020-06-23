@@ -23,14 +23,12 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
-        'phone_number',
         'student_number',
-        'image_url',
+        'avatar',
         'password',
         'level',
         'experience_points',
         'is_active',
-        'is_admin',
         'school_id',
     ];
 

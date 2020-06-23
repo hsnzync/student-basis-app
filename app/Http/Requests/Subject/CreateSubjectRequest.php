@@ -24,9 +24,7 @@ class CreateSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required|max:128',
-            'description'   => 'required|min:5',
-            'slug'          => 'required|min:1',
+            'title'         => 'required|max:128'
         ];
     }
 }

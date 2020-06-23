@@ -28,7 +28,7 @@
                         <th scope="row">{{ $subject->id }}</th>
                         <td>{{ $subject->title }}</td>
                         <td>
-                            <a href="{{ count($subject->courses) > 0 ? route('admin.course.index', $subject->id) : '#' }}" class="table-list-btn">
+                            <a href="{{ route('admin.course.index', $subject->id) }}" class="table-list-btn">
                                 {{ $subject->courses ? $subject->courses->count() : '' }} item(s)
                             </a>
                         </td>
@@ -48,6 +48,6 @@
             </tbody>
         </table>
     @else
-        @include('partials/helpers/empty-placeholder', ['status' => 'Geen vakken gevonden'])
+        @include('partials/helpers/empty-placeholder', ['status' => 'Geen vakken gevonden.'])
     @endif
 @endsection

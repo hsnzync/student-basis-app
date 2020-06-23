@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Course;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseRequest extends FormRequest
+class UpdateCourseRequest extends FormRequest
 {
 
     /**
@@ -16,8 +16,7 @@ class CourseRequest extends FormRequest
     {
         return [
             'title'         => 'required|min:5|max:50',
-            'description'   => 'required|min:5|max:200',
-            'slug'          => 'required|min:1',
+            'points'        => 'required'
         ];
     }
 }

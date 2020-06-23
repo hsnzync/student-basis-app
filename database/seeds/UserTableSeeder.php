@@ -14,11 +14,31 @@ class UserTableSeeder extends Seeder
     {
         DB::table('user')->insert([
             [
-                'first_name'        => 'Admin',
-                'last_name'         => 'Achternaam',
+                'first_name'        => 'Superadmin',
+                'last_name'         => 'Doe',
+                'short_name'        => 'SD',
                 'email'             => 'super@admin.com',
-                'password'          => bcrypt('0000'),
-                'experience_points' => 100
+                'password'          => bcrypt('1234567890'),
+                'experience_points' => null,
+                'student_number'    => null
+            ],
+            [
+                'first_name'        => 'Frans',
+                'last_name'         => 'Kooij',
+                'short_name'        => 'FK',
+                'email'             => 'frans.kooij@hotmail.com',
+                'password'          => bcrypt('1234567890'),
+                'experience_points' => null,
+                'student_number'    => null
+            ],
+            [
+                'first_name'        => 'Hasan',
+                'last_name'         => 'Ozaynaci',
+                'short_name'        => 'HO',
+                'email'             => 'hsnzync@hotmail.com',
+                'password'          => bcrypt('1234567890'),
+                'experience_points' => 150,
+                'student_number'    => '0892980'
             ],
         ]);
     }

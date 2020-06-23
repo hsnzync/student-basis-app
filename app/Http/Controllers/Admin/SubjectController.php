@@ -36,12 +36,12 @@ class SubjectController extends Controller
         }
 
         $subject->title         = $request->title;
-        $subject->slug          = $request->slug;
+        $subject->slug          = str_slug($request->title);
         $subject->is_active     = $request->is_active;
 
         $subject->save();
 
-        return redirect()->route('admin.subject.edit', $subject->id)->with('success', '"' . $subject->title . '" is bijgewerkt!');
+        return redirect()->route('admin.subject.edit', $subject->id)->with('success', $subject->title . ' is bijgewerkt.');
     }
 
     public function create()
@@ -54,7 +54,7 @@ class SubjectController extends Controller
     {
         $subject                = new Subject();
         $subject->title         = $request->title;
-        $subject->slug          = $request->slug;
+        $subject->slug          = str_slug($request->title);
         $subject->is_active     = $request->is_active;
 
         if($request->hasFile('image_url')) {
@@ -67,7 +67,7 @@ class SubjectController extends Controller
 
         $subject->save();
 
-        return redirect()->route('admin.subject.edit', $subject->id)->with('success', '"' . $subject->title . '" is toegevoegd!');
+        return redirect()->route('admin.subject.edit', $subject->id)->with('success', $subject->title . ' is toegevoegd.');
     }
 
     public function destroy($id) : RedirectResponse
@@ -75,6 +75,6 @@ class SubjectController extends Controller
         $subject = Subject::find($id);
         $subject->delete();
 
-        return redirect()->route('admin.subject.index')->with('error', '"' . $subject->title . '" is verwijderd!');
+        return redirect()->route('admin.subject.index')->with('error', $subject->title . ' is verwijderd.');
     }
 }

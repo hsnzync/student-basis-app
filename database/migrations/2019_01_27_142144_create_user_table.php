@@ -17,14 +17,15 @@ class CreateUserTable extends Migration
             $table->increments('id');
             $table->integer('school_id')->nullable()->unsigned();
             $table->boolean('is_active')->nullable()->default(true);
-            $table->boolean('is_admin')->nullable()->default(false);
 
             $table->string('first_name', 128)->nullable();
             $table->string('last_name', 128)->nullable();
+            $table->string('short_name', 128)->nullable();
             $table->string('email', 128)->unique()->nullable();
+            $table->string('student_number', 128)->unique()->nullable();
             $table->string('password')->nullable();
 
-            $table->string('avatar', 128)->default('default.png');
+            $table->string('avatar', 128)->nullable();
             $table->integer('level')->nullable()->default(1);
             $table->integer('experience_points')->nullable();
 
