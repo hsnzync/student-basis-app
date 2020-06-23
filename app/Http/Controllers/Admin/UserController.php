@@ -35,9 +35,12 @@ class UserController extends Controller
     {
         $superadmin_role_id = Role::whereSlug('superadmin')->first()->id;
         $teacher_role_id = Role::whereSlug('teacher')->first()->id;
+        $fname_short = substr($request->first_name, 0, 1);
+        $lname_short = substr($request->last_name, 0, 1);
 
         $user->update($request->all());
         $user->password = Hash::make($request->password);
+        $user->short_name = $fname_short . $lname_short;
         $user->roles()->sync( $request->is_admin ? $superadmin_role_id : $teacher_role_id );
         $user->save();
 
@@ -48,16 +51,20 @@ class UserController extends Controller
     {
         $user = new User();
         $schools = School::pluck('title', 'id');
-        return view('admin.user.edit', compact('user', 'schools'));
+        $user_role = false;
+        return view('admin.user.edit', compact('user', 'user_role', 'schools'));
     }
 
     public function store(CreateUserRequest $request) : RedirectResponse
     {
         $superadmin_role_id = Role::whereSlug('superadmin')->first()->id;
         $teacher_role_id = Role::whereSlug('teacher')->first()->id;
+        $fname_short = substr($request->first_name, 0, 1);
+        $lname_short = substr($request->last_name, 0, 1);
 
         $user = User::create($request->all());
         $user->password = Hash::make($request->password);
+        $user->short_name = $fname_short . $lname_short;
         $user->roles()->attach( $request->is_admin ? $superadmin_role_id : $teacher_role_id );
         $user->save();
 

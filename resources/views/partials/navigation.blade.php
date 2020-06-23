@@ -31,7 +31,7 @@
             <ul class="m-0">
                 <li class="nav-item dropdown py-4">
                     <a id="nav-item-dropdown" class="nav-content-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ $user_initials }}
+                        {{ auth()->user()->short_name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right nav-dropdown" aria-labelledby="nav-item-dropdown">

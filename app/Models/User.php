@@ -26,6 +26,7 @@ class User extends Authenticatable
         'student_number',
         'avatar',
         'password',
+        'short_name',
         'level',
         'experience_points',
         'is_active',

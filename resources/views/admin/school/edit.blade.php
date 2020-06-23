@@ -14,12 +14,12 @@
         @endif
 
         <div class="form-group">
-            {!! Form::label('title', 'Naam:') !!}
+            {!! Form::label('title', 'Naam') !!}
             {!! Form::text('title', $school->title, ['class' => 'form-control', 'id' => 'title' ]) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('location', 'Locatie:') !!}
+            {!! Form::label('location', 'Locatie') !!}
             {!! Form::text('location', $school->location, ['class' => 'form-control' ]) !!}
         </div>
 
