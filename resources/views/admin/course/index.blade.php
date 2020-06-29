@@ -15,6 +15,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Naam</th>
                     <th scope="col">Vak</th>
+                    <th scope="col">Kleur</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -26,7 +27,8 @@
                         <th scope="row">{{ $course->id }}</th>
                         <td>{{ $course->title }}</td>
                         <td>{{ $course->subject->title }}</td>
-                        <td><span class="badge badge-{{ $course->is_active ? 'success' : 'secondary' }} p-2">{{ $course->is_active ? 'Actief' : 'Inactief' }}</td>
+                        <td><div class="hex" style="{{ 'background-color:' . $course->hex }}"></div></td>
+                        <td><span class="badge badge-{{ $course->is_active ? 'success' : 'secondary' }}">{{ $course->is_active ? 'Actief' : 'Inactief' }}</td>
                         <td><a href="{{ route('admin.course.edit', [$subject_id, $course->id]) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td>
                             {!! Form::open(['method' => 'POST', 'route' => ['admin.course.destroy', $subject_id, $course->id ]]) !!}

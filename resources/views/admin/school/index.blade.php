@@ -27,7 +27,7 @@
                     <tr>
                         <th scope="row">{{ $school->id }}</th>
                         <td>{{ $school->title }}</td>
-                        <td><span class="badge badge-{{ $school->is_active ? 'success' : 'secondary' }} p-2">{{ $school->is_active ? 'Actief' : 'Inactief' }}</td>
+                        <td><span class="badge badge-{{ $school->is_active ? 'success' : 'secondary' }}">{{ $school->is_active ? 'Actief' : 'Inactief' }}</td>
                         <td><a href="{{ route('admin.school.edit', $school->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td>
                             @csrf

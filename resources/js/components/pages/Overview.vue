@@ -41,18 +41,9 @@ export default {
     methods: {
         fetchSubjects() {
             this.isLoading = true
-            let url = new URL(window.location.href)
-            let id_param = url.searchParams.get('id')
 
             axios
-                .get(
-                    'api/load-subjects?limit=' +
-                        this.limit +
-                        '&offset=' +
-                        this.offset +
-                        '&id=' +
-                        id_param
-                )
+                .get('api/load-subjects')
                 .then(response => {
                     this.subjects = response.data.subjects
                     this.isLoading = false

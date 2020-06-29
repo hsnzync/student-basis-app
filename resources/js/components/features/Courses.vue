@@ -1,38 +1,47 @@
 <template>
     <overview-section :type="type" :size="size">
-        <HeaderTitle :title="activeSubject.title" />
-        <standard-wrapper v-if="courses.length > 0" class="row col-md-12 p-0">
+        <HeaderTitle title="Cursussen" :description="activeSubject.title" />
+        <HeaderImage :image="activeSubject.image_url" />
+        <HeaderTitle title="Overzicht" />
+        <standard-wrapper v-if="courses.length > 0" class="row mt-2 mb-4">
             <div
-                class="items col-md-6 px-0 pt-5"
+                class="items col-md-4 py-3"
                 :class="setAvailability(course)"
                 v-for="(course, index) in courses"
                 :key="index"
             >
                 <a :href="generateUrl(course.slug)">
-                    <div class="item row ml-4 mr-4 mb-4 mt-0 p-3">
-                        <div class="item-image col-4 p-0">
-                            <!-- <img src="/uploads/images/fallback/fallback.jpg" :alt="course.title" /> -->
-                            <img :src="generateThumbnail(course.image_url)" />
-                        </div>
-                        <div class="item-content col-8">
+                    <div class="item row col-12 m-0" :style="`background-color:${course.hex}`">
+                        <div class="item-content col-12 p-4">
                             <h4>{{ course.title }}</h4>
+                            <span><i class="fas fa-folder-open pr-2"></i>5 oefeningen</span>
+                            <span><i class="fas fa-clock pr-2"></i>30 - 40 min</span>
                         </div>
                     </div>
                 </a>
             </div>
         </standard-wrapper>
-        <p v-else>Geen cursussen gevonden</p>
+        <StatusBar v-else text="Geen cursussen beschikbaar." />
+        <!-- <EmptyCoursePlaceholder v-else /> -->
     </overview-section>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
 import { OverviewSection, StandardWrapper } from '../sections'
-import { HeaderTitle } from '../elements'
+import { HeaderTitle, HeaderImage, StatusBar } from '../elements'
+import { EmptyCoursePlaceholder } from '../loaders'
 
 export default {
     name: 'Courses',
-    components: { StandardWrapper, OverviewSection, HeaderTitle },
+    components: {
+        StandardWrapper,
+        OverviewSection,
+        HeaderTitle,
+        HeaderImage,
+        EmptyCoursePlaceholder,
+        StatusBar
+    },
     inject: ['initial'],
     props: {
         courses: {
@@ -66,9 +75,9 @@ export default {
             return 'browse/' + slug
         },
         setAvailability(course) {
-            if (!course.is_unlocked) {
-                return 'locked'
-            }
+            // if (!course.is_unlocked) {
+            //     return 'locked'
+            // }
 
             return 'unlocked'
         }

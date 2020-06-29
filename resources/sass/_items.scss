@@ -101,26 +101,47 @@
 
 .courses-section {
     background-color: #fff;
-    .items {
-        &.locked:after {
-            content: 'Niet vrijgespeeld';
-            line-height: 150px;
-            text-align: center;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
-            position: absolute;
-            top: 45px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 145px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
+    .items-wrapper {
+        margin-right: -15px;
+        margin-left: -15px;
+        .items {
+            &.placeholder {
+                .placeholder-space {
+                    background: #fff;
+                    height: 15px;
+                    width: 100%;
+                    margin: 7px 10px;
+                    border-radius: 5px;
+                }
+            }
         }
-        .item {
-            border: 2px solid $quaternary;
+        .item-content {
+            h4 {
+                color: #fff !important;
+            }
+            span {
+                display: block;
+                color: #fff;
+            }
         }
+        // .items {
+        // &.locked:after {
+        //     content: 'Niet vrijgespeeld';
+        //     line-height: 150px;
+        //     text-align: center;
+        //     color: #fff;
+        //     font-family: 'Roboto', sans-serif;
+        //     font-size: 20px;
+        //     position: absolute;
+        //     top: 45px;
+        //     bottom: 0;
+        //     left: 0;
+        //     right: 0;
+        //     height: 145px;
+        //     width: 100%;
+        //     background-color: rgba(0, 0, 0, 0.8);
+        //     border-radius: 20px;
+        // }
+        // }
     }
 }

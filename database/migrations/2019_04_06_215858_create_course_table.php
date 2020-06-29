@@ -20,6 +20,7 @@ class CreateCourseTable extends Migration
 
             $table->string('title', 128)->nullable();
             $table->string('slug', 128)->nullable();
+            $table->string('hex', 128)->nullable();
             $table->integer('points')->nullable();
 
             $table->timestamps();

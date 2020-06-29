@@ -2,7 +2,7 @@
 
 500;700&display=swap);@charset "UTF-8";
 .nav-main {
-  position: absolute;
+  position: fixed;
   min-height: 100vh;
   width: 85px;
   z-index: 1;
@@ -89,6 +89,52 @@
   text-decoration: none;
   color: #fff;
   background: #1d68a7;
+}
+
+@media screen and (max-width: 575px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  body .main {
+    padding-bottom: 80px !important;
+  }
+
+  body .main .overview {
+    padding-left: 0 !important;
+  }
+
+  .nav-main {
+    bottom: 0;
+    height: 80px;
+    min-height: 80px;
+    width: 100vw;
+    position: fixed;
+  }
+
+  .nav-main .nav-content li {
+    display: inline-block;
+  }
+
+  .nav-main .nav-content li .nav-content-item {
+    padding: 15px 0 0 !important;
+  }
+
+  .nav-main .nav-content li .nav-content-item.title {
+    position: relative;
+    bottom: 15px;
+  }
+
+  .nav-main .nav-content .nav-footer {
+    bottom: 0;
+    top: 0;
+    left: auto;
+    right: 40px;
+  }
+
+  .nav-main .nav-content .nav-footer a {
+    padding: 10px !important;
+  }
 }
 
 .navbar-laravel {
@@ -377,31 +423,50 @@
   background-color: #fff;
 }
 
-.courses-section .items.locked:after {
-  content: "Niet vrijgespeeld";
-  line-height: 150px;
-  text-align: center;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  position: absolute;
-  top: 45px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 145px;
+.courses-section .items-wrapper {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.courses-section .items-wrapper .items.placeholder .placeholder-space {
+  background: #fff;
+  height: 15px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 20px;
+  margin: 7px 10px;
+  border-radius: 5px;
 }
 
-.courses-section .items .item {
-  border: 2px solid #f3f3f3;
+.courses-section .items-wrapper .item-content h4 {
+  color: #fff !important;
 }
 
-.header h1 {
+.courses-section .items-wrapper .item-content span {
+  display: block;
+  color: #fff;
+}
+
+.header-title h1 {
   font-weight: 700;
+  font-size: 32px;
   color: #373646;
+}
+
+.header-title p {
+  color: #878787;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.header-image {
+  height: 380px;
+}
+
+.header-image img {
+  max-height: 380px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
 }
 
 .main-button {
@@ -427,6 +492,11 @@
   position: absolute;
   right: 15px;
   bottom: 15px;
+}
+
+.label-section span {
+  padding: 13px 10px;
+  min-width: 80px;
 }
 
 .loader {
@@ -459,7 +529,18 @@
 }
 
 .filter-section ul li {
+  color: #878787;
+  font-weight: 700;
   display: inline-block;
+  cursor: pointer;
+}
+
+.filter-section ul li:not(.filter-icon) {
+  width: 119px;
+}
+
+.filter-section ul li .filter-icon i {
+  font-size: 17px;
 }
 
 .admin .header {
@@ -492,6 +573,15 @@
 .admin .overview .main-body .form-group-helper {
   font-size: 12px;
   margin-top: 10px;
+}
+
+.admin .overview .hex {
+  width: 33px;
+  height: 33px;
+}
+
+.admin .overview .badge {
+  padding: 12px 10px;
 }
 
 .admin img.form-img {
@@ -537,6 +627,7 @@
 
 .is-active {
   color: #3490dc !important;
+  font-weight: 700;
 }
 
 .item-search .form-group i {
@@ -11965,7 +12056,7 @@ body #app {
 }
 
 .main .overview {
-  padding-left: 75px !important;
+  padding-left: 85px;
 }
 
 .main a:hover {

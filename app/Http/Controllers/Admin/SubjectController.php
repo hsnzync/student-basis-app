@@ -11,6 +11,8 @@ use App\Http\Requests\Subject\UpdateSubjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\School;
+use App\Models\User;
+use App\Models\Status;
 
 class SubjectController extends Controller
 {
@@ -52,6 +54,8 @@ class SubjectController extends Controller
 
     public function store(CreateSubjectRequest $request) : RedirectResponse
     {
+        $status_available = Status::whereSlug('available')->first()->id;
+
         $subject                = new Subject();
         $subject->title         = $request->title;
         $subject->slug          = str_slug($request->title);
@@ -65,7 +69,18 @@ class SubjectController extends Controller
             $subject->image_url = $filename;
         }
 
+        $students = User::orderBy('id', 'asc')
+            ->whereHas('roles', function($query) {
+                $query->where('slug', '=', 'student');
+            })
+            ->get();
+
         $subject->save();
+
+        foreach($students as $student) {
+            // add subject and status to pivot
+            $student->subjects()->attach([ 1 => ['subject_id' => $subject->id, 'status_id' => $status_available]]);
+        }
 
         return redirect()->route('admin.subject.edit', $subject->id)->with('success', $subject->title . ' is toegevoegd.');
     }

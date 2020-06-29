@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\School;
 use App\Models\Role;
+use App\Models\Subject;
+use App\Models\Status;
 use Hash;
 
 class StudentController extends Controller
@@ -58,11 +60,20 @@ class StudentController extends Controller
         $fname_short = substr($request->first_name, 0, 1);
         $lname_short = substr($request->last_name, 0, 1);
 
+        $subjects = Subject::get();
+        $status_available = Status::whereSlug('available')->first()->id;
+
         $student = User::create($request->all());
         $student->password = Hash::make($request->password);
         $student->short_name = $fname_short . $lname_short;
         $student->roles()->attach( $student_role_id );
+        $student->subjects()->attach( $student_role_id );
         $student->save();
+
+        foreach($subjects as $subject) {
+            // add subject and status to pivot
+            $student->subjects()->attach([ 1 => ['subject_id' => $subject->id, 'status_id' => $status_available]]);
+        }
 
         return redirect()->route('admin.student.edit', $student->id)->with('success', $student->fullname . ' is toegevoegd.');
     }

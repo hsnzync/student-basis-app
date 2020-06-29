@@ -12,6 +12,7 @@ class User extends Authenticatable
     use Notifiable, SoftDeletes;
 
     public $table = 'user';
+    public $primaryKey  = 'id';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -20,6 +21,7 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
+        'id',
         'first_name',
         'last_name',
         'email',
@@ -46,6 +48,16 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role')->withPivot('user_id');
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'user_subject')->withPivot('user_id');
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'user_course')->orderBy('id', 'asc')->where('subject_id', 1)->withPivot('user_id');
     }
 
     public function scopeActive($query)

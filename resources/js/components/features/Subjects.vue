@@ -7,34 +7,36 @@
                 <input type="text" v-model="search" class="form-control" placeholder="Zoeken.." />
             </div>
         </div>
-        <ItemFilter />
+        <ItemFilter @filterItems="filterSubjects" />
         <standard-wrapper v-if="!isLoading">
             <div
                 class="items pt-4"
-                v-for="(subject, index) in filteredSubjects"
+                v-for="(subject, index) in searchedSubjects"
                 :key="index"
                 @click="handleClick(subject)"
             >
-                <div class="item row m-0 p-3" :class="{ open: selected === subject.id }">
-                    <div class="item-image col-4 p-0">
-                        <v-lazy-image
-                            :src="generateThumbnail(subject.image_url)"
-                            src-placeholder="https://cdn.dribbble.com/users/358080/screenshots/1986444/loader.gif"
-                        />
-                    </div>
-                    <div class="item-content col-8 row ml-0 py-2">
-                        <div>
-                            <h4>{{ subject.title }}</h4>
-                            <Rating :score="4" />
-                            <Participants />
+                <standard-tile :type="type">
+                    <div class="item row m-0 p-3" :class="{ open: selected === subject.id }">
+                        <div class="item-image col-4 p-0">
+                            <v-lazy-image
+                                :src="generateThumbnail(subject.image_url)"
+                                src-placeholder="https://cdn.dribbble.com/users/358080/screenshots/1986444/loader.gif"
+                            />
                         </div>
-                        <LabelBadge :status="'Beschikbaar'" />
+                        <div class="item-content col-8 row ml-0 py-2">
+                            <div>
+                                <h4>{{ subject.title }}</h4>
+                                <Rating :score="4" />
+                                <Participants />
+                            </div>
+                            <LabelBadge :status="subject.status" />
+                        </div>
                     </div>
-                </div>
+                </standard-tile>
             </div>
         </standard-wrapper>
 
-        <EmptySubjectPlaceholder v-else :count="6" />
+        <EmptySubjectPlaceholder v-else />
     </overview-section>
 </template>
 
@@ -42,7 +44,7 @@
 import VLazyImage from 'v-lazy-image'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
-import { StandardWrapper, OverviewSection } from '../sections'
+import { StandardWrapper, OverviewSection, StandardTile } from '../sections'
 import { Rating, LabelBadge, HeaderTitle, Participants, ItemFilter } from '../elements'
 import { EmptySubjectPlaceholder } from '../loaders'
 
@@ -52,6 +54,7 @@ export default {
         VLazyImage,
         StandardWrapper,
         OverviewSection,
+        StandardTile,
         Rating,
         LabelBadge,
         HeaderTitle,
@@ -76,13 +79,20 @@ export default {
             title: 'Vakken',
             size: '4',
             selected: this.initial.id,
-            search: ''
+            search: '',
+            activeStatus: ''
         }
     },
     computed: {
-        filteredSubjects() {
+        searchedSubjects() {
             return this.subjects.filter(subject => {
-                return subject.title.toLowerCase().includes(this.search.toLowerCase())
+                // return (
+                //     subject.title.toLowerCase().includes(this.search.toLowerCase())
+                // )
+                if (this.search) {
+                    return subject.title.toLowerCase().includes(this.search.toLowerCase())
+                }
+                return subject.status.includes(this.activeStatus)
             })
         }
     },
@@ -99,6 +109,9 @@ export default {
             this.selected = subject.id
             this.$emit('showCourse', subject.id)
             this.selectedSubject(subject)
+        },
+        filterSubjects(status) {
+            this.activeStatus = status
         }
     }
 }

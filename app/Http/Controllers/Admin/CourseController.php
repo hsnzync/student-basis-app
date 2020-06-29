@@ -31,6 +31,7 @@ class CourseController extends Controller
         $course->slug           = str_slug($request->title);
         $course->points         = $request->points;
         $course->subject_id     = $subject_id;
+        $course->hex            = $request->hex;
         $course->is_active      = $request->is_active;
 
         $course->save();
@@ -57,6 +58,7 @@ class CourseController extends Controller
         $course->slug           = str_slug($request->title);
         $course->points         = $request->points;
         $course->is_active      = $request->is_active;
+        $course->hex            = $request->hex;
         $course->subject_id     = $subject_id;
 
         $course->save();

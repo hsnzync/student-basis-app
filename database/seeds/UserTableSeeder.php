@@ -17,8 +17,8 @@ class UserTableSeeder extends Seeder
                 'first_name'        => 'Superadmin',
                 'last_name'         => 'Doe',
                 'short_name'        => 'SD',
-                'email'             => 'super@admin.com',
-                'password'          => bcrypt('1234567890'),
+                'email'             => 'my@superadmin.com',
+                'password'          => bcrypt('0000'),
                 'experience_points' => null,
                 'student_number'    => null
             ],
@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
                 'last_name'         => 'Kooij',
                 'short_name'        => 'FK',
                 'email'             => 'frans.kooij@hotmail.com',
-                'password'          => bcrypt('1234567890'),
+                'password'          => bcrypt('0000'),
                 'experience_points' => null,
                 'student_number'    => null
             ],
@@ -35,8 +35,8 @@ class UserTableSeeder extends Seeder
                 'first_name'        => 'Hasan',
                 'last_name'         => 'Ozaynaci',
                 'short_name'        => 'HO',
-                'email'             => 'hsnzync@hotmail.com',
-                'password'          => bcrypt('1234567890'),
+                'email'             => 'hsnzync_@hotmail.com',
+                'password'          => bcrypt('0000'),
                 'experience_points' => 150,
                 'student_number'    => '0892980'
             ],

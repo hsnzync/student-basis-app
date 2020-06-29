@@ -17,11 +17,12 @@ class CreateUserSubjectTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->nullable()->unsigned();
             $table->integer('subject_id')->nullable()->unsigned();
-            $table->string('status', 128)->nullable();
+            $table->integer('status_id')->nullable()->unsigned();
             $table->boolean('is_completed')->nullable()->default(false);
 
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('subject_id')->references('id')->on('subject');
+            $table->foreign('status_id')->references('id')->on('status');
         });
     }
 

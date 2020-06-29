@@ -15,12 +15,18 @@ class Course extends Model
         'slug',
         'title',
         'points',
+        'hex',
         'subject_id'
     ];
 
     public function subject()
     {
         return $this->belongsTo('App\Models\Subject', 'subject_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function scopeActive($query)

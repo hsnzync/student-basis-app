@@ -1,22 +1,17 @@
 <template>
-    <div :class="wrapperClass">
+    <div :class="`${this.type}-tile`">
         <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: 'StandardWrapper',
+    name: 'StandardTile',
     props: {
         type: {
             type: String,
             required: false,
-            default: 'items'
-        }
-    },
-    computed: {
-        wrapperClass() {
-            return this.type + '-wrapper'
+            default: 'subjects'
         }
     }
 }

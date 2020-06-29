@@ -23,6 +23,9 @@
             {!! Form::text('points', $course->points, ['class' => 'form-control' ]) !!}
         </div>
 
+        <color-picker ></color-picker>
+
+
         <div class="form-group">
             <div class="custom-control custom-switch">
                 <input type="hidden" name="is_active" value="0">

@@ -28,18 +28,22 @@
                         </td>
                         <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td><span class="badge badge-{{ $user->is_active ? 'success' : 'secondary' }} p-2">{{ $user->is_active ? 'Actief' : 'Inactief' }}</td>
+                        <td><span class="badge badge-{{ $user->is_active ? 'success' : 'secondary' }}badge">{{ $user->is_active ? 'Actief' : 'Inactief' }}</td>
                         <td>
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                            @if(auth()->user()->hasRole('superadmin'))
+                                <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a>
+                            @endif
                         </td>
                         <td>
-                            {!! Form::open(['method' => 'POST', 'route' => ['admin.user.destroy', $user->id] ]) !!}
-                            @csrf
-                            @method('DELETE')
+                            @if(auth()->user()->hasRole('superadmin'))
+                                {!! Form::open(['method' => 'POST', 'route' => ['admin.user.destroy', $user->id] ]) !!}
+                                @csrf
+                                @method('DELETE')
 
-                            <actions-button :item="{{$user}}" />
+                                <actions-button :item="{{$user}}" />
 
-                            {!! Form::close() !!}
+                                {!! Form::close() !!}
+                            @endif
                         </td>
                     </tr>
                 @endforeach

@@ -23,12 +23,15 @@ class CourseController extends Controller
             $subject = $request->get('subject');
         }
 
-        $courses = Course::where('subject_id', $subject)->active()->orderBy('id', 'asc')->get();
-        $count_courses = $courses->count();
+
+        $courses = Course::where('subject_id', $subject)->with('user')->active()->orderBy('id', 'asc')->get();
+        // $courses = auth()->user()->courses;
+        // $count_courses = $courses->count();
+
 
         return response()->json([
-            'courses'         => $courses,
-            'loading_count'   => $count_courses
+            'courses'         => $courses
+            // 'loading_count'   => $count_courses
         ]);
 
     }
