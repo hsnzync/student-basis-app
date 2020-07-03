@@ -22,8 +22,33 @@ class UserCourseTableSeeder extends Seeder
             ],
             [
                 'user_id'       => $default_user,
-                'course_id'     => 4,
+                'course_id'     => 2,
                 'is_completed'  => true
+            ],
+            [
+                'user_id'       => $default_user,
+                'course_id'     => 3,
+                'is_completed'  => true
+            ],
+            [
+                'user_id'       => $default_user,
+                'course_id'     => 4,
+                'is_completed'  => false
+            ],
+            [
+                'user_id'       => $default_user,
+                'course_id'     => 5,
+                'is_completed'  => true
+            ],
+            [
+                'user_id'       => $default_user,
+                'course_id'     => 6,
+                'is_completed'  => false
+            ],
+            [
+                'user_id'       => $default_user,
+                'course_id'     => 7,
+                'is_completed'  => false
             ]
         ]);
     }

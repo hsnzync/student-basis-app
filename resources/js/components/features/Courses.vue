@@ -10,26 +10,31 @@
                 v-for="(course, index) in courses"
                 :key="index"
             >
-                <a :href="generateUrl(course.slug)">
-                    <div class="item row col-12 m-0" :style="`background-color:${course.hex}`">
-                        <div class="item-content col-12 p-4">
-                            <h4>{{ course.title }}</h4>
-                            <span><i class="fas fa-folder-open pr-2"></i>5 oefeningen</span>
-                            <span><i class="fas fa-clock pr-2"></i>30 - 40 min</span>
+                <standard-tile :type="type">
+                    <a :href="generateUrl(course.slug)">
+                        <status-label v-if="course.is_completed"
+                            ><i class="fas fa-check"></i
+                        ></status-label>
+                        <div class="item row col-12 m-0" :style="`background-color:${course.hex}`">
+                            <div class="item-content col-12 p-4">
+                                <h4>{{ course.title }}</h4>
+                                <span><i class="fas fa-folder-open pr-2"></i>5 oefeningen</span>
+                                <span><i class="fas fa-clock pr-2"></i>30 - 40 min</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </standard-tile>
             </div>
         </standard-wrapper>
-        <StatusBar v-else text="Geen cursussen beschikbaar." />
+        <StatusBar v-else :text="textContent.status.noCoursesAvailable" />
         <!-- <EmptyCoursePlaceholder v-else /> -->
     </overview-section>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import { OverviewSection, StandardWrapper } from '../sections'
-import { HeaderTitle, HeaderImage, StatusBar } from '../elements'
+import { OverviewSection, StandardWrapper, StandardTile } from '../sections'
+import { HeaderTitle, HeaderImage, StatusBar, StatusLabel } from '../elements'
 import { EmptyCoursePlaceholder } from '../loaders'
 
 export default {
@@ -40,9 +45,11 @@ export default {
         HeaderTitle,
         HeaderImage,
         EmptyCoursePlaceholder,
-        StatusBar
+        StatusBar,
+        StatusLabel,
+        StandardTile
     },
-    inject: ['initial'],
+    inject: ['initial', 'textContent'],
     props: {
         courses: {
             type: Array,

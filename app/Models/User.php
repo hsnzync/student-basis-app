@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'user_course')->orderBy('id', 'asc')->where('subject_id', 1)->withPivot('user_id');
+        return $this->belongsToMany(Course::class, 'user_course')->withPivot('user_id');
     }
 
     public function scopeActive($query)

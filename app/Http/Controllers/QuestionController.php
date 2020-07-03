@@ -11,10 +11,10 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($subject_slug, $course_slug)
+    public function index($slug)
     {
-        dump('This course is: ' . $course_slug);
-        dd('VueJS here');
+        // dump('This course is: ' . $slug);
+        // dd('VueJS here');
         return view('platform.question.index');
-    } 
+    }
 }

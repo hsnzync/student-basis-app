@@ -3,9 +3,10 @@ require('./bootstrap')
 
 import 'es6-promise/auto'
 import store from './store/index'
+import router from './router'
 
-/** PAGES */
-Vue.component('Overview', require('./components/pages/Overview.vue').default)
+/** Master */
+Vue.component('BaseComponent', require('./components/master/BaseComponent.vue').default)
 
 /** ELEMENTS */
 Vue.component('ActionsButton', require('./components/elements/ActionsButton.vue').default)
@@ -20,5 +21,6 @@ Vue.component(
 
 new Vue({
     el: '#app',
+    router,
     store
 }).$mount('#app')

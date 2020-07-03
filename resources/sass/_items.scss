@@ -17,12 +17,7 @@
                 background-color: #fff;
                 border-radius: 20px;
                 padding: 0;
-                transition: 0.5s;
                 cursor: pointer;
-
-                &:hover {
-                    transform: translateX(10px);
-                }
 
                 &.open {
                     background-color: $primary;
@@ -98,7 +93,15 @@
         }
     }
 }
+.subjects-section {
+    .subjects-tile {
+        transition: 0.2s;
 
+        &:hover {
+            transform: translateX(10px);
+        }
+    }
+}
 .courses-section {
     background-color: #fff;
     .items-wrapper {
@@ -114,14 +117,34 @@
                     border-radius: 5px;
                 }
             }
-        }
-        .item-content {
-            h4 {
-                color: #fff !important;
+            .courses-tile {
+                /** DELETE ANIMATION FOR NOW, WILL BE FIXED LATER */
+
+                // transition: 0.2s;
+
+                // .badge {
+                //     top: 0;
+                //     right: 0;
+                // }
+
+                // &:hover {
+                //     transform: translateY(-10px);
+                //     .badge {
+                //         top: -15px;
+                //         right: -15px;
+                //     }
+                // }
             }
-            span {
-                display: block;
-                color: #fff;
+            .item {
+                .item-content {
+                    h4 {
+                        color: #fff !important;
+                    }
+                    span {
+                        display: block;
+                        color: #fff;
+                    }
+                }
             }
         }
         // .items {

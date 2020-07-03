@@ -14,72 +14,20 @@
         max-width: 1480px;
         padding: 40px 90px;
 
-        .navbar-brand {
-            font-size: 25px;
-            font-weight: 600;
+        .nav-title {
+            font-size: 30px;
             color: #000;
-            &::after {
-                content: '⬛';
-                font-size: 9px;
-                color: $primary;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            img {
                 position: relative;
-                top: 0.5px;
-                left: 1px;
+                top: -2px;
+                width: 45px;
+                height: 45px;
             }
-        }
-
-        .navbar-collapse {
-            max-width: max-content;
-        }
-
-        @media screen and (max-width: $break-small) {
-            .navbar-collapse {
-                max-width: 100%;
-            }
-
-            .nav-link {
-                padding: 5px;
-                display: block !important;
-            }
-        }
-
-        .navbar-nav {
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-
-            .nav-item {
-                margin: 0 10px;
-
-                .nav-link {
-                    color: $tertiary;
-                    transition: 0.2s ease-out;
-                    line-height: 35px;
-                    display: inline-block;
-
-                    &:hover {
-                        color: $primary;
-                    }
-                }
-            }
-
-            .dropdown {
-                margin-right: 0;
-            }
-        }
-
-        .dropdown-item.active,
-        .dropdown-item:active {
-            background: #fff;
         }
     }
-
-    // .nav-dropdown {
-    //     a {
-    //         color: #000 !important;
-    //     }
-    // }
-}
-
-.page-nav {
-    background-color: #333;
 }

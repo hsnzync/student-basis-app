@@ -8,7 +8,13 @@
             <div class="container profile-container">
                 <div class="col-xl row justify-content-md-center text-center">
                     <ul class="col-xl">
-                        <li><img src="uploads/avatars/{{ $user->avatar }}" alt="avatar" class="rounded-circle"></li>
+                        <li>
+                            @if( $user->avatar )
+                                <img src="uploads/avatars/{{ $user->avatar }}" alt="avatar" class="rounded-circle">
+                            @else
+                                <span class="avatar rounded-circle">{{ auth()->user()->short_name }}</span>
+                            @endif
+                        </li>
                         <li>{{ $user->first_name }} {{ $user->last_name }}</li>
                         <li>{{ $user->school->title }}</li>
                         <li>Level {{ $user->level }}</li>

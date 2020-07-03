@@ -17,6 +17,8 @@
 @import 'loader';
 @import 'progress-bar';
 @import 'filter';
+@import 'status-labels';
+@import 'forms';
 
 @import 'admin';
 @import 'auth';
@@ -44,8 +46,9 @@ body {
 .main {
     font-family: $font-regular;
 
-    .overview {
-        padding-left: 85px;
+    .vue-base {
+        padding-left: 150px;
+        overflow-x: hidden;
     }
 
     a {

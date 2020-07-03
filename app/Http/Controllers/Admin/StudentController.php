@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\School;
 use App\Models\Role;
 use App\Models\Subject;
+use App\Models\Course;
 use App\Models\Status;
 use Hash;
 
@@ -57,22 +58,27 @@ class StudentController extends Controller
     public function store(CreateStudentRequest $request) : RedirectResponse
     {
         $student_role_id = Role::whereSlug('student')->first()->id;
+        $status_available = Status::whereSlug('available')->first()->id;
         $fname_short = substr($request->first_name, 0, 1);
         $lname_short = substr($request->last_name, 0, 1);
 
         $subjects = Subject::get();
-        $status_available = Status::whereSlug('available')->first()->id;
+        $courses = Course::get();
 
         $student = User::create($request->all());
         $student->password = Hash::make($request->password);
         $student->short_name = $fname_short . $lname_short;
         $student->roles()->attach( $student_role_id );
-        $student->subjects()->attach( $student_role_id );
         $student->save();
 
-        foreach($subjects as $subject) {
+        foreach($subjects as $key => $subject) {
             // add subject and status to pivot
-            $student->subjects()->attach([ 1 => ['subject_id' => $subject->id, 'status_id' => $status_available]]);
+            $student->subjects()->attach($key, ['subject_id' => $subject->id, 'status_id' => $status_available]);
+        }
+
+        foreach($courses as $course) {
+            // add subject and status to pivot
+            $student->courses()->attach($course->id);
         }
 
         return redirect()->route('admin.student.edit', $student->id)->with('success', $student->fullname . ' is toegevoegd.');

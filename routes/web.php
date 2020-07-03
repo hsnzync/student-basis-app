@@ -19,8 +19,8 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::group(['middleware' => ['auth.user'], 'as' => 'platform.'], function() {
-    Route::get('browse',                                    'OverviewController@index')->name('browse.index');
-    Route::get('browse/{subject}/{course}',                 'QuestionController@index')->name('question.index');
+    Route::get('browse',                                    'BrowseController@index')->name('browse.index');
+    Route::get('browse/{course}',                           'QuestionController@index')->name('question.index');
 
     Route::get('profile',                                   'AccountController@index')->name('account.index');
     Route::get('profile/{user}/edit',                       'AccountController@edit')->name('account.edit');

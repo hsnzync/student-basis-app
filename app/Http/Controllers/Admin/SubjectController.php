@@ -77,9 +77,9 @@ class SubjectController extends Controller
 
         $subject->save();
 
-        foreach($students as $student) {
+        foreach($students as $key => $student) {
             // add subject and status to pivot
-            $student->subjects()->attach([ 1 => ['subject_id' => $subject->id, 'status_id' => $status_available]]);
+            $student->subjects()->attach($key, ['subject_id' => $subject->id, 'status_id' => $status_available]);
         }
 
         return redirect()->route('admin.subject.edit', $subject->id)->with('success', $subject->title . ' is toegevoegd.');

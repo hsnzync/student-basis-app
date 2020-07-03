@@ -1,9 +1,11 @@
 .profile-container {
     ul {
         list-style: none;
-        img {
-            height: 150px;
-            width: 150px;
+        .avatar {
+            background: $primary;
+            color: #fff;
+            font-size: 40px;
+            padding: 40px 35px;
         }
     }
 }

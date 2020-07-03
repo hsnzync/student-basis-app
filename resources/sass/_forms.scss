@@ -1,0 +1,14 @@
+.form-control {
+    height: 40px !important;
+}
+
+/** Home login form */
+.login-form {
+    transform: translateY(40%);
+}
+
+@media screen and (max-width: $break-medium) {
+    .login-form {
+        transform: translateY(10%);
+    }
+}

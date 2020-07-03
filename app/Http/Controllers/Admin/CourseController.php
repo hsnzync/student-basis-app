@@ -10,6 +10,7 @@ use App\Http\Requests\Course\UpdateCourseRequest;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Subject;
+use App\Models\User;
 use Image;
 
 class CourseController extends Controller
@@ -62,6 +63,17 @@ class CourseController extends Controller
         $course->subject_id     = $subject_id;
 
         $course->save();
+
+        $students = User::orderBy('id', 'asc')
+            ->whereHas('roles', function($query) {
+                $query->where('slug', '=', 'student');
+            })
+            ->get();
+
+        foreach($students as $student) {
+            // add subject and status to pivot
+            $student->courses()->attach($course->id);
+        }
 
         return redirect()->route('admin.course.edit', [$subject_id, $course->id])->with('success', $course->title . ' is toegevoegd.');
     }

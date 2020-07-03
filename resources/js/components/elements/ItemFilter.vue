@@ -7,28 +7,28 @@
                 :class="{ 'is-active': activeStatus == '' }"
                 @click="handleFilter('')"
             >
-                Alles
+                {{ textContent.filter.all }}
             </li>
             <li
                 class="col-4"
                 :class="{ 'is-active': activeStatus == 'Beschikbaar' }"
                 @click="handleFilter('Beschikbaar')"
             >
-                Beschikbaar
+                {{ textContent.filter.available }}
             </li>
             <li
                 class="col-2"
                 :class="{ 'is-active': activeStatus == 'Bezig' }"
                 @click="handleFilter('Bezig')"
             >
-                Bezig
+                {{ textContent.filter.inProgress }}
             </li>
             <li
                 class="col-3"
                 :class="{ 'is-active': activeStatus == 'Voltooid' }"
                 @click="handleFilter('Voltooid')"
             >
-                Voltooid
+                {{ textContent.filter.done }}
             </li>
         </ul>
     </div>
@@ -44,6 +44,7 @@ export default {
             activeStatus: ''
         }
     },
+    inject: ['textContent'],
     methods: {
         handleFilter(status) {
             this.activeStatus = status

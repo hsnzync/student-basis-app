@@ -1,5 +1,5 @@
 <template>
-    <div class="overview row m-0">
+    <div class="row">
         <Subjects :subjects="subjects" @showCourse="fetchCourses" :is-loading="isLoading" />
         <Courses :courses="courses" :inital="initial" />
     </div>
@@ -7,19 +7,21 @@
 
 <script>
 import axios from 'axios'
-
+// import Lang from 'lang.js'
 import { Subjects, Courses } from '../features'
 import { Loader } from '../loaders'
+import { content } from '../../labels/content'
 
 export default {
     name: 'Overview',
     components: { Subjects, Courses, Loader },
-    props: {
-        initial: {
-            type: Object,
-            required: false
-        }
-    },
+    // props: {
+    //     initial: {
+    //         type: Object,
+    //         required: false
+    //     }
+    // },
+    inject: ['initial'],
     data() {
         return {
             subjects: [],
@@ -31,7 +33,8 @@ export default {
     },
     provide() {
         return {
-            initial: this.initial
+            // initial: this.initial,
+            textContent: content
         }
     },
     mounted() {

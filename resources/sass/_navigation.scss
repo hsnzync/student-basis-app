@@ -1,16 +1,22 @@
 .nav-main {
     position: fixed;
     min-height: 100vh;
-    width: 85px;
+    width: 150px;
 
     z-index: 1;
-    // .nav-title {
-    //     text-align: center;
-    //     color: $quaternary;
-    //     font-size: 25px;
-    // }
     .nav-content {
-        // height: 100%;
+        .nav-title {
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+
+            img {
+                position: relative;
+                top: -2px;
+                width: 35px;
+                height: 35px;
+            }
+        }
         ul {
             padding: 0;
             list-style: none;
@@ -23,29 +29,31 @@
                 color: $light-gray;
                 transition: 0.3s;
                 font-size: 10px;
+                line-height: 40px;
 
                 &:hover {
                     color: $primary;
                     .nav-content-item {
                         color: $primary;
-
-                        &.title {
-                            color: #fff;
-                        }
+                        font-weight: 700;
+                        text-decoration: none;
                     }
                 }
 
                 .nav-content-item {
-                    display: block;
+                    display: inline-flex;
                     color: $quaternary;
-                    font-size: 22px;
+                    font-size: 11px;
+                    font-weight: 700;
                     transition: 0.3s;
-                    padding: 30px 30px 10px 30px;
-                    width: 85px;
-                    padding: 30px 0 0;
+                    width: 100%;
+                    text-align: left;
+                    padding: 0 28px;
 
-                    &.title {
-                        font-size: 25px;
+                    i {
+                        font-size: 16px;
+                        position: relative;
+                        top: 10px;
                     }
                 }
                 .dropdown-menu {
@@ -71,7 +79,6 @@
                     max-width: 45px;
                     background: $primary;
                     padding: 10px;
-                    border-radius: 100%;
                     margin: auto;
                     transition: 0.3s;
                     font-size: 15px;
@@ -92,7 +99,7 @@
         overflow-x: hidden;
         .main {
             padding-bottom: 80px !important;
-            .overview {
+            .vue-base {
                 padding-left: 0 !important;
             }
         }
@@ -104,25 +111,60 @@
         width: 100vw;
         position: fixed;
         .nav-content {
-            li {
-                display: inline-block;
-                .nav-content-item {
-                    padding: 15px 0 0 !important;
-                    &.title {
-                        position: relative;
-                        bottom: 15px;
+            height: 100%;
+            .nav-title {
+                display: none;
+            }
+
+            .nav-items,
+            .nav-footer {
+                ul {
+                    height: 100%;
+                }
+                li {
+                    padding: 0.25rem 0 !important;
+                    height: 100%;
+                    max-width: 100px;
+                    a {
+                        span {
+                            display: none;
+                        }
+                        i {
+                            top: 0;
+                            margin: auto;
+                            padding: 0 !important;
+                        }
                     }
                 }
             }
+            .nav-items {
+                height: 100%;
+                li {
+                    width: 19%;
+                }
+            }
+
             .nav-footer {
-                bottom: 0;
                 top: 0;
+                right: 20px;
                 left: auto;
-                right: 40px;
-                a {
-                    padding: 10px !important;
+                li {
+                    width: 80px;
+                }
+            }
+
+            li {
+                display: inline-block;
+                .nav-content-item {
+                    height: 100%;
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: $break-xsmall) {
+    .nav-footer {
+        right: 0 !important;
     }
 }
