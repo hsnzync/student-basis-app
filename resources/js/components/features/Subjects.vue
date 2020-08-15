@@ -1,13 +1,8 @@
 <template>
-    <overview-section :type="type" :size="size">
-        <HeaderTitle :title="title" />
-        <div class="item-search">
-            <div class="form-group mb-0 mt-4">
-                <i class="fas fa-search"></i>
-                <input type="text" v-model="search" class="form-control" placeholder="Zoeken.." />
-            </div>
-        </div>
-        <ItemFilter @filterItems="filterSubjects" />
+    <standard-section :type="type" :size="size">
+        <header-title :title="textContent.page.title.subjects" />
+        <item-search-bar @searchItems="searchSubjects" />
+        <item-filter @filterItems="filterSubjects" />
         <standard-wrapper v-if="!isLoading">
             <div
                 class="items pt-4"
@@ -26,26 +21,33 @@
                         <div class="item-content col-8 row ml-0 py-2">
                             <div>
                                 <h4>{{ subject.title }}</h4>
-                                <Rating :score="4" />
-                                <Participants />
+                                <rating :score="4" />
+                                <participants />
                             </div>
-                            <LabelBadge :status="subject.status" />
+                            <label-badge :status="subject.status" />
                         </div>
                     </div>
                 </standard-tile>
             </div>
         </standard-wrapper>
 
-        <EmptySubjectPlaceholder v-else />
-    </overview-section>
+        <empty-subject-placeholder v-else />
+    </standard-section>
 </template>
 
 <script>
 import VLazyImage from 'v-lazy-image'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
-import { StandardWrapper, OverviewSection, StandardTile } from '../sections'
-import { Rating, LabelBadge, HeaderTitle, Participants, ItemFilter } from '../elements'
+import { StandardWrapper, StandardSection, StandardTile } from '../sections'
+import {
+    Rating,
+    LabelBadge,
+    HeaderTitle,
+    Participants,
+    ItemFilter,
+    ItemSearchBar
+} from '../elements'
 import { EmptySubjectPlaceholder } from '../loaders'
 
 export default {
@@ -53,16 +55,17 @@ export default {
     components: {
         VLazyImage,
         StandardWrapper,
-        OverviewSection,
+        StandardSection,
         StandardTile,
         Rating,
         LabelBadge,
         HeaderTitle,
         Participants,
         ItemFilter,
+        ItemSearchBar,
         EmptySubjectPlaceholder
     },
-    inject: ['initial'],
+    inject: ['initial', 'textContent'],
     props: {
         subjects: {
             type: Array,
@@ -76,7 +79,6 @@ export default {
     data() {
         return {
             type: 'subjects',
-            title: 'Vakken',
             size: '4',
             selected: this.initial.id,
             search: '',
@@ -86,9 +88,6 @@ export default {
     computed: {
         searchedSubjects() {
             return this.subjects.filter(subject => {
-                // return (
-                //     subject.title.toLowerCase().includes(this.search.toLowerCase())
-                // )
                 if (this.search) {
                     return subject.title.toLowerCase().includes(this.search.toLowerCase())
                 }
@@ -101,7 +100,7 @@ export default {
         ...mapActions(['selectedSubject']),
         generateThumbnail(url) {
             if (url) {
-                return '/uploads/images/' + url
+                return `/uploads/images/${url}`
             }
             return '/uploads/images/fallback/fallback.jpg'
         },
@@ -112,6 +111,9 @@ export default {
         },
         filterSubjects(status) {
             this.activeStatus = status
+        },
+        searchSubjects(value) {
+            this.search = value
         }
     }
 }

@@ -3,9 +3,7 @@
 .courses-section {
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 100vh;
     background-color: $quaternary;
-    height: 100vh;
 
     &::-webkit-scrollbar {
         display: none;
@@ -118,7 +116,7 @@
                 }
             }
             .courses-tile {
-                /** DELETE ANIMATION FOR NOW, WILL BE FIXED LATER */
+                /** TURN OFF ANIMATION FOR NOW, WILL BE FIXED LATER */
 
                 // transition: 0.2s;
 

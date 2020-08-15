@@ -11,6 +11,6 @@ class BrowseController extends Controller
     {
         $subjects = Subject::orderBy('created_at', 'asc')->orderBy('id')->active()->get();
 
-        return view('platform.browse.index', compact('subjects'));
+        // return view('platform.browse.index', compact('subjects'));
     }
 }

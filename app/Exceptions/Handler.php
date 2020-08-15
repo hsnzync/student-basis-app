@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
             switch (intval($exception->getStatusCode())) {
                 // not found
                 case 404:
-                    return redirect()->route('platform.browse.index');
+                    return redirect()->route('platform.index');
                     break;
                 // internal error
                 // case 500:

@@ -55,11 +55,6 @@
                 {!! Form::label('experience_points', 'Aantal punten') !!}
                 {!! Form::text('experience_points', $student->experience_points, ['class' => 'form-control' ]) !!}
             </div>
-
-            <div class="form-group">
-                {!! Form::select('school_id', $schools, $student->school_id, ['class' => 'form-control', 'placeholder'=>'Selecteer school']) !!}
-            </div>
-
             <div class="form-group">
                 <div class="custom-control custom-switch">
                     <input type="hidden" name="is_active" value="0">

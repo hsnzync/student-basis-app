@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'OverviewSection',
+    name: 'StandardSection',
     props: {
         type: {
             type: String,

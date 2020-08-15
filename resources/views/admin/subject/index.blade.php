@@ -35,7 +35,7 @@
                         <td><span class="badge badge-{{ $subject->is_active ? 'success' : 'secondary' }}">{{ $subject->is_active ? 'Actief' : 'Inactief' }}</td>
                         <td><a href="{{ route('admin.subject.edit', $subject->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
                         <td>
-                            {!! Form::open(['ref' => 'form','method' => 'POST', 'route' => ['admin.subject.destroy', $subject->id] ]) !!}
+                            {!! Form::open(['method' => 'POST', 'route' => ['admin.subject.destroy', $subject->id] ]) !!}
                                 @csrf
                                 @method('DELETE')
 

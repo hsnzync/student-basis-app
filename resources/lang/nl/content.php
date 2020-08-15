@@ -12,7 +12,17 @@ return [
         'my_profile'    => 'Mijn profiel',
         'settings'      => 'Instellingen',
         'logout'        => 'Uitloggen',
-        'lessons'       => 'Lessen'
+        'browse'        => 'Bladeren'
+    ],
+    'admin' => [
+        'navigation' => [
+            'dashboard' => 'Dashboard',
+            'schools'   => 'Scholen',
+            'subjects'  => 'Vakken',
+            'students'  => 'Studenten',
+            'users'     => 'Gebruikers',
+            'logout'    => 'Uitloggen',
+        ]
     ],
     'top_navigation' => []
 ];

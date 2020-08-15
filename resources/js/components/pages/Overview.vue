@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row m-0">
         <Subjects :subjects="subjects" @showCourse="fetchCourses" :is-loading="isLoading" />
         <Courses :courses="courses" :inital="initial" />
     </div>
@@ -10,17 +10,10 @@ import axios from 'axios'
 // import Lang from 'lang.js'
 import { Subjects, Courses } from '../features'
 import { Loader } from '../loaders'
-import { content } from '../../labels/content'
 
 export default {
     name: 'Overview',
     components: { Subjects, Courses, Loader },
-    // props: {
-    //     initial: {
-    //         type: Object,
-    //         required: false
-    //     }
-    // },
     inject: ['initial'],
     data() {
         return {
@@ -28,13 +21,8 @@ export default {
             courses: [],
             limit: 6,
             offset: 6,
-            isLoading: false
-        }
-    },
-    provide() {
-        return {
-            // initial: this.initial,
-            textContent: content
+            isLoading: false,
+            initialId: undefined
         }
     },
     mounted() {
@@ -56,9 +44,9 @@ export default {
                 })
         },
         fetchCourses(value) {
-            let id = value || 1
+            this.initialId = value || 1
             axios
-                .get('api/load-courses?subject=' + id)
+                .get('api/load-courses?subject=' + this.initialId)
                 .then(response => {
                     this.courses = response.data.courses
                 })

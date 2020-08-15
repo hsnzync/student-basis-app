@@ -1,25 +1,33 @@
 <template>
-    <div class="vue-base row m-0">
-        <!-- <router-view /> -->
-        <Overview />
-    </div>
+  <div class="vue-base">
+    <router-view />
+    <!-- <slot /> -->
+  </div>
 </template>
 
 <script>
-import { Overview } from '../pages'
+import { content } from '../../labels/content'
+
 export default {
-    name: 'BaseComponent',
-    components: { Overview },
-    props: {
-        initial: {
-            type: Object,
-            required: false
-        }
+  name: 'BaseComponent',
+  props: {
+    initial: {
+      type: Object,
+      required: false,
+      default: () => {}
     },
-    provide() {
-        return {
-            initial: this.initial
-        }
+    user: {
+      type: Object,
+      required: false,
+      default: () => {}
     }
+  },
+  provide() {
+    return {
+      initial: this.initial,
+      user: this.user,
+      textContent: content
+    }
+  }
 }
 </script>

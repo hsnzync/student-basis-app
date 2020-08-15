@@ -1,5 +1,5 @@
 .form-control {
-    height: 40px !important;
+    height: 50px !important;
 }
 
 /** Home login form */
@@ -7,7 +7,7 @@
     transform: translateY(40%);
 }
 
-@media screen and (max-width: $break-medium) {
+@media screen and (max-width: $break-large) {
     .login-form {
         transform: translateY(10%);
     }

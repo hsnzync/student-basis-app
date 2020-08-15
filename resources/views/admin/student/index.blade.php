@@ -30,16 +30,16 @@
                     <td>{{ $student->email }}</td>
                     <td><span class="badge badge-{{ $student->is_active ? 'success' : 'secondary' }}">{{ $student->is_active ? 'Actief' : 'Inactief' }}</td>
                     <td><a href="{{ route('admin.student.edit', $student->id) }}" class="btn btn-secondary"><i class="fas fa-pen"></i></a></td>
-                    {!! Form::open(['method' => 'POST', 'route' => ['admin.student.destroy', $student->id] ]) !!}
                     <td>
-                        @csrf
-                        @method('DELETE')
+                        {!! Form::open(['method' => 'POST', 'route' => ['admin.student.destroy', $student->id] ]) !!}
+                            @csrf
+                            @method('DELETE')
 
-                        <actions-button :item="{{$student}}" />
+                            <actions-button :item="{{$student}}" />
 
+                        {!! Form::close() !!}
                     </td>
 
-                    {!! Form::close() !!}
                     </tr>
                 @endforeach
             </tbody>

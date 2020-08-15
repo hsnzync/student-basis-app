@@ -36,12 +36,14 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, User $student): RedirectResponse
     {
         $student_role_id = Role::whereSlug('student')->first()->id;
+        $default_school = School::whereSlug('wolfert-college')->first()->id;
         $fname_short = substr($request->first_name, 0, 1);
         $lname_short = substr($request->last_name, 0, 1);
 
         $student->update($request->all());
         $student->password = Hash::make($request->password);
         $student->short_name = $fname_short . $lname_short;
+        $student->school_id = $default_school;
         $student->roles()->sync( $student_role_id );
         $student->save();
 
@@ -59,6 +61,7 @@ class StudentController extends Controller
     {
         $student_role_id = Role::whereSlug('student')->first()->id;
         $status_available = Status::whereSlug('available')->first()->id;
+        $default_school = School::whereSlug('wolfert-college')->first()->id;
         $fname_short = substr($request->first_name, 0, 1);
         $lname_short = substr($request->last_name, 0, 1);
 
@@ -68,6 +71,7 @@ class StudentController extends Controller
         $student = User::create($request->all());
         $student->password = Hash::make($request->password);
         $student->short_name = $fname_short . $lname_short;
+        $student->school_id = $default_school;
         $student->roles()->attach( $student_role_id );
         $student->save();
 

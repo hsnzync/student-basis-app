@@ -33,8 +33,6 @@
 .nav-main .nav-content ul li {
   text-align: center;
   color: #bababa;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
   font-size: 10px;
   line-height: 40px;
 }
@@ -63,6 +61,7 @@
 }
 
 .nav-main .nav-content ul li .nav-content-item i {
+  width: 35px;
   font-size: 16px;
   position: relative;
   top: 10px;
@@ -109,10 +108,6 @@
 @media screen and (max-width: 575px) {
   body {
     overflow-x: hidden;
-  }
-
-  body .main {
-    padding-bottom: 80px !important;
   }
 
   body .main .vue-base {
@@ -164,7 +159,7 @@
   }
 
   .nav-main .nav-content .nav-items li {
-    width: 19%;
+    width: 16%;
   }
 
   .nav-main .nav-content .nav-footer {
@@ -196,17 +191,17 @@
   z-index: 10;
   padding: 0 !important;
   height: 150px;
+  width: 100%;
 }
 
 @media screen and (max-width: 575px) {
   .navbar-laravel .container {
-    padding-right: 40px !important;
-    padding-left: 40px !important;
+    padding: 40px 90px !important;
   }
 }
 
 .navbar-laravel .container {
-  max-width: 1480px;
+  max-width: 100%;
   padding: 40px 90px;
 }
 
@@ -244,55 +239,12 @@
   font-weight: 600;
 }
 
-.profile-container ul {
-  list-style: none;
-}
-
-.profile-container ul .avatar {
-  background: #3490dc;
-  color: #fff;
-  font-size: 40px;
-  padding: 40px 35px;
-}
-
-.landing-section:nth-of-type(1) {
-  height: calc(100vh - 150px);
-  padding: 0 90px;
-}
-
-.landing-section:nth-of-type(1) h1 {
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-
-.landing-section:nth-of-type(2) {
-  height: 100vh;
-  margin-top: -150px;
-}
-
-.landing-section:nth-of-type(2) img {
-  width: 100%;
-  height: inherit;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-@media screen and (max-width: 767px) {
-  .landing-section:nth-of-type(2) {
-    height: 500px;
-    margin-top: -220px;
-  }
-}
-
 .items-section,
 .subjects-section,
 .courses-section {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 100vh;
   background-color: #f3f3f3;
-  height: 100vh;
 }
 
 .items-section::-webkit-scrollbar,
@@ -431,7 +383,7 @@
 }
 
 .courses-section .items-wrapper .items .courses-tile {
-  /** DELETE ANIMATION FOR NOW, WILL BE FIXED LATER */
+  /** TURN OFF ANIMATION FOR NOW, WILL BE FIXED LATER */
 }
 
 .courses-section .items-wrapper .items .item .item-content h4 {
@@ -445,25 +397,32 @@
 
 .header-title h1 {
   font-weight: 700;
-  font-size: 32px;
+  font-size: 25px;
   color: #373646;
+  margin: 0;
 }
 
 .header-title p {
   color: #878787;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
 }
 
 .header-image {
-  height: 380px;
+  height: 350px;
 }
 
 .header-image img {
-  max-height: 380px;
+  max-height: 350px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 20px;
+}
+
+.header-block {
+  height: 250px;
+  background-color: #d1ecf1;
   border-radius: 20px;
 }
 
@@ -534,7 +493,7 @@
 }
 
 .filter-section ul li:not(.filter-icon) {
-  width: 119px;
+  margin-right: 30px;
 }
 
 .filter-section ul li .filter-icon i {
@@ -553,7 +512,7 @@
 }
 
 .form-control {
-  height: 40px !important;
+  height: 50px !important;
 }
 
 /** Home login form */
@@ -563,10 +522,78 @@
           transform: translateY(40%);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
   .login-form {
     -webkit-transform: translateY(10%);
             transform: translateY(10%);
+  }
+}
+
+.dashboard-section,
+.profile-section,
+.subjects-section,
+.courses-section {
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.auth {
+  padding: 200px 20px;
+}
+
+.auth .auth-title {
+  margin: 40px auto;
+  padding: 0;
+}
+
+.auth .auth-title h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #373646;
+}
+
+.auth .form-section {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.auth .form-section label {
+  font-family: "Roboto", sans-serif;
+  color: #373646;
+}
+
+.auth .form-section .form-submit-btn {
+  padding: 0;
+}
+
+.landing-section:nth-of-type(1) {
+  height: calc(100vh - 150px);
+  padding: 0 90px;
+}
+
+.landing-section:nth-of-type(1) h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.landing-section:nth-of-type(2) {
+  height: 100vh;
+  margin-top: -150px;
+}
+
+.landing-section:nth-of-type(2) img {
+  width: 100%;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 992px) {
+  .landing-section:nth-of-type(2) {
+    height: 500px;
+    margin-top: -220px;
   }
 }
 
@@ -575,7 +602,7 @@
 }
 
 .admin .overview {
-  padding: 100px 100px 100px 175px;
+  padding: 100px 100px 100px 250px;
   height: 100vh;
   overflow: auto;
 }
@@ -618,34 +645,25 @@
      object-fit: cover;
 }
 
-.auth {
-  padding: 200px 20px;
+@media screen and (max-width: 575px) {
+  .admin .overview {
+    padding: 30px;
+  }
 }
 
-.auth .auth-title {
-  margin: 40px auto;
-  padding: 0;
+.dashboard-section {
+  background-color: #f3f3f3;
 }
 
-.auth .auth-title h1 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
+.profile-container ul {
+  list-style: none;
+}
+
+.profile-container ul .avatar {
+  background: #3490dc;
+  color: #fff;
   font-size: 40px;
-  color: #373646;
-}
-
-.auth .form-section {
-  max-width: 1480px;
-  margin: 0 auto;
-}
-
-.auth .form-section label {
-  font-family: "Roboto", sans-serif;
-  color: #373646;
-}
-
-.auth .form-section .form-submit-btn {
-  padding: 0;
+  padding: 40px 35px;
 }
 
 .hide {
@@ -698,7 +716,7 @@
           transform: translateY(-50%);
 }
 
-.modal-window .modal-content .subject-title {
+.modal-window .modal-content .modal-title {
   color: #3490dc;
   font-weight: 700;
 }
@@ -12085,6 +12103,10 @@ body #app {
 .main .vue-base {
   padding-left: 150px;
   overflow-x: hidden;
+}
+
+.main .vue-base .row {
+  width: 100%;
 }
 
 .main a:hover {

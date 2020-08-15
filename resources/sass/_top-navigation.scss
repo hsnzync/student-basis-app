@@ -2,16 +2,15 @@
     z-index: 10;
     padding: 0 !important;
     height: 150px;
-
+    width: 100%;
     @media screen and (max-width: $break-small) {
         .container {
-            padding-right: 40px !important;
-            padding-left: 40px !important;
+            padding: 40px 90px !important;
         }
     }
 
     .container {
-        max-width: 1480px;
+        max-width: 100%;
         padding: 40px 90px;
 
         .nav-title {

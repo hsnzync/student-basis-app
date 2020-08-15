@@ -1,6 +1,6 @@
 <template>
     <standard-wrapper>
-        <div class="items placeholder pt-5" v-for="(x, index) in count" :key="index">
+        <div class="items placeholder pt-4" v-for="(x, index) in count" :key="index">
             <div class="item row m-0 p-3">
                 <div class="item-image col-4 p-0">
                     <img

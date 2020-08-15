@@ -8,8 +8,6 @@
 @import 'navigation';
 @import 'top-navigation';
 @import 'footer';
-@import 'profile';
-@import 'landing';
 @import 'items';
 @import 'header';
 @import 'buttons';
@@ -19,10 +17,16 @@
 @import 'filter';
 @import 'status-labels';
 @import 'forms';
+@import 'sections';
 
-@import 'admin';
 @import 'auth';
 
+// Pages
+@import 'sections/home';
+@import 'sections/admin';
+@import 'sections/dashboard';
+
+// Utilities
 @import 'utilities/helpers';
 @import 'utilities/search';
 @import 'utilities/modal';
@@ -49,6 +53,9 @@ body {
     .vue-base {
         padding-left: 150px;
         overflow-x: hidden;
+        .row {
+            width: 100%;
+        }
     }
 
     a {

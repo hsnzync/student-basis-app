@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>
-                        Weet u zeker dat <span class="subject-title">{{ itemTitle }}</span> wilt
+                        Weet u zeker dat <span class="modal-title">{{ itemTitle }}</span> wilt
                         verwijderen?
                     </h5>
                 </div>

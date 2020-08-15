@@ -31,8 +31,7 @@ class UpdateStudentRequest extends FormRequest
             'student_number'    => 'required',
             'password'          => 'required|min:6',
             'password-confirm'  => 'required|same:password',
-            'experience_points' => 'required|digits_between:0,5000',
-            'school_id'         => 'required',
+            'experience_points' => 'required|digits_between:0,5000'
         ];
     }
 }

@@ -1,22 +1,29 @@
 .header-title {
     h1 {
         font-weight: 700;
-        font-size: 32px;
+        font-size: 25px;
         color: $tertiary;
+        margin: 0;
     }
     p {
         color: $dark-gray;
-        font-size: 17px;
+        font-size: 15px;
         font-weight: 500;
     }
 }
 
 .header-image {
-    height: 380px;
+    height: 350px;
     img {
-        max-height: 380px;
+        max-height: 350px;
         width: 100%;
         object-fit: cover;
         border-radius: 20px;
     }
+}
+
+.header-block {
+    height: 250px;
+    background-color: $light-blue;
+    border-radius: 20px;
 }

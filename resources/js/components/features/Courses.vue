@@ -1,8 +1,8 @@
 <template>
-    <overview-section :type="type" :size="size">
-        <HeaderTitle title="Cursussen" :description="activeSubject.title" />
-        <HeaderImage :image="activeSubject.image_url" />
-        <HeaderTitle title="Overzicht" />
+    <standard-section :type="type" :size="size">
+        <header-title :title="textContent.page.title.courses" :description="activeSubject.title" />
+        <header-image :image="generateThumbnail" />
+        <header-title :title="textContent.page.title.overview" />
         <standard-wrapper v-if="courses.length > 0" class="row mt-2 mb-4">
             <div
                 class="items col-md-4 py-3"
@@ -26,14 +26,14 @@
                 </standard-tile>
             </div>
         </standard-wrapper>
-        <StatusBar v-else :text="textContent.status.noCoursesAvailable" />
-        <!-- <EmptyCoursePlaceholder v-else /> -->
-    </overview-section>
+        <status-bar v-else :text="textContent.status.courses.notAvailable" />
+        <!-- <empty-course-placeholder v-else /> -->
+    </standard-section>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import { OverviewSection, StandardWrapper, StandardTile } from '../sections'
+import { StandardSection, StandardWrapper, StandardTile } from '../sections'
 import { HeaderTitle, HeaderImage, StatusBar, StatusLabel } from '../elements'
 import { EmptyCoursePlaceholder } from '../loaders'
 
@@ -41,7 +41,7 @@ export default {
     name: 'Courses',
     components: {
         StandardWrapper,
-        OverviewSection,
+        StandardSection,
         HeaderTitle,
         HeaderImage,
         EmptyCoursePlaceholder,
@@ -66,18 +66,18 @@ export default {
         this.initialSubject(this.initial)
     },
     computed: {
-        ...mapState(['activeSubject'])
+        ...mapState(['activeSubject']),
+        generateThumbnail() {
+            if (this.activeSubject.image_url) {
+                return `/uploads/images/${this.activeSubject.image_url}`
+            }
+            return '/uploads/images/fallback/fallback.jpg'
+        }
     },
     methods: {
         ...mapMutations(['INITIAL_SUBJECT']),
         ...mapActions(['initialSubject']),
 
-        generateThumbnail(url) {
-            if (url) {
-                return '/uploads/images/' + url
-            }
-            return '/uploads/images/fallback/fallback.jpg'
-        },
         generateUrl(slug) {
             return 'browse/' + slug
         },

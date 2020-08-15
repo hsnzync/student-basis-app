@@ -27,7 +27,6 @@
             li {
                 text-align: center;
                 color: $light-gray;
-                transition: 0.3s;
                 font-size: 10px;
                 line-height: 40px;
 
@@ -51,6 +50,7 @@
                     padding: 0 28px;
 
                     i {
+                        width: 35px;
                         font-size: 16px;
                         position: relative;
                         top: 10px;
@@ -98,7 +98,6 @@
     body {
         overflow-x: hidden;
         .main {
-            padding-bottom: 80px !important;
             .vue-base {
                 padding-left: 0 !important;
             }
@@ -140,7 +139,7 @@
             .nav-items {
                 height: 100%;
                 li {
-                    width: 19%;
+                    width: 16%;
                 }
             }
 

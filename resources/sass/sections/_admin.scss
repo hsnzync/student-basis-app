@@ -4,7 +4,7 @@
     }
 
     .overview {
-        padding: 100px 100px 100px 175px;
+        padding: 100px 100px 100px 250px;
         height: 100vh;
         overflow: auto;
 
@@ -43,6 +43,14 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
+        }
+    }
+}
+
+@media screen and (max-width: $break-small) {
+    .admin {
+        .overview {
+            padding: 30px;
         }
     }
 }

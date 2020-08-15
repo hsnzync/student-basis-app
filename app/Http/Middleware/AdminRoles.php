@@ -19,7 +19,7 @@ class AdminRoles
             if( auth()->user()->hasRole('superadmin') || auth()->user()->hasRole('teacher') ) {
                 return $next($request);
             }
-            return redirect()->route('platform.browse.index');
+            return redirect()->route('platform.index');
         }
         return redirect()->route('landing.index');
     }
